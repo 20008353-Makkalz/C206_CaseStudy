@@ -21,7 +21,6 @@ public class tuitionTimetable {
 
 	
 	public tuitionTimetable(int tuitionID, double price, LocalDateTime startDate, LocalDateTime endTime, String mode) {
-		super();
 		this.tuitionID = tuitionID;
 		this.price = price;
 		this.startDate = startDate;

@@ -176,7 +176,7 @@ public class C206_CaseStudy {
 		System.out.println("4. Quit");
 	}
 	
-	public static void viewEnquiry(ArrayList<Enquiry> enquiryList) //Gilbert Ng
+	public static void viewEnquiry(ArrayList<Enquiry> enquiryList) //GilbertNg
 	{
 		int count = 1;
 		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", "Enquiry_ID","Title","Date", "Time",

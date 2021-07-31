@@ -1,6 +1,10 @@
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 import java.time.LocalTime;
+
+import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
@@ -8,15 +12,23 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<tuitionTimetable> timetableList = new ArrayList<tuitionTimetable>(); //YuanWei
+
 		//===Gilbert
 		ArrayList<Enquiry>enquiryList = new ArrayList<Enquiry>(); 
 		enquiryList.add(new Enquiry("How to register", "2021-7-20", "09.15", 
 				 "Email","Pending"));
+
+		
+		timetableList.add(new tuitionTimetable(1,50.00,LocalDateTime.parse("2020-01-10T09:00:00"), LocalDateTime.parse("2020-02-10T09:00:00"), "F2F"));
+		timetableList.add(new tuitionTimetable(2,55.00,LocalDateTime.parse("2020-02-02T02:00:00"), LocalDateTime.parse("2020-03-20T03:00:00"), "F2F"));
+		timetableList.add(new tuitionTimetable(3,45.00,LocalDateTime.parse("2020-05-31T04:50:43"), LocalDateTime.parse("2020-09-10T05:00:00"), "HBL"));
+
+
 		
 		enquiryList.add(new Enquiry("Tuition Fee", "2021-7-5", "13.15",
 				 "Email","Completed"));
 		
-		//===Gilbert
+		//===GilbertNg
 		//
 		
 		int option = 0;
@@ -84,24 +96,27 @@ public class C206_CaseStudy {
 					doOption4menu();
 					uOption4 = Helper.readInt("Enter an Option >");
 					
-					if(option == 1)
+					if(uOption4 == 1)
 					{
-						//add
-						addTimetable(timetableList);
+						//Add
+						tuitionTimetable ttb1 = inputTimetable();
+						addTimetable(timetableList,ttb1);
 					}
 					
-					else if(option == 2)
+					else if(uOption4 == 2)
 					{
 						//View
 						viewTimetable(timetableList);
 					}
 					
-					else if(option == 3)
+					else if(uOption4 == 3)
 					{
-						//delete
+						//Delete
+						int delOption = Helper.readInt("Enter Tuition ID >");
+						deleteTimetable(timetableList,delOption);
 					}
 					
-					else if(option == 4)
+					else if(uOption4 == 4)
 					{
 						System.out.println("Closing Tuition Timetable App...");
 					}
@@ -188,31 +203,77 @@ public class C206_CaseStudy {
 		
 	}
 	
-	public static void addTimetable(ArrayList<tuitionTimetable> timetableList) //YuanWei
+	public static tuitionTimetable inputTimetable()
 	{
 		int uTuitionID = Helper.readInt("Enter Tuition ID > ");
 		double uPrice = Helper.readDouble("Enter Price of Tuition > $");
-		String uStartDate = Helper.readString("Enter Tuition Start Date/Time (YYYY/MM/DD HH:MM:SS) >");
-		String uEndTime = Helper.readString("Enter Tuition End Date/Time (YYYY/MM/DD HH:MM:SS) >");
-		String uMode = Helper.readString("Enter Tuition Mode >");
-		
+		String uStartDate = Helper.readString("Enter Tuition Start Date/Time (YYYY-MM-DDTHH:MM:SS) >");
+		String uEndTime = Helper.readString("Enter Tuition End Date/Time (YYYY-MM-DDTHH:MM:SS) >");
+		String uMode = Helper.readString("Enter Tuition Mode (F2F/HBL)>");
 		LocalDateTime uStartDateF = LocalDateTime.parse(uStartDate);
 		LocalDateTime uEndTimeF = LocalDateTime.parse(uEndTime);
 		
-		tuitionTimetable uTimetable = new tuitionTimetable(uTuitionID, uPrice, uStartDateF, uEndTimeF, uMode);
-		timetableList.add(uTimetable);
+		tuitionTimetable ttb1 = new tuitionTimetable(uTuitionID, uPrice, uStartDateF, uEndTimeF, uMode);
+		return ttb1;
+		
+	}
+	
+	public static void addTimetable(ArrayList<tuitionTimetable> timetableList, tuitionTimetable ttb1) //YuanWei
+	{
+		
+		timetableList.add(ttb1);
+		System.out.println("New Tuition Timetable added !");
 		
 		
 	}
 	
 	public static void viewTimetable(ArrayList<tuitionTimetable> timetableList) //YuanWei
 	{
-		String output = String.format("", null);
+		String output = String.format("%-10s %-11s %-25s %-25s %-10s\n", "Tuition ID", "Price($)", "Start Date", "End Date", "Mode");
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a"); 
 		
 		for(int i = 0; i < timetableList.size(); i++)
 		{
+			int tuitionID = timetableList.get(i).getTuitionID();
+			double price = timetableList.get(i).getPrice();
+			LocalDateTime startDate = timetableList.get(i).getStartDate();
+			LocalDateTime endTime = timetableList.get(i).getEndTime();
+			String startDateF = startDate.format(format);
+			String endTimeF = endTime.format(format);
+			String mode = timetableList.get(i).getMode();
+			
+			output += String.format("%-10d $%-10.2f %-25s %-25s %-10s\n", tuitionID, price, startDateF, endTimeF, mode);
+		}
+		System.out.println(output);
+	}
+	
+	public static void deleteTimetable(ArrayList<tuitionTimetable> timetableList, int delOption) //YuanWei
+	{
+		boolean found = false;
+		for(int i = 0; i < timetableList.size(); i++)
+		{
+			int tuitionID = timetableList.get(i).getTuitionID();
+			
+			if(delOption == tuitionID)
+			{
+				timetableList.remove(i);
+				System.out.println("Tuition ID: " + (tuitionID) + " has been removed !");
+				found = true;
+			}
+			
+			
+			else
+			{
+				found = false;
+			}
 			
 		}
+		
+		if(found == false)
+		{
+			System.out.println("Tuition ID Does Not Match Any Existing ID");
+		}
+		
 	}
 
 }

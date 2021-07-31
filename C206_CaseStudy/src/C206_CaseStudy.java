@@ -15,9 +15,13 @@ public class C206_CaseStudy {
 
 		//===Gilbert
 		ArrayList<Enquiry>enquiryList = new ArrayList<Enquiry>(); 
-		enquiryList.add(new Enquiry("How to register", "2021-7-20", "09.15", 
+		enquiryList.add(new Enquiry(1,"How to register", "2021-7-20", "09.15", 
 				 "Email","Pending"));
-
+		//Gilbert
+		enquiryList.add(new Enquiry(2,"Tuition Fee", "2021-7-5", "13.15",
+				 "Email","Completed"));
+		
+		
 		
 		timetableList.add(new tuitionTimetable(1,50.00,LocalDateTime.parse("2020-01-10T09:00:00"), LocalDateTime.parse("2020-02-10T09:00:00"), "F2F"));
 		timetableList.add(new tuitionTimetable(2,55.00,LocalDateTime.parse("2020-02-02T02:00:00"), LocalDateTime.parse("2020-03-20T03:00:00"), "F2F"));
@@ -25,10 +29,7 @@ public class C206_CaseStudy {
 
 
 		
-		enquiryList.add(new Enquiry("Tuition Fee", "2021-7-5", "13.15",
-				 "Email","Completed"));
 		
-		//===GilbertNg
 		//
 		
 		int option = 0;
@@ -64,17 +65,18 @@ public class C206_CaseStudy {
 					}
 					else if(option3 == 2)// Delete Enquiry //Gilbert
 					{
-						
+						int delEn = Helper.readInt("Enter Enquiry Id to delete > ");
+						deleteEnquiry(enquiryList, delEn);
 					}
 					else if(option3 == 3)//Add Enquiry //Gilbert
 					{
-						
+						int id = Helper.readInt("Enter Enquiry iD > ");
 						String title = Helper.readString("Enter Enquiry Title > ");
 						String date = Helper.readString("Enter data in (YYYY-MM-DD) > ");
 						String time = Helper.readString("Enter time in (TT.MM) > ");
 						String enquiryMethod = Helper.readString("Enter enquiry method > ");
 						String status = Helper.readString("Enter enquiry status > ");
-						enquiryList.add(new Enquiry (title, date, time,enquiryMethod, status));
+						enquiryList.add(new Enquiry (id,title, date, time,enquiryMethod, status));
 					}
 					else if(option3 == 4)
 					{
@@ -188,6 +190,24 @@ public class C206_CaseStudy {
 		}
 		
 		System.out.println(output);
+	}
+	
+	public static void deleteEnquiry(ArrayList<Enquiry> enquiryList, int delEn) { //Gilbert 
+		
+		for(Enquiry e : enquiryList)
+		{
+			if(delEn == e.getEnquiryID())
+			{
+				enquiryList.remove(e.getEnquiryID());
+				System.out.println("Enquiry " + delEn + " removed!");
+				
+			}
+			else 
+			{
+				System.out.println("iD does not exist!!");
+			}
+			
+		}
 	}
 	
 	public static void doOption4menu() //YuanWei

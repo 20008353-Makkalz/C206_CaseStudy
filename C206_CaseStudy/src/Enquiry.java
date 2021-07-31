@@ -19,9 +19,9 @@ public class Enquiry {
 	private String enquiryMethod;
 	private String status;
 
-	public Enquiry(String title, String date, String time, String enquiryMethod, String status) {
+	public Enquiry(int enquiryID, String title, String date, String time, String enquiryMethod, String status) {
 		
-		this.enquiryID = 0;
+		this.enquiryID = enquiryID;
 		this.title = title;
 		this.date = date;
 		this.time = time;

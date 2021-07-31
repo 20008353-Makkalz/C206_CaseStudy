@@ -1,5 +1,10 @@
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import java.time.LocalTime;
+
 import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 
 public class C206_CaseStudy {
@@ -7,13 +12,24 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<tuitionTimetable> timetableList = new ArrayList<tuitionTimetable>(); //YuanWei
+
+		//===Gilbert
+		ArrayList<Enquiry>enquiryList = new ArrayList<Enquiry>(); 
+		enquiryList.add(new Enquiry("How to register", "2021-7-20", "09.15", 
+				 "Email","Pending"));
+
 		
 		timetableList.add(new tuitionTimetable(1,50.00,LocalDateTime.parse("2020-01-10T09:00:00"), LocalDateTime.parse("2020-02-10T09:00:00"), "F2F"));
 		timetableList.add(new tuitionTimetable(2,55.00,LocalDateTime.parse("2020-02-02T02:00:00"), LocalDateTime.parse("2020-03-20T03:00:00"), "F2F"));
 		timetableList.add(new tuitionTimetable(3,45.00,LocalDateTime.parse("2020-05-31T04:50:43"), LocalDateTime.parse("2020-09-10T05:00:00"), "HBL"));
 
+
 		
+		enquiryList.add(new Enquiry("Tuition Fee", "2021-7-5", "13.15",
+				 "Email","Completed"));
 		
+		//===GilbertNg
+		//
 		
 		int option = 0;
 		
@@ -32,9 +48,42 @@ public class C206_CaseStudy {
 				// Register for tuition
 			}
 			
-			else if(option == 3)
+			else if(option == 3) ///Gilbert Ng -Option 3[Enquiry]
 			{
 				// Add enquiry
+				int option3 = 0;
+				
+				while(option != 4)
+				{
+					doOption3menu();
+					option3 = Helper.readInt("Enter an option > ");
+				
+					if(option3 == 1)
+					{
+						viewEnquiry(enquiryList);
+					}
+					else if(option3 == 2)// Delete Enquiry //Gilbert
+					{
+						
+					}
+					else if(option3 == 3)//Add Enquiry //Gilbert
+					{
+						
+						String title = Helper.readString("Enter Enquiry Title > ");
+						String date = Helper.readString("Enter data in (YYYY-MM-DD) > ");
+						String time = Helper.readString("Enter time in (TT.MM) > ");
+						String enquiryMethod = Helper.readString("Enter enquiry method > ");
+						String status = Helper.readString("Enter enquiry status > ");
+						enquiryList.add(new Enquiry (title, date, time,enquiryMethod, status));
+					}
+					else if(option3 == 4)
+					{
+						System.out.println("Returning to main menu....");
+				
+					}
+					
+				}
+				
 			}
 			
 			else if(option == 4)
@@ -111,6 +160,33 @@ public class C206_CaseStudy {
 		System.out.println("5. Tuition");
 		System.out.println("6. Quit");
 		
+	}
+	public static void doOption3menu() //Gilbert Ng
+	{
+		Helper.line(50, "=");
+		System.out.println("Tuition Enquiry");
+		Helper.line(50, "=");
+		
+
+		System.out.println("1. View Enquiry");
+		System.out.println("2. Delete Enquiry");
+		System.out.println("3. Add Enquiry");
+		System.out.println("4. Quit");
+	}
+	
+	public static void viewEnquiry(ArrayList<Enquiry> enquiryList) //Gilbert Ng
+	{
+		int count = 1;
+		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", "Enquiry_ID","Title","Date", "Time",
+				"Enquiry_Method","Status");
+		
+		for(Enquiry e : enquiryList)
+		{
+			output += String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", count ++,e.getTitle(),e.getDate(), e.getTime(),
+					 e.getEnquiryMethod(),e.getStatus());
+		}
+		
+		System.out.println(output);
 	}
 	
 	public static void doOption4menu() //YuanWei

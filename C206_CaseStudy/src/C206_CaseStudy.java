@@ -50,7 +50,8 @@ public class C206_CaseStudy {
 					if(uOption4 == 1)
 					{
 						//Add
-						addTimetable(timetableList);
+						tuitionTimetable ttb1 = inputTimetable();
+						addTimetable(timetableList,ttb1);
 					}
 					
 					else if(uOption4 == 2)
@@ -126,7 +127,7 @@ public class C206_CaseStudy {
 		
 	}
 	
-	public static void addTimetable(ArrayList<tuitionTimetable> timetableList) //YuanWei
+	public static tuitionTimetable inputTimetable()
 	{
 		int uTuitionID = Helper.readInt("Enter Tuition ID > ");
 		double uPrice = Helper.readDouble("Enter Price of Tuition > $");
@@ -136,8 +137,16 @@ public class C206_CaseStudy {
 		LocalDateTime uStartDateF = LocalDateTime.parse(uStartDate);
 		LocalDateTime uEndTimeF = LocalDateTime.parse(uEndTime);
 		
-		tuitionTimetable uTimetable = new tuitionTimetable(uTuitionID, uPrice, uStartDateF, uEndTimeF, uMode);
-		timetableList.add(uTimetable);
+		tuitionTimetable ttb1 = new tuitionTimetable(uTuitionID, uPrice, uStartDateF, uEndTimeF, uMode);
+		return ttb1;
+		
+	}
+	
+	public static void addTimetable(ArrayList<tuitionTimetable> timetableList, tuitionTimetable ttb1) //YuanWei
+	{
+		
+		timetableList.add(ttb1);
+		System.out.println("New Tuition Timetable added !");
 		
 		
 	}
@@ -172,7 +181,7 @@ public class C206_CaseStudy {
 			if(delOption == tuitionID)
 			{
 				timetableList.remove(i);
-				System.out.println("Tuition ID:" + (tuitionID) + " has been removed !");
+				System.out.println("Tuition ID: " + (tuitionID) + " has been removed !");
 				found = true;
 			}
 			

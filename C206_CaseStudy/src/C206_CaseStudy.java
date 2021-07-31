@@ -63,8 +63,7 @@ public class C206_CaseStudy {
 					else if(uOption4 == 3)
 					{
 						//Delete
-						int delOption = Helper.readInt("Enter Tuition ID >");
-						deleteTimetable(timetableList,delOption);
+						C206_CaseStudy.deleteTimetable(timetableList);
 					}
 					
 					else if(uOption4 == 4)
@@ -127,7 +126,7 @@ public class C206_CaseStudy {
 		
 	}
 	
-	public static tuitionTimetable inputTimetable()
+	public static tuitionTimetable inputTimetable() //YuanWei
 	{
 		int uTuitionID = Helper.readInt("Enter Tuition ID > ");
 		double uPrice = Helper.readDouble("Enter Price of Tuition > $");
@@ -151,9 +150,9 @@ public class C206_CaseStudy {
 		
 	}
 	
-	public static void viewTimetable(ArrayList<tuitionTimetable> timetableList) //YuanWei
+	public static String retrieveTimetable(ArrayList<tuitionTimetable> timetableList) //YuanWei
 	{
-		String output = String.format("%-10s %-11s %-25s %-25s %-10s\n", "Tuition ID", "Price($)", "Start Date", "End Date", "Mode");
+		String output = "";
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a"); 
 		
 		for(int i = 0; i < timetableList.size(); i++)
@@ -168,35 +167,52 @@ public class C206_CaseStudy {
 			
 			output += String.format("%-10d $%-10.2f %-25s %-25s %-10s\n", tuitionID, price, startDateF, endTimeF, mode);
 		}
+		return output;
+	}
+	
+	public static void viewTimetable(ArrayList<tuitionTimetable> timetableList) //YuanWei
+	{
+		String output = String.format("%-10s %-11s %-25s %-25s %-10s\n", "Tuition ID", "Price($)", "Start Date", "End Date", "Mode");
+		output += retrieveTimetable(timetableList);
 		System.out.println(output);
 	}
 	
-	public static void deleteTimetable(ArrayList<tuitionTimetable> timetableList, int delOption) //YuanWei
+	public static boolean doDeleteTimetable(ArrayList<tuitionTimetable> timetableList, int delOption)
 	{
-		boolean found = false;
+		boolean isFound = false;
+		
 		for(int i = 0; i < timetableList.size(); i++)
 		{
 			int tuitionID = timetableList.get(i).getTuitionID();
-			
 			if(delOption == tuitionID)
 			{
 				timetableList.remove(i);
-				System.out.println("Tuition ID: " + (tuitionID) + " has been removed !");
-				found = true;
+				
+				isFound = true;
 			}
-			
-			
-			else
-			{
-				found = false;
-			}
-			
 		}
 		
-		if(found == false)
+		
+		return isFound;
+	}
+	
+	public static void deleteTimetable(ArrayList<tuitionTimetable> timetableList) //YuanWei
+	{
+		C206_CaseStudy.viewTimetable(timetableList);
+		int delOption = Helper.readInt("Enter Tuition ID: ");
+		Boolean isFound = doDeleteTimetable(timetableList, delOption);
+		
+		if(isFound == false)
 		{
 			System.out.println("Tuition ID Does Not Match Any Existing ID");
 		}
+		
+		else
+		{
+			System.out.println("Tuition ID: " + delOption + " Has Been Deleted !");
+		}
+		
+		
 		
 	}
 

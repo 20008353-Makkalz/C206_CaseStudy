@@ -131,6 +131,9 @@ public class C206_CaseStudyTest {
 		ok = C206_CaseStudy.doDeleteTimetable(timetableList, 3);
 		assertFalse("Test that the same Timetable is NOT ok to be deleted again?",ok);
 		
+		//Test if Timetable list size has dropped to 0 after removing the 3 test items
+		assertEquals("Check that tuition timetable list is not bigger than 0",0,timetableList.size());
+		
 		
 		
 	}

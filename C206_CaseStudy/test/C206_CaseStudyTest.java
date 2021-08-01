@@ -79,7 +79,7 @@ public class C206_CaseStudyTest {
 		//Test if Timetable List is not empty -Boundary
 		String allTuitionTimetable = C206_CaseStudy.retrieveTimetable(timetableList);
 		String testOutput ="";
-		assertEquals("Check that ViewAllCamcorderlist", testOutput, allTuitionTimetable);
+		assertEquals("Check ViewTimetable", testOutput, allTuitionTimetable);
 		
 		//After adding 3 items list size should increase to 3 -Normal
 		C206_CaseStudy.addTimetable(timetableList, ttb1);
@@ -116,7 +116,7 @@ public class C206_CaseStudyTest {
 		//Test if Timetable ID can be removed -Normal
 		C206_CaseStudy.addTimetable(timetableList, ttb2);
 		ok = C206_CaseStudy.doDeleteTimetable(timetableList, 2);
-		assertTrue("Test that un-available item is ok to loan?", ok);
+		assertTrue("Test if an Timetable is ok to be deleted?", ok);
 		
 		//Test if same Timetable ID can be removed again -Error
 		ok = C206_CaseStudy.doDeleteTimetable(timetableList, 2);
@@ -125,7 +125,7 @@ public class C206_CaseStudyTest {
 		//Test if Timetable ID can be removed -Normal
 		C206_CaseStudy.addTimetable(timetableList, ttb3);
 		ok = C206_CaseStudy.doDeleteTimetable(timetableList, 3);
-		assertTrue("Test that un-available item is ok to loan?", ok);
+		assertTrue("Test if an Timetable is ok to be deleted?", ok);
 		
 		//Test if same Timetable ID can be removed again -Error
 		ok = C206_CaseStudy.doDeleteTimetable(timetableList, 3);

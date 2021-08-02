@@ -133,8 +133,19 @@ public class C206_CaseStudyTest {
 		
 		//Test if Timetable list size has dropped to 0 after removing the 3 test items
 		assertEquals("Check that tuition timetable list is not bigger than 0",0,timetableList.size());
+	}
+	@Test
+	public void viewEnquiryTest()//Gilbert
+	{
 		
+	}
+	public void addEnquiryTest()//Gilbert
+	{
 		
+	}
+		
+	public void deleteEnquiry()//Gilbert
+	{
 		
 	}
 	

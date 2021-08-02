@@ -70,13 +70,7 @@ public class C206_CaseStudy {
 					}
 					else if(option3 == 3)//Add Enquiry //Gilbert
 					{
-						int id = Helper.readInt("Enter Enquiry iD > ");
-						String title = Helper.readString("Enter Enquiry Title > ");
-						String date = Helper.readString("Enter data in (YYYY-MM-DD) > ");
-						String time = Helper.readString("Enter time in (TT.MM) > ");
-						String enquiryMethod = Helper.readString("Enter enquiry method > ");
-						String status = Helper.readString("Enter enquiry status > ");
-						enquiryList.add(new Enquiry (id,title, date, time,enquiryMethod, status));
+						addEnquiry(enquiryList);
 					}
 					else if(option3 == 4)
 					{
@@ -189,6 +183,17 @@ public class C206_CaseStudy {
 		}
 		
 		System.out.println(output);
+	}
+	public static void addEnquiry(ArrayList<Enquiry> enquiryList) {//Gilbert 
+		{
+			int id = Helper.readInt("Enter Enquiry iD > ");
+			String title = Helper.readString("Enter Enquiry Title > ");
+			String date = Helper.readString("Enter data in (YYYY-MM-DD) > ");
+			String time = Helper.readString("Enter time in (TT.MM) > ");
+			String enquiryMethod = Helper.readString("Enter enquiry method > ");
+			String status = Helper.readString("Enter enquiry status > ");
+			enquiryList.add(new Enquiry (id,title, date, time,enquiryMethod, status));
+		}
 	}
 	
 	public static void deleteEnquiry(ArrayList<Enquiry> enquiryList, int delEn) { //Gilbert 

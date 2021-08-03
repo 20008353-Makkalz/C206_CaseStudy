@@ -70,7 +70,7 @@ public class C206_CaseStudy {
 					}
 					else if(option3 == 3)//Add Enquiry //Gilbert
 					{
-						addEnquiry(enquiryList);
+						addEnquiry(enquiryList, null);
 					}
 					else if(option3 == 4)
 					{
@@ -170,7 +170,7 @@ public class C206_CaseStudy {
 		System.out.println("4. Quit");
 	}
 	
-	public static void viewEnquiry(ArrayList<Enquiry> enquiryList) //GilbertNg
+	public static String viewEnquiry(ArrayList<Enquiry> enquiryList) //GilbertNg
 	{
 		int count = 1;
 		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", "Enquiry_ID","Title","Date", "Time",
@@ -183,8 +183,9 @@ public class C206_CaseStudy {
 		}
 		
 		System.out.println(output);
+		return output;
 	}
-	public static void addEnquiry(ArrayList<Enquiry> enquiryList) {//Gilbert 
+	public static void addEnquiry(ArrayList<Enquiry> enquiryList, Enquiry e1) {//Gilbert 
 		{
 			int id = Helper.readInt("Enter Enquiry iD > ");
 			String title = Helper.readString("Enter Enquiry Title > ");
@@ -196,7 +197,7 @@ public class C206_CaseStudy {
 		}
 	}
 	
-	public static void deleteEnquiry(ArrayList<Enquiry> enquiryList, int delEn) { //Gilbert 
+	public static Boolean deleteEnquiry(ArrayList<Enquiry> enquiryList, int delEn) { //Gilbert 
 		
 		for(Enquiry e : enquiryList)
 		{
@@ -212,6 +213,7 @@ public class C206_CaseStudy {
 			}
 			
 		}
+		return null;
 	}
 	
 	public static void doOption4menu() //YuanWei
@@ -315,6 +317,15 @@ public class C206_CaseStudy {
 		
 		
 		
+	}
+
+	/**
+	 * @param enquiryList
+	 * @return
+	 */
+	public static String viewEnquiryTest(ArrayList<Enquiry> enquiryList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

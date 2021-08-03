@@ -96,13 +96,13 @@ public class C206_CaseStudy {
 					{
 						//Add
 						tuitionTimetable ttb1 = inputTimetable();
-						addTimetable(timetableList,ttb1);
+						C206_CaseStudy.addTimetable(timetableList,ttb1);
 					}
 					
 					else if(uOption4 == 2)
 					{
 						//View
-						viewTimetable(timetableList);
+						C206_CaseStudy.viewTimetable(timetableList);
 					}
 					
 					else if(uOption4 == 3)

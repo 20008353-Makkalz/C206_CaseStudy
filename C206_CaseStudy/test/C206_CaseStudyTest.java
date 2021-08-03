@@ -194,7 +194,7 @@ public class C206_CaseStudyTest {
 				assertSame("Check that enquiry is added", e2, enquiryList.get(1));
 	}
 		
-	public void deleteEnquiry()//Gilbert
+	public void deleteEnquiry()//Gilbertng
 	{
 		//Make sure list is not null -Boundary
 				assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);

@@ -12,6 +12,7 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<tuitionTimetable> timetableList = new ArrayList<tuitionTimetable>(); //YuanWei
+		ArrayList<Tuition> tuitionList = new ArrayList<Tuition>(); //Vijay
 
 		//===Gilbert
 		ArrayList<Enquiry>enquiryList = new ArrayList<Enquiry>(); 
@@ -131,7 +132,43 @@ public class C206_CaseStudy {
 			
 			else if(option == 5)
 			{
-				//Add tuition
+				// VIJAY
+				int uOption5 = 0;
+				
+				while(uOption5 != 4)
+				{
+					doOption5menu();
+					uOption5 = Helper.readInt("Enter an Option > ");
+					
+					if(uOption5 == 1)
+					{
+						//Add
+						Tuition t1 = inputTuition();
+						addTuition(tuitionList,t1);
+					}
+					
+					else if(uOption5 == 2)
+					{
+						//View
+						viewTuition(tuitionList);
+					}
+					
+					else if(uOption5 == 3)
+					{
+						//Delete
+						C206_CaseStudy.deleteTuition(tuitionList);
+					}
+					
+					else if(uOption5 == 4)
+					{
+						System.out.println("Closing Tuition App...");
+					}
+					
+					else
+					{
+						System.out.println("Invalid Input Try Again !");
+					}
+				}
 			}
 			
 			else if(option == 6)
@@ -222,6 +259,19 @@ public class C206_CaseStudy {
 		
 	}
 	
+	public static void doOption5menu() //Vijay
+	{
+		Helper.line(50, "=");
+		System.out.println("TUITION");
+		Helper.line(50, "=");
+		
+		System.out.println("1. Add Tuition");
+		System.out.println("2. View Tuition");
+		System.out.println("3. Delete Tuition");
+		System.out.println("4. Quit");
+		
+	}
+	
 	public static tuitionTimetable inputTimetable() //YuanWei
 	{
 		int uTuitionID = Helper.readInt("Enter Tuition ID > ");
@@ -237,11 +287,35 @@ public class C206_CaseStudy {
 		
 	}
 	
+	public static Tuition inputTuition() //Vijay
+	{
+		String uTuitionCode = Helper.readString("Enter Tuition Code > ");
+		String uTuitionTitle = Helper.readString("Enter Title of the Tuition > ");
+		String uSubjGrpName = Helper.readString("Enter the Subject Group Name > ");
+		String uTuitionDescription = Helper.readString("Enter description of the Tuition > ");
+		double uTuitionDuration = Helper.readDouble("Enter the duration of the Tuition (in minutes) > ");
+		String uPrerequisite = Helper.readString("Enter the prerequisites needed for the Tuition > ");
+		String uTeacher = Helper.readString("Enter the name of the teacher > ");
+		
+		Tuition t1 = new Tuition(uTuitionCode, uTuitionTitle, uSubjGrpName, uTuitionDescription, uTuitionDuration, uPrerequisite, uTeacher);
+		return t1;
+		
+	}
+	
 	public static void addTimetable(ArrayList<tuitionTimetable> timetableList, tuitionTimetable ttb1) //YuanWei
 	{
 		
 		timetableList.add(ttb1);
 		System.out.println("New Tuition Timetable added !");
+		
+		
+	}
+	
+	public static void addTuition(ArrayList<Tuition> tuitionList, Tuition t1) //Vijay
+	{
+
+		tuitionList.add(t1);
+		System.out.println("New Tuition added !");
 		
 		
 	}
@@ -266,10 +340,36 @@ public class C206_CaseStudy {
 		return output;
 	}
 	
+	public static String retrieveTuition(ArrayList<Tuition> tuitionList) //VIJAY
+	{
+		String output = "";
+		
+		for(int i = 0; i < tuitionList.size(); i++)
+		{
+			String tuitionCode = tuitionList.get(i).getTuitionCode();
+			String tuitionTitle = tuitionList.get(i).getTuitonTitle();
+			String subjGrpName = tuitionList.get(i).getSubjGrpName();
+			String tuitionDescription = tuitionList.get(i).getTuitionDescription();
+			double tuitionDuration = tuitionList.get(i).getTuitionDuration();
+			String prerequisite = tuitionList.get(i).getPrerequisite();
+			String teacher = tuitionList.get(i).getTeacher();
+			
+			output += String.format("%-15s %-25s %-15s %-35s -%10.2f -%30s %-20s\n", tuitionCode, tuitionTitle, subjGrpName, tuitionDescription, tuitionDuration, prerequisite, teacher);
+		}
+		return output;
+	}
+	
 	public static void viewTimetable(ArrayList<tuitionTimetable> timetableList) //YuanWei
 	{
 		String output = String.format("%-10s %-11s %-25s %-25s %-10s\n", "Tuition ID", "Price($)", "Start Date", "End Date", "Mode");
 		output += retrieveTimetable(timetableList);
+		System.out.println(output);
+	}
+	
+	public static void viewTuition(ArrayList<Tuition> tuitionList) //VIJAY
+	{
+		String output = String.format("%-20s %-6s %-19s %-12s -%16s -%15s %-8s\n", "Tuition Code", "Title", "Subject Group Name", "Description", "Duration (mins)", "Pre-Requisites", "Teacher");
+		output += retrieveTuition(tuitionList);
 		System.out.println(output);
 	}
 	
@@ -283,6 +383,25 @@ public class C206_CaseStudy {
 			if(delOption == tuitionID)
 			{
 				timetableList.remove(i);
+				
+				isFound = true;
+			}
+		}
+		
+		
+		return isFound;
+	}
+	
+	public static boolean doDeleteTuition(ArrayList<Tuition> tuitionList, String delOption) //VIJAY
+	{
+		boolean isFound = false;
+		
+		for(int i = 0; i < tuitionList.size(); i++)
+		{
+			String tuitionCode = tuitionList.get(i).getTuitionCode();
+			if(delOption == tuitionCode)
+			{
+				tuitionList.remove(i);
 				
 				isFound = true;
 			}
@@ -306,6 +425,26 @@ public class C206_CaseStudy {
 		else
 		{
 			System.out.println("Tuition ID: " + delOption + " Has Been Deleted !");
+		}
+		
+		
+		
+	}
+	
+	public static void deleteTuition(ArrayList<Tuition> tuitionList) //VIJAY
+	{
+		C206_CaseStudy.viewTuition(tuitionList);
+		String delOption = Helper.readString("Enter Tuition Code: ");
+		Boolean isFound = doDeleteTuition(tuitionList, delOption);
+		
+		if(isFound == false)
+		{
+			System.out.println("Tuition Code Does Not Match Any Existing Code");
+		}
+		
+		else
+		{
+			System.out.println("Tuition Code: " + delOption + " Has Been Deleted !");
 		}
 		
 		

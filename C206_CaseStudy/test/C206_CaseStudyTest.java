@@ -200,6 +200,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test viewEnquiry", testOutput, allenquiry);
 
 	}
+	
 
 	public void addEnquiryTest()// Gilbert
 	{

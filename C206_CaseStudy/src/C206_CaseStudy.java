@@ -9,6 +9,13 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
+	private static final int TUITION = 5;
+	private static final int TUITION_TIMETABLE = 4;
+	private static final int ENQUIRY = 3;
+	private static final int REG_TIMETABLE = 2;
+	private static final int REG_STUDENT = 1;
+	private static final int OPTION_QUIT = 6;
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<tuitionTimetable> timetableList = new ArrayList<tuitionTimetable>(); // YuanWei
@@ -40,20 +47,20 @@ public class C206_CaseStudy {
 
 		int option = 0;
 
-		while (option != 6) // YuanWei
+		while (option != OPTION_QUIT) // YuanWei
 		{
 			mainMenu();
 			option = Helper.readInt("Enter an option > ");
 
-			if (option == 1) {
-				// Add student
+			if (option == REG_STUDENT) {
+				// Register student
 			}
 
-			else if (option == 2) {
-				// Register for tuition
+			else if (option == REG_TIMETABLE) {
+				// Register timetable
 			}
 
-			else if (option == 3) /// Gilbert Ng -Option 3[Enquiry]
+			else if (option == ENQUIRY) /// Gilbert Ng -Option 3[Enquiry]
 			{
 				// Add enquiry
 				int option3 = 0;
@@ -80,7 +87,7 @@ public class C206_CaseStudy {
 
 			}
 
-			else if (option == 4) {
+			else if (option == TUITION_TIMETABLE) {
 				// Add tuition time table YuanWei
 				int uOption4 = 0;
 
@@ -114,7 +121,7 @@ public class C206_CaseStudy {
 				}
 			}
 
-			else if (option == 5) {
+			else if (option == TUITION) {
 				// VIJAY
 				int uOption5 = 0;
 
@@ -148,7 +155,7 @@ public class C206_CaseStudy {
 				}
 			}
 
-			else if (option == 6) {
+			else if (option == OPTION_QUIT) {
 				System.out.println("Thank you for using the Tuition Management App !");
 			}
 

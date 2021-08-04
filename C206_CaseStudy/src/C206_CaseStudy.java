@@ -22,6 +22,11 @@ public class C206_CaseStudy {
 		enquiryList.add(new Enquiry(2,"Tuition Fee", "2021-7-5", "13.15",
 				 "Email","Completed"));
 		
+		//Vijay
+		tuitionList.add(new Tuition("C206", "Software Development", "Group 1", "Learn about JUnit!", 160, "Laptop, Pen, Paper", "Serene Yong"));
+		tuitionList.add(new Tuition("C328", "Intelligent Networks", "Group 2", "Learn about Cisco Networking", 160.5, "Laptop, Pen, Paper", "Pang Tee How"));
+		tuitionList.add(new Tuition("C209", "Adv. Object Oriented Learning", "Group 3", "Learn about Java Programming!", 160.5, "Laptop, Pen, Paper", "Peter Liew"));
+		
 		
 		// YuanWei
 		timetableList.add(new tuitionTimetable(1,50.00,LocalDateTime.parse("2020-01-10T09:00:00"), LocalDateTime.parse("2020-02-10T09:00:00"), "F2F"));
@@ -361,7 +366,7 @@ public class C206_CaseStudy {
 			String prerequisite = tuitionList.get(i).getPrerequisite();
 			String teacher = tuitionList.get(i).getTeacher();
 			
-			output += String.format("%-15s %-25s %-15s %-35s -%10.2f -%30s %-20s\n", tuitionCode, tuitionTitle, subjGrpName, tuitionDescription, tuitionDuration, prerequisite, teacher);
+			output += String.format("%-20s %-50s %-35s %-50s %-25.2f %-25s %-10s\n", tuitionCode, tuitionTitle, subjGrpName, tuitionDescription, tuitionDuration, prerequisite, teacher);
 		}
 		return output;
 	}
@@ -375,7 +380,7 @@ public class C206_CaseStudy {
 	
 	public static void viewTuition(ArrayList<Tuition> tuitionList) //VIJAY
 	{
-		String output = String.format("%-20s %-6s %-19s %-12s -%16s -%15s %-8s\n", "Tuition Code", "Title", "Subject Group Name", "Description", "Duration (mins)", "Pre-Requisites", "Teacher");
+		String output = String.format("%-20s %-50s %-35s %-50s %-25s %-25s %-10s\n", "Tuition Code", "Title", "Subject Group Name", "Description", "Duration (mins)", "Pre-Requisites", "Teacher");
 		output += retrieveTuition(tuitionList);
 		System.out.println(output);
 	}

@@ -13,12 +13,16 @@ public class C206_CaseStudyTest {
 	private tuitionTimetable ttb2;
 	private tuitionTimetable ttb3;
 	
+	private Tuition t1; //Vijay
+	private Tuition t2; //Vijay
+	private Tuition t3; //Vijay
 	
 	private Enquiry e1; //Gilbert
 	private Enquiry e2; //Gilbert
 	
 	private ArrayList<tuitionTimetable> timetableList; // YuanWei
 	private ArrayList<Enquiry> enquiryList; //Gilbert
+	private ArrayList<Tuition> tuitionList; //Vijay
 
 	@Before
 	public void setUp() throws Exception {
@@ -34,6 +38,12 @@ public class C206_CaseStudyTest {
 		
 		enquiryList = new ArrayList<Enquiry>();
 		
+		//Vijay
+		t1 = (new Tuition("C206", "Software Development", "Group 1", "Learn about JUnit!", 160, "Laptop, Pen, Paper", "Serene Yong"));
+		t2 = (new Tuition("C328", "Intelligent Networks", "Group 2", "Learn about Cisco Networking", 160.5, "Laptop, Pen, Paper", "Pang Tee How"));
+		t3 = (new Tuition("C209", "Adv. Object Oriented Learning", "Group 3", "Learn about Java Programming!", 160.5, "Laptop, Pen, Paper", "Peter Liew"));
+		
+		tuitionList = new ArrayList<Tuition>();
 	}
 
 	@After
@@ -46,6 +56,10 @@ public class C206_CaseStudyTest {
 		e1 = null;
 		e2 = null;
 		enquiryList = null;
+		//Vijay
+		t1=null;
+		t2=null;
+		t3=null;
 		
 	}
 
@@ -219,6 +233,102 @@ public class C206_CaseStudyTest {
 				
 				//Test if enquiry list size has dropped to 0 after removing the 3 test items
 				assertEquals("Check that enquiry list is not bigger than 0",0,enquiryList.size());
+	}
+	
+	@Test
+	public void addTuitionTest()
+	{
+		//Vijay
+		
+		//Make sure Tuition is not null, so I can add a new Item - Boundary
+		assertNotNull("Check if there is valid Tuition arraylist to add to",tuitionList);
+		
+		//Make sure Tuition List has increased to size 1 after adding 1 item.
+		//Make sure item added is the same as the first item of list
+		C206_CaseStudy.addTuition(tuitionList,t1);
+		assertEquals("Check that Tuition arraylist size is 1", 1, tuitionList.size());
+		assertSame("Check that Tuition is added", t1, tuitionList.get(0));
+		
+		//Adding another item. Test the size of list = 2 -Normal
+		//Make sure item added is the same as the second item of list
+		C206_CaseStudy.addTuition(tuitionList,t2);
+		assertEquals("Check that Tuition arraylist size is 1", 2, tuitionList.size());
+		assertSame("Check that Tuition is added", t2, tuitionList.get(1));
+		
+		//Add 3rd item. Test size of list = 3 -Boundary
+		//Make sure item added is the same as the third item of list
+		C206_CaseStudy.addTuition(tuitionList,t3);
+		assertEquals("Check that Tuition arraylist size is 1", 3, tuitionList.size());
+		assertSame("Check that Tuition Timetable is added", t3, tuitionList.get(2));
+		
+		//Test size of list is not bigger than 3 -Error
+		assertNotEquals("Check that tuition list size is not bigger than 3",4,tuitionList.size());
+		
+	}
+	
+	@Test
+	public void retrieveTuitionTest() //Vijay
+	{
+		//Test if list is not null - Boundary
+		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
+		
+		//Test if Tuition List is not empty -Boundary
+		String allTuition = C206_CaseStudy.retrieveTuition(tuitionList);
+		String testOutput ="";
+		assertEquals("Check View Tuition", testOutput, allTuition);
+		
+		//After adding 3 items list size should increase to 3 -Normal
+		C206_CaseStudy.addTuition(tuitionList, t1);
+		C206_CaseStudy.addTuition(tuitionList, t2);
+		C206_CaseStudy.addTuition(tuitionList, t3);
+		assertEquals("Test that Tuition arraylist size is 3", 3, tuitionList.size());
+		
+		//Test if output string is same as tuition list 
+		allTuition = C206_CaseStudy.retrieveTuition(tuitionList);
+		testOutput = String.format("%-10s $%-25s %-25s %-25s %-10.2f %-25s %-10s\n", "C206", "Software Development", "Group 1", "Learn about JUnit!", 160, "Laptop, Pen, Paper", "Serene Yong");
+		testOutput += String.format("%-10s $%-25s %-25s %-25s %-10.2f %-25s %-10s\n", "C328", "Intelligent Networks", "Group 2", "Learn about Cisco Networking", 160.5, "Laptop, Pen, Paper", "Pang Tee How");
+		testOutput += String.format("%-10s $%-25s %-25s %-25s %-10.2f %-25s %-10s\n", "C209", "Adv. Object Oriented Learning", "Group 3", "Learn about Java Programming!", 160.5, "Laptop, Pen, Paper", "Peter Liew");
+
+		
+		assertEquals("Test viewAllTuitionTimetable", testOutput, allTuition);
+		
+	}
+	
+	@Test 
+	public void doDeleteTuitionTest() //Vijay
+	{
+		//Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
+		
+		//Test if Tuition Code can be removed -Normal
+		C206_CaseStudy.addTuition(tuitionList, t1);
+		Boolean ok = C206_CaseStudy.doDeleteTuition(tuitionList, "C206");
+		assertTrue("Test if Tuition is ok to be deleted?", ok);
+		
+		//Test if same Tuition Code can be removed again -Error
+		ok = C206_CaseStudy.doDeleteTuition(tuitionList, "C206");
+		assertFalse("Test that the same Tuition is NOT ok to be deleted again?",ok);
+		
+		//Test if Tuition Code can be removed -Normal
+		C206_CaseStudy.addTuition(tuitionList, t2);
+		ok = C206_CaseStudy.doDeleteTuition(tuitionList, "C328");
+		assertTrue("Test if a Tuition is ok to be deleted?", ok);
+		
+		//Test if same Tuition can be removed again -Error
+		ok = C206_CaseStudy.doDeleteTuition(tuitionList, "C328");
+		assertFalse("Test that the same Tuition is NOT ok to be deleted again?",ok);
+		
+		//Test if Tuition Code can be removed -Normal
+		C206_CaseStudy.addTuition(tuitionList, t3);
+		ok = C206_CaseStudy.doDeleteTuition(tuitionList, "C209");
+		assertTrue("Test if a Tuition is ok to be deleted?", ok);
+		
+		//Test if same Tuition Code can be removed again -Error
+		ok = C206_CaseStudy.doDeleteTuition(tuitionList, "C209");
+		assertFalse("Test that the same Tuition is NOT ok to be deleted again?",ok);
+		
+		//Test if Tuition list size has dropped to 0 after removing the 3 test items -Normal
+		assertEquals("Check that tuition list is not bigger than 0",0,tuitionList.size());
 	}
 	
 

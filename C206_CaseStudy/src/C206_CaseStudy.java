@@ -9,6 +9,22 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
+	/**
+	 * 
+	 */
+	private static final int TTBCLOSE = 4;
+	/**
+	 * 
+	 */
+	private static final int TTBDEL = 3;
+	/**
+	 * 
+	 */
+	private static final int TTBVIEW = 2;
+	/**
+	 * 
+	 */
+	private static final int TTBADD = 1;
 	private static final int TUITION = 5;
 	private static final int TUITION_TIMETABLE = 4;
 	private static final int ENQUIRY = 3;
@@ -95,23 +111,23 @@ public class C206_CaseStudy {
 					doOption4menu();
 					uOption4 = Helper.readInt("Enter an Option >");
 
-					if (uOption4 == 1) {
+					if (uOption4 == TTBADD) {
 						// Add
 						tuitionTimetable ttb1 = inputTimetable();
 						C206_CaseStudy.addTimetable(timetableList, ttb1);
 					}
 
-					else if (uOption4 == 2) {
+					else if (uOption4 == TTBVIEW) {
 						// View
 						C206_CaseStudy.viewTimetable(timetableList);
 					}
 
-					else if (uOption4 == 3) {
+					else if (uOption4 == TTBDEL) {
 						// Delete
 						C206_CaseStudy.deleteTimetable(timetableList);
 					}
 
-					else if (uOption4 == 4) {
+					else if (uOption4 == TTBCLOSE) {
 						System.out.println("Closing Tuition Timetable App...");
 					}
 
@@ -313,7 +329,8 @@ public class C206_CaseStudy {
 		String output = "";
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a");
 
-		for (int i = 0; i < timetableList.size(); i++) {
+		for (int i = 0; i < timetableList.size(); i++) 
+		{
 			int tuitionID = timetableList.get(i).getTuitionID();
 			double price = timetableList.get(i).getPrice();
 			LocalDateTime startDate = timetableList.get(i).getStartDate();

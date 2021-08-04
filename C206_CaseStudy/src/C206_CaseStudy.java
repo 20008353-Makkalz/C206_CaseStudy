@@ -14,7 +14,7 @@ public class C206_CaseStudy {
 		ArrayList<tuitionTimetable> timetableList = new ArrayList<tuitionTimetable>(); // YuanWei
 		ArrayList<Tuition> tuitionList = new ArrayList<Tuition>(); // Vijay
 
-		// ===Gilbert
+		// Gilbert
 		ArrayList<Enquiry> enquiryList = new ArrayList<Enquiry>();
 		enquiryList.add(new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending"));
 		// Gilbert

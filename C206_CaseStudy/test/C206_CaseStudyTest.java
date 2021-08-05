@@ -48,7 +48,6 @@ public class C206_CaseStudyTest {
 	
 
 
-	//private ArrayList<tuitionTimetable> timetableList; // YuanWei
 	//private ArrayList<Enquiry> enquiryList; // Gilbert
 	//private ArrayList<Tuition> tuitionList; // Vijay
 
@@ -199,12 +198,12 @@ public class C206_CaseStudyTest {
 
 		// Test if output string is same as timetable list
 		allTuitionTimetable = C206_CaseStudy.retrieveTimetable(timetableList);
-		testOutput = String.format("%-10s $%-10.2f %-25s %-25s %-10s\n", "1", 50.00, "10 Jan 2020 09:00 am",
-				"10 Feb 2020 09:00 am", "F2F");
-		testOutput += String.format("%-10s $%-10.2f %-25s %-25s %-10s\n", "2", 55.00, "02 Feb 2020 02:00 am",
-				"20 Mar 2020 03:00 am", "F2F");
-		testOutput += String.format("%-10s $%-10.2f %-25s %-25s %-10s\n", "3", 45.00, "31 May 2020 04:50 am",
-				"10 Sep 2020 05:00 am", "HBL");
+		testOutput = String.format("%-10s $%-10.2f %-25s %-25s %-10s %-10s\n", "1", 50.00, "10 Jan 2020 09:00 am",
+				"10 Feb 2020 09:00 am", "F2F", "How To Pass C206 101");
+		testOutput += String.format("%-10s $%-10.2f %-25s %-25s %-10s %-10s\n", "2", 55.00, "02 Feb 2020 02:00 am",
+				"20 Mar 2020 03:00 am", "F2F", "Upper Secondary Math");
+		testOutput += String.format("%-10s $%-10.2f %-25s %-25s %-10s %-10s\n", "3", 45.00, "31 May 2020 04:50 am",
+				"10 Sep 2020 05:00 am", "HBL", "Science Class With Bill Nye");
 
 		assertEquals("Test viewAllTuitionTimetable", testOutput, allTuitionTimetable);
 
@@ -246,6 +245,33 @@ public class C206_CaseStudyTest {
 		// Test if Timetable list size has dropped to 0 after removing the 3 test items
 		// -Normal
 		assertEquals("Check that tuition timetable list is not bigger than 0", 0, timetableList.size());
+	}
+	
+	@Test
+	public void doSearchTimeTableT() //YuanWei
+	{
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);
+				
+		// Test if Timetable ID can be removed -Normal
+		C206_CaseStudy.addTimetable(timetableList, ttb1);
+		Boolean found = C206_CaseStudy.doSearchTimetableT(timetableList, "How To Pass C206 101");
+		assertTrue("Test if an Timetable Title can be found", found);	
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb2);
+		found = C206_CaseStudy.doSearchTimetableT(timetableList, "Upper Secondary Math");
+		assertTrue("Test if an Timetable Title can be found", found);
+		
+		// Test if Title Not Included In Timetable List Can Be Found - Error
+		found = C206_CaseStudy.doSearchTimetableT(timetableList, "Test Title");
+		assertFalse("Test if an Timetable Title can be found", found);
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb3);
+		found = C206_CaseStudy.doSearchTimetableT(timetableList, "Science Class With Bill Nye");
+		assertTrue("Test if an Timetable Title can be found", found);
+		
+		
+		
 	}
 
 	@Test

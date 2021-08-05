@@ -119,7 +119,7 @@ public class C206_CaseStudyTest {
 	}
 
 	@Test
-	public void retrieveTimetableTest() // YuanWei
+	public void retrieveTimetableTest() /// YuanWei
 	{
 		// Test if list is not null - Boundary
 		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);

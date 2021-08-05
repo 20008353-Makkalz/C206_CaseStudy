@@ -17,8 +17,12 @@ public class C206_CaseStudyTest {
 	private Enquiry e1; //Gilbert
 	private Enquiry e2; //Gilbert
 	
+	
+	
 	private ArrayList<tuitionTimetable> timetableList; // YuanWei
 	private ArrayList<Enquiry> enquiryList; //Gilbert
+	
+	
 
 	@Before
 	public void setUp() throws Exception {
@@ -28,11 +32,15 @@ public class C206_CaseStudyTest {
 		ttb3 = new tuitionTimetable(3,45.00,LocalDateTime.parse("2020-05-31T04:50:43"), LocalDateTime.parse("2020-09-10T05:00:00"), "HBL");
 		
 		timetableList = new ArrayList<tuitionTimetable>();
+		
 		//Gilbert
 		e1 = (new Enquiry(1,"How to register", "2021-7-20", "09.15", "Email","Pending"));
 		e2 = (new Enquiry(2,"Tuition Fee", "2021-7-5", "13.15", "Email","Completed"));
 		
 		enquiryList = new ArrayList<Enquiry>();
+		
+		
+		
 		
 	}
 
@@ -46,6 +54,10 @@ public class C206_CaseStudyTest {
 		e1 = null;
 		e2 = null;
 		enquiryList = null;
+		//Fazia
+		SA1 = null;
+		SA2 = null;
+		StudentList = null;
 		
 	}
 
@@ -220,6 +232,4 @@ public class C206_CaseStudyTest {
 				//Test if enquiry list size has dropped to 0 after removing the 3 test items
 				assertEquals("Check that enquiry list is not bigger than 0",0,enquiryList.size());
 	}
-	
-
 }

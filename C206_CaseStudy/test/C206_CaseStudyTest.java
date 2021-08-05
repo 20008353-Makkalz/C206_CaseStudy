@@ -477,8 +477,6 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if there is valid StudentList arraylist to delete for", StudentList);
 		
 	
-
-	
 	}
 	
 	

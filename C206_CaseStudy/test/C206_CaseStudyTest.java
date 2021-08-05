@@ -248,7 +248,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void doSearchTimeTableT() //YuanWei
+	public void doSearchTimeTableTTest() //YuanWei
 	{
 		// Make sure list is not null -Boundary
 		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);
@@ -275,7 +275,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void doSearchTimeTableP() // YuanWei
+	public void doSearchTimeTablePTest() // YuanWei
 	{
 		
 		// Make sure list is not null -Boundary
@@ -299,6 +299,33 @@ public class C206_CaseStudyTest {
 		assertTrue("Test if an Timetable Title can be found", found);
 		
 	}
+	
+	@Test
+	public void updateTimetableTest()
+	{
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);
+		
+		// Test if Timetable Title can be found -Normal
+		C206_CaseStudy.addTimetable(timetableList, ttb1);
+		Boolean found = C206_CaseStudy.doUpdateTimetable(timetableList, 1, "Open");
+		assertTrue("Test if an Timetable Title can be found", found);	
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb2);
+		found = C206_CaseStudy.doUpdateTimetable(timetableList, 2, "Open");
+		assertTrue("Test if an Timetable Title can be found", found);
+		
+		//Test if Timetable ID that is not inside list can be found -Error
+		found = C206_CaseStudy.doUpdateTimetable(timetableList, 3, "Open");
+		assertFalse("Test if an Timetable Title can be found", found);
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb3);
+		found = C206_CaseStudy.doUpdateTimetable(timetableList, 3, "Open");
+		assertTrue("Test if an Timetable Title can be found", found);
+		
+		
+	}
+	
 
 	@Test
 

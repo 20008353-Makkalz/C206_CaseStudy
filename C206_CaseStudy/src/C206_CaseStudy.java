@@ -174,7 +174,8 @@ public class C206_CaseStudy {
 					else if (uOption4 == 5)
 					{
 						int utID= Helper.readInt("Enter Tuition Timetable ID >");
-						updateTimetable(timetableList, utID);
+						String uStatus = Helper.readString("Enter New Tuition Timetable Status > ");
+						updateTimetable(timetableList, utID, uStatus);
 					}
 
 					else if (uOption4 == TTBCLOSE) 
@@ -618,10 +619,9 @@ public class C206_CaseStudy {
 		return isFound;
 	}
 	
-	public static boolean doUpdateTimetable(ArrayList<tuitionTimetable> timetableList, int utID) //YuanWei
+	public static boolean doUpdateTimetable(ArrayList<tuitionTimetable> timetableList, int utID, String uStatus) //YuanWei
 	{
 		boolean isFound = false;
-		String uStatus = Helper.readString("Enter New Tuition Timetable Status > ");
 		
 		for(int i = 0; i < timetableList.size(); i++)
 		{
@@ -641,10 +641,10 @@ public class C206_CaseStudy {
 		
 	}
 	
-	public static void updateTimetable(ArrayList<tuitionTimetable> timetableList, int utID) //YuanWei
+	public static void updateTimetable(ArrayList<tuitionTimetable> timetableList, int utID, String uStatus) //YuanWei
 	{
 		
-		boolean isFound = doUpdateTimetable(timetableList, utID);
+		boolean isFound = doUpdateTimetable(timetableList, utID, uStatus);
 		
 		if(isFound != true)
 		{

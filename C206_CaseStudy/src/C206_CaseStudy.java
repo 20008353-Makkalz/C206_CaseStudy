@@ -16,7 +16,7 @@ public class C206_CaseStudy {
 	/**
 	 * 
 	 */
-	private static final int TTBCLOSE = 4;
+	private static final int TTBCLOSE = 5;
 	/**
 	 * 
 	 */
@@ -111,31 +111,42 @@ public class C206_CaseStudy {
 				// Add tuition time table YuanWei
 				int uOption4 = 0;
 
-				while (uOption4 != 4) {
+				while (uOption4 != 5) 
+				{
 					doOption4menu();
 					uOption4 = Helper.readInt("Enter an Option >");
 
-					if (uOption4 == TTBADD) {
+					if (uOption4 == TTBADD) 
+					{
 						// Add
 						tuitionTimetable ttb1 = inputTimetable();
 						C206_CaseStudy.addTimetable(timetableList, ttb1);
 					}
 
-					else if (uOption4 == TTBVIEW) {
+					else if (uOption4 == TTBVIEW) 
+					{
 						// View
 						C206_CaseStudy.viewTimetable(timetableList);
 					}
 
-					else if (uOption4 == TTBDEL) {
+					else if (uOption4 == TTBDEL) 
+					{
 						// Delete
 						C206_CaseStudy.deleteTimetable(timetableList);
 					}
+					
+					else if(uOption4 == 4)
+					{
+						System.out.println("Testing");
+					}
 
-					else if (uOption4 == TTBCLOSE) {
+					else if (uOption4 == TTBCLOSE) 
+					{
 						System.out.println("Closing Tuition Timetable App...");
 					}
 
-					else {
+					else 
+					{
 						System.out.println("Invalid Input Try Again !");
 					}
 				}
@@ -264,7 +275,8 @@ public class C206_CaseStudy {
 		System.out.println("1. Add Tuition Timetable");
 		System.out.println("2. View Tuition Timetable");
 		System.out.println("3. Delete Tuition Timetable");
-		System.out.println("4. Quit");
+		System.out.println("4. Search Tuition Timetable");
+		System.out.println("5. Quit");
 
 	}
 
@@ -445,6 +457,11 @@ public class C206_CaseStudy {
 			System.out.println("Tuition Code: " + delOption + " Has Been Deleted !");
 		}
 
+	}
+	
+	public static void searchTimetable()
+	{
+		
 	}
 
 	/**

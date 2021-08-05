@@ -12,18 +12,19 @@ public class C206_CaseStudyTest {
 	private tuitionTimetable ttb1;
 	private tuitionTimetable ttb2;
 	private tuitionTimetable ttb3;
+
 	
 	private Enquiry e1; //Gilbert
 	private Enquiry e2; //Gilbert
-	
+
 	private Tuition t1; // Vijay
 	private Tuition t2; // Vijay
 	private Tuition t3; // Vijay
-	
-	private ArrayList<tuitionTimetable> timetableList; // YuanWei
 
+	private ArrayList<tuitionTimetable> timetableList; // YuanWei
 	private ArrayList<Enquiry> enquiryList; // Gilbert
 	private ArrayList<Tuition> tuitionList; // Vijay
+
 
 	@Before
 	public void setUp() throws Exception {
@@ -48,8 +49,6 @@ public class C206_CaseStudyTest {
 		e2 = (new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed"));
 		enquiryList = new ArrayList<Enquiry>();
 
-
-
 		// Vijay
 		t1 = (new Tuition("C206", "Software Development", "Group 1", "Learn about JUnit!", 160, "Laptop, Pen, Paper",
 				"Serene Yong"));
@@ -69,6 +68,7 @@ public class C206_CaseStudyTest {
 		// gilbert
 		e1 = null;
 		e2 = null;
+		enquiryList = null;
 		enquiryList = null;
 
 		//Fazia

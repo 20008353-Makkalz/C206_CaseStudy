@@ -18,14 +18,16 @@ public class tuitionTimetable {
 	private LocalDateTime startDate;
 	private LocalDateTime endTime;
 	private String mode;
+	private String title;
 
 	
-	public tuitionTimetable(int tuitionID, double price, LocalDateTime startDate, LocalDateTime endTime, String mode) {
+	public tuitionTimetable(int tuitionID, double price, LocalDateTime startDate, LocalDateTime endTime, String mode, String title) {
 		this.tuitionID = tuitionID;
 		this.price = price;
 		this.startDate = startDate;
 		this.endTime = endTime;
 		this.mode = mode;
+		this.title = title;
 	}
 
 
@@ -66,6 +68,11 @@ public class tuitionTimetable {
 	 */
 	public String getMode() {
 		return mode;
+	}
+	
+	public String getTitle()
+	{
+		return title;
 	}
 	
 	

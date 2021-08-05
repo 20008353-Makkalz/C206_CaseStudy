@@ -23,30 +23,5 @@ import org.junit.Test;
  * @author 19028056
  *
  */
-public class TuitionManagementTest {
-	
-	private StudentAccount SA1; //Fazia
-	private StudentAccount SA2; //Fazia
-	
-	private ArrayList<StudentAccount> StudentList; //Fazia
-	
-	public TuitionManagementTest() {
-		super();
-	}
-	@Before
-	public void setUp() throws Exception {
-	SA1 = new StudentAccount("john", "M",16834859, "john@gmail.com", "09/09/2001","singapore", 6.5);
-	SA2 = new StudentAccount("cheryl","F",83485914,"cheryl@gmail.com","23/09/2001","singapore", 6.5);
-	
-	StudentList = new ArrayList<StudentAccount>();
-}
-	@After
-	public void tearDown() throws Exception {
-		
-		//Fazia
-		SA1 = null;
-		SA2 = null;
-		StudentList = null;
-		
-	}
+
 	

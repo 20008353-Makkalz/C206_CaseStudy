@@ -66,6 +66,15 @@ public class StudentAccount {
 	public double getInterest() {
 		return interest;
 	}
-}
+
+	/**
+	 * @param nAME2
+	 * @return
+	 */
+	//public boolean equalsIgnoreCase(String nAME2) {
+		// TODO Auto-generated method stub
+		//return false;
+	}
+//}
 
 

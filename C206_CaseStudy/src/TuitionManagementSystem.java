@@ -37,7 +37,7 @@ public class TuitionManagementSystem {
 				
 				
 				if(option == 1) {
-					
+					// TUITION ADMINISTRATOR
 					
 			int opt = 0;
 			TuitionManagementSystem.setHeader("TUITION ADMINISTRATOR");
@@ -69,7 +69,7 @@ public class TuitionManagementSystem {
 				else if (opt == 4) {
 					System.out.println("Goodbye!");
 				}
-			else {
+				else {
 					System.out.println("Invalid option");
 				}
 			}

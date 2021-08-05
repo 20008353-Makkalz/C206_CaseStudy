@@ -19,11 +19,17 @@ public class C206_CaseStudyTest {
 	private Enquiry e2; //Gilbert
 
 
+
+
+
+
 	private Tuition t1; // Vijay
 	private Tuition t2; // Vijay
 	private Tuition t3; // Vijay
 
 
+	//private Enquiry e1; // Gilbert
+	//private Enquiry e2; // Gilbert
 
 	
 	private StudentAccount SA1; //Fazia
@@ -31,7 +37,7 @@ public class C206_CaseStudyTest {
 
 	
 	
-//github.com/20008353-Makkalz/C206_CaseStudy.git
+
 	private ArrayList<tuitionTimetable> timetableList; // YuanWei
 
 	private ArrayList<Enquiry> enquiryList; //Gilbert
@@ -40,6 +46,14 @@ public class C206_CaseStudyTest {
 	private ArrayList<Tuition> tuitionList; // Vijay
 	private ArrayList<StudentAccount> StudentList; //Fazia
 	
+
+
+	//private ArrayList<tuitionTimetable> timetableList; // YuanWei
+	//private ArrayList<Enquiry> enquiryList; // Gilbert
+	//private ArrayList<Tuition> tuitionList; // Vijay
+
+
+
 
 	@Before
 	public void setUp() throws Exception {
@@ -122,11 +136,12 @@ public class C206_CaseStudyTest {
 		// Vijay
 		t1 = null;
 		t2 = null;
-
 		t3 = null;
 		
 
-		t3 = null;
+		
+		//t3 = null;
+
 
 
 	}
@@ -308,10 +323,6 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that enquiry list is not bigger than 0", 0, enquiryList.size());
 
 	}
-
-
-
-
 
 	@Test
 	public void addTuitionTest() {

@@ -98,8 +98,6 @@ public class C206_CaseStudy {
 					}
 				}
 				
-				
-				
 			}
 
 			else if (option == ENQUIRY) /// Gilbert Ng -Option 3[Enquiry]

@@ -27,7 +27,6 @@ public class registerTimetable { // Jean-Claude
 		this.status = "Pending";
 	}
 
-	
 	public int getRegistrationNumber() {
 		return registrationNumber;
 	}

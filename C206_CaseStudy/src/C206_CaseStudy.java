@@ -16,7 +16,7 @@ public class C206_CaseStudy {
 	/**
 	 * 
 	 */
-	private static final int TTBCLOSE = 5;
+	private static final int TTBCLOSE = 6;
 	/**
 	 * 
 	 */
@@ -111,7 +111,7 @@ public class C206_CaseStudy {
 				// Add tuition time table YuanWei
 				int uOption4 = 0;
 
-				while (uOption4 != 5) 
+				while (uOption4 != 6) 
 				{
 					doOption4menu();
 					uOption4 = Helper.readInt("Enter an Option >");
@@ -169,6 +169,12 @@ public class C206_CaseStudy {
 						}
 						
 						
+					}
+					
+					else if (uOption4 == 5)
+					{
+						int utID= Helper.readInt("Enter Tuition Timetable ID >");
+						updateTimetable(timetableList, utID);
 					}
 
 					else if (uOption4 == TTBCLOSE) 
@@ -320,7 +326,8 @@ public class C206_CaseStudy {
 		System.out.println("2. View Tuition Timetable");
 		System.out.println("3. Delete Tuition Timetable");
 		System.out.println("4. Search Tuition Timetable");
-		System.out.println("5. Quit");
+		System.out.println("5. Update Tuition Timetable Status");
+		System.out.println("6. Quit");
 
 	}
 
@@ -609,6 +616,41 @@ public class C206_CaseStudy {
 				
 		}
 		return isFound;
+	}
+	
+	public static boolean doUpdateTimetable(ArrayList<tuitionTimetable> timetableList, int utID) //YuanWei
+	{
+		boolean isFound = false;
+		String uStatus = Helper.readString("Enter New Tuition Timetable Status > ");
+		
+		for(int i = 0; i < timetableList.size(); i++)
+		{
+			
+			int tuitionID = timetableList.get(i).getTuitionID();
+			if(tuitionID == utID)
+			{
+				timetableList.get(i).setStatus(uStatus);
+				String title = timetableList.get(i).getTitle();
+				System.out.println(title + "'s Status Has Been Set To " + uStatus);
+				isFound = true;
+			}
+			
+		}
+		
+		return isFound;
+		
+	}
+	
+	public static void updateTimetable(ArrayList<tuitionTimetable> timetableList, int utID) //YuanWei
+	{
+		
+		boolean isFound = doUpdateTimetable(timetableList, utID);
+		
+		if(isFound != true)
+		{
+			System.out.println("Tuition Timetable Title Could Not Be Found !");
+		}
+		
 	}
 
 	/**

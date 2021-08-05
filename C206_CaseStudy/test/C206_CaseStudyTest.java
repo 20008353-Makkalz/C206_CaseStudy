@@ -83,12 +83,12 @@ public class C206_CaseStudyTest {
 		assertNotNull("Check if there is valid Tuition Timetable arraylist to add to", timetableList);
 
 		// Make sure Timetable List has increased to size 1 after adding 1 item.
-		// Make sure item added is the same as the first item of list
+		// Make sure Timetable added is the same as the first item of list
 		C206_CaseStudy.addTimetable(timetableList, ttb1);
 		assertEquals("Check that Tuition Timetable arraylist size is 1", 1, timetableList.size());
 		assertSame("Check that Tuition Timetable is added", ttb1, timetableList.get(0));
 
-		// Adding another item. Test the size of list = 2 -Normal
+		// Adding another Timetable entry. Test the size of list = 2 -Normal
 		C206_CaseStudy.addTimetable(timetableList, ttb2);
 		assertEquals("Check that Tuition Timetable arraylist size is 1", 2, timetableList.size());
 		assertSame("Check that Tuition Timetable is added", ttb2, timetableList.get(1));
@@ -114,7 +114,7 @@ public class C206_CaseStudyTest {
 		String testOutput = "";
 		assertEquals("Check ViewTimetable", testOutput, allTuitionTimetable);
 
-		// After adding 3 items list size should increase to 3 -Normal
+		// After adding 3 Timetable list size should increase to 3 -Normal
 		C206_CaseStudy.addTimetable(timetableList, ttb1);
 		C206_CaseStudy.addTimetable(timetableList, ttb2);
 		C206_CaseStudy.addTimetable(timetableList, ttb3);

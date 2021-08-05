@@ -14,20 +14,18 @@ public class C206_CaseStudyTest {
 	private tuitionTimetable ttb3;
 
 	
-<<<<<<< HEAD
 
-=======
+
+
 	private Enquiry e1; //Gilbert
 	private Enquiry e2; //Gilbert
 
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+//github.com/20008353-Makkalz/C206_CaseStudy.git
 	private Tuition t1; // Vijay
 	private Tuition t2; // Vijay
 	private Tuition t3; // Vijay
-<<<<<<< HEAD
 
-	private Enquiry e1; // Gilbert
-	private Enquiry e2; // Gilbert
+
 	
 	private StudentAccount SA1; //Fazia
 	private StudentAccount SA2; //Fazia
@@ -44,13 +42,11 @@ public class C206_CaseStudyTest {
 	private ArrayList<StudentAccount> StudentList; //Fazia
 	
 //github.com/20008353-Makkalz/C206_CaseStudy.git
-=======
 
-	private ArrayList<tuitionTimetable> timetableList; // YuanWei
-	private ArrayList<Enquiry> enquiryList; // Gilbert
-	private ArrayList<Tuition> tuitionList; // Vijay
 
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+	
+
+//github.com/20008353-Makkalz/C206_CaseStudy.git
 
 	@Before
 	public void setUp() throws Exception {
@@ -68,22 +64,13 @@ public class C206_CaseStudyTest {
 		//Gilbert
 		e1 = (new Enquiry(1,"How to register", "2021-7-20", "09.15", "Email","Pending"));
 		e2 = (new Enquiry(2,"Tuition Fee", "2021-7-5", "13.15", "Email","Completed"));
-<<<<<<< HEAD
+		enquiryList = new ArrayList<Enquiry>();
+
+		
+		
 	
-		enquiryList = new ArrayList<Enquiry>();
 
-		
-		
-		
-=======
-		
-
-		// Gilbert
-		e1 = (new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending"));
-		e2 = (new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed"));
-		enquiryList = new ArrayList<Enquiry>();
-
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+//github.com/20008353-Makkalz/C206_CaseStudy.git
 		// Vijay
 		t1 = (new Tuition("C206", "Software Development", "Group 1", "Learn about JUnit!", 160, "Laptop, Pen, Paper",
 				"Serene Yong"));
@@ -91,20 +78,20 @@ public class C206_CaseStudyTest {
 				"Laptop, Pen, Paper", "Pang Tee How"));
 		t3 = (new Tuition("C209", "Adv. Object Oriented Learning", "Group 3", "Learn about Java Programming!", 160.5,
 				"Laptop, Pen, Paper", "Peter Liew"));
-<<<<<<< HEAD
+
 
 		tuitionList = new ArrayList<Tuition>();
 //github.com/20008353-Makkalz/C206_CaseStudy.git
 	
 	
 	// fazia
-	  SA1 = new StudentAccount("john", "M",16834859, "john@gmail.com", "09/09/2001","singapore", 6.5);
-      SA2 = new StudentAccount("cheryl","F",83485914,"cheryl@gmail.com","23/09/2001","singapore", 6.5);
+	  SA1 = new StudentAccount("john", 'M',16834859, "john@gmail.com", "09/09/2001","singapore", 6.5);
+      SA2 = new StudentAccount("cheryl",'F',83485914,"cheryl@gmail.com","23/09/2001","singapore", 6.5);
 
       StudentList = new ArrayList<StudentAccount>();
-=======
+
 		tuitionList = new ArrayList<Tuition>();
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+// of https://github.com/20008353-Makkalz/C206_CaseStudy.git
 	}
 
 	@After
@@ -115,14 +102,13 @@ public class C206_CaseStudyTest {
 		timetableList = null;
 		// gilbert
 		e1 = null;
-<<<<<<< HEAD
+
 		e2 = null;
 		enquiryList = null;
-=======
 		e2 = null;
 		enquiryList = null;
 		enquiryList = null;
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+//github.com/20008353-Makkalz/C206_CaseStudy.git
 
 		//Fazia
 		SA1 = null;
@@ -133,14 +119,11 @@ public class C206_CaseStudyTest {
 		// Vijay
 		t1 = null;
 		t2 = null;
-<<<<<<< HEAD
+
 		t3 = null;
 		
 //github.com/20008353-Makkalz/C206_CaseStudy.git
-=======
-		t3 = null;
-
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+//github.com/20008353-Makkalz/C206_CaseStudy.git
 	}
 
 	@Test
@@ -318,12 +301,10 @@ public class C206_CaseStudyTest {
 
 		// Test if enquiry list size has dropped to 0 after removing the 3 test items
 		assertEquals("Check that enquiry list is not bigger than 0", 0, enquiryList.size());
-<<<<<<< HEAD
+
 	}
 
-=======
-	}
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+//github.com/20008353-Makkalz/C206_CaseStudy.git
 
 	@Test
 	public void addTuitionTest() {
@@ -430,17 +411,17 @@ public class C206_CaseStudyTest {
 	public void RegisterStudentAccountTest() // fazia
 	{
 		//Student list is not null, so that can add a new item - boundary
-		assertNotNull("Check if there is valid Student arraylist to add to", StudentList);
+		assertNotNull("Test if there is valid Student arraylist to add to", StudentList);
 		
 		//Given an empty list, after adding 1 StudentAccount, the size of the list become 1 - normal
 		//The StudentAccount just added is as same as the first StudentAccount 
-		TuitionManagementSystem.RegisterStudentAccount(StudentList, SA1);
+		TuitionManagement.RegisterStudentAccount(StudentList, SA1);
 		assertEquals("Check that StudentAccount arraylist size is 1", 1, StudentList.size());
 		assertSame("Check that New Student is added", SA1, StudentList.get(0));
 		
 		//Add another StudentAccount. Test the size of the StudentList list is 2? - normal
 		//The StudentAccount just added is as same as the second StudentAccount
-		TuitionManagementSystem.RegisterStudentAccount(StudentList, SA2);
+		TuitionManagement.RegisterStudentAccount(StudentList, SA2);
 		assertEquals("Check that StudentAccount arraylist size is 2", 2, StudentList.size());
 		assertSame("Check that the New Student is added", SA2, StudentList.get(1));
 		
@@ -453,17 +434,17 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if there is valid StudentList arraylist to retrieve from, StudentList");
 		
 		//Test if the list of students retrieved from TuitionManagementSystem is empty - boundary
-		String allStudentAccount = TuitionManagementSystem.RetrieveAllStudentAccount(StudentList);
+		String allStudentAccount = TuitionManagement.RetrieveAllStudentAccount(StudentList);
 		String testOutput = "";
 		assertEquals("Check ViewStudentAccount", testOutput, allStudentAccount);
 		
 		//Given an empty list, after adding 2 students,test if the size of the list is 2 - normal
-		TuitionManagementSystem.RegisterStudentAccount(StudentList,SA1);
-		TuitionManagementSystem.RegisterStudentAccount(StudentList, SA2);
+		TuitionManagement.RegisterStudentAccount(StudentList,SA1);
+		TuitionManagement.RegisterStudentAccount(StudentList, SA2);
 		assertEquals("Test that StudentAccount arraylist size is 2", 2, StudentList.size());
 		
 		//Test if the expected output same as the list of StudentList retrieved from the TuitionManagementSystem
-		allStudentAccount = TuitionManagementSystem.RetrieveAllStudentAccount(StudentList);
+		allStudentAccount = TuitionManagement.RetrieveAllStudentAccount(StudentList);
 		testOutput = String.format("%-10s %-10s %-10s %-20s %-20s %-20s %-20s\n", "john","M",16834859, "john@gmail.com", "09/09/2001","singapore", 6.5);
 		testOutput = String.format("%-10s %-10s %-10s %-20s %-20s %-20s %-20s\n","cheryl","F",83485914,"cheryl@gmail.com", "23/09/2001","singapore", 6.5 );
 		
@@ -476,6 +457,26 @@ public class C206_CaseStudyTest {
 	{
 		//Test if the StudentList list is not null - boundary
 		assertNotNull("Test if there is valid StudentList arraylist to delete for", StudentList);
+		
+		
+		TuitionManagement.RegisterStudentAccount(StudentList, SA1);
+		TuitionManagement.RegisterStudentAccount(StudentList, SA2);
+		
+		//Test that the name in SA1 can be retrieved 
+		// Test that the name in  SA2 can be retrieved 
+		String name = SA1.getName();
+		String NamE = SA2.getName();
+		
+		
+		//normal condition
+		Boolean isdeleted = TuitionManagement.doDeleteStudentAccount(StudentList, name);
+		assertTrue("Test if this name is deleted", isdeleted);
+		
+		
+		//error condition
+		isdeleted = TuitionManagement.doDeleteStudentAccount(StudentList, name);
+		assertFalse("Test that the student is fail to delete", isdeleted);
+		
 		
 	
 

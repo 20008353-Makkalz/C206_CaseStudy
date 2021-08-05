@@ -19,14 +19,8 @@ public class C206_CaseStudyTest {
 	private Tuition t1; // Vijay
 	private Tuition t2; // Vijay
 	private Tuition t3; // Vijay
-
-	private Enquiry e1; // Gilbert
-	private Enquiry e2; // Gilbert
+	
 	private ArrayList<tuitionTimetable> timetableList; // YuanWei
-
-	private ArrayList<Enquiry> enquiryList; //Gilbert
-	
-	
 
 	private ArrayList<Enquiry> enquiryList; // Gilbert
 	private ArrayList<Tuition> tuitionList; // Vijay

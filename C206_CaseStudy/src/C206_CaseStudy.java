@@ -395,7 +395,7 @@ public class C206_CaseStudy {
 		System.out.println("New Tuition added !");
 
 	}
-
+	
 	public static String retrieveTimetable(ArrayList<tuitionTimetable> timetableList) // YuanWei
 	{
 		String output = "";

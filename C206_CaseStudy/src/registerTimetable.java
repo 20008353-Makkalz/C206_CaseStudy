@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * @author Jean-Claude Ross
  *
  */
-public class registerTimetable {
+public class registerTimetable { // Jean-Claude
 	private int registrationNumber;
 	private int timetableID;
 	private String email;
@@ -86,8 +86,4 @@ public class registerTimetable {
 	public void setRegistrationID(int registrationID) {
 		this.registrationID = registrationID;
 	}
-	
-	
-	
-	
 }

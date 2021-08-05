@@ -252,21 +252,21 @@ public class C206_CaseStudyTest {
 
 	public void viewEnquiryTest()// Gilbert
 	{
-		// Test if list is not null - Boundary
-		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", enquiryList);
+		// Test list is not null - Boundary
+		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
 
 		// Test if Timetable List is not empty -Boundary
 		String allenquiry = C206_CaseStudy.viewEnquiry(enquiryList);
 		String testOutput = "";
-		assertEquals("Check ViewTimetable", testOutput, allenquiry);
+		assertEquals("Check ViewEnquiry", testOutput, allenquiry);
 
-		// After adding 3 items list size should increase to 2 -Normal
+		// After adding 2 items list size should be 2 -Normal
 		C206_CaseStudy.viewEnquiry(enquiryList);
 		C206_CaseStudy.viewEnquiry(enquiryList);
 
 		assertEquals("Test that enquiry arraylist size is 2", 2, enquiryList.size());
 
-		// Test if output string is same as enquiry list
+		// Test if output is same as enquiry list
 		allenquiry = C206_CaseStudy.viewEnquiry(enquiryList);
 		testOutput = String.format("");
 		testOutput = String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", 1, "How to register", "2021-7-20", "09.15",
@@ -281,16 +281,16 @@ public class C206_CaseStudyTest {
 
 	public void addEnquiryTest()// Gilbert
 	{
-		// Item list is not null, so that can add a new item - boundary
-		assertNotNull("Check if there is valid enquiry arraylist to add to", enquiryList);
-		// Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		// Item list is not null, so that can add a new item - (boundary)
+		assertNotNull("Check if there is valid enquiry arraylist to add to it", enquiryList);
+		// Given an empty list, after adding 1 item, size of list = 1 - (normal)
 		// The item just added is as same as the first item of the list
 		C206_CaseStudy.addEnquiry(enquiryList, e1);
 		assertEquals("Check that enquiry arraylist size is 1", 1, enquiryList.size());
 		assertSame("Check that enquiry is added", e1, enquiryList.get(0));
 
-		// Add another item. test The size of the list is 2? -normal
-		// The item just added is as same as the second item of the list
+		// Add another item. test The size of the list is 2 -(normal)
+		// The item just added is same as the second item of the list
 		C206_CaseStudy.addEnquiry(enquiryList, e2);
 		assertEquals("Check that enquiry arraylist size is 2", 2, enquiryList.size());
 		assertSame("Check that enquiry is added", e2, enquiryList.get(1));
@@ -298,29 +298,29 @@ public class C206_CaseStudyTest {
 
 	public void deleteEnquiry()// Gilbertng
 	{
-		// Make sure list is not null -Boundary
-		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
+		// test list is not null -Boundary
+		assertNotNull("Test if there is valid enquiry arraylist to retrieve from", enquiryList);
 
-		// Test if enquiry ID can be removed -Normal
+		// Test if enquiry ID can be removed from list -(Normal)
 		C206_CaseStudy.addEnquiry(enquiryList, e1);
 		Boolean check = C206_CaseStudy.deleteEnquiry(enquiryList, 1);
-		assertTrue("Test if an enquiry is ok to be deleted?", check);
+		assertTrue("Test if enquiry is able to be deleted?", check);
 
 		// Test if same enquiry ID can be removed again -Error
 		check = C206_CaseStudy.deleteEnquiry(enquiryList, 1);
-		assertFalse("Test that the same enquiry is NOT ok to be deleted again?", check);
+		assertFalse("Test that the same enquiry is able to be deleted again?", check);
 
 		// Test if enquiry ID can be removed -Normal
 		C206_CaseStudy.addEnquiry(enquiryList, e2);
 		check = C206_CaseStudy.deleteEnquiry(enquiryList, 2);
-		assertTrue("Test if an enquiry is ok to be deleted?", check);
+		assertTrue("Test if an enquiry is able to be deleted?", check);
 
 		// Test if same enquiry ID can be removed again -Error
 		check = C206_CaseStudy.deleteEnquiry(enquiryList, 2);
-		assertFalse("Test that the same enquiry is NOT ok to be deleted again?", check);
+		assertFalse("Test that the same enquiry is NOT able to be deleted again?", check);
 
-		// Test if enquiry list size has dropped to 0 after removing the 3 test items
-		assertEquals("Check that enquiry list is not bigger than 0", 0, enquiryList.size());
+		// Test if enquiry list size is 0 after removing the 2 test items
+		assertEquals("Check that enquiry list is not more than 0", 0, enquiryList.size());
 
 	}
 

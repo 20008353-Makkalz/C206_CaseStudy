@@ -253,12 +253,12 @@ public class C206_CaseStudyTest {
 	public void viewEnquiryTest()// Gilbert
 	{
 		// Test list is not null - Boundary
-		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", enquiryList);
+		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
 
 		// Test if Timetable List is not empty -Boundary
 		String allenquiry = C206_CaseStudy.viewEnquiry(enquiryList);
 		String testOutput = "";
-		assertEquals("Check ViewTimetable", testOutput, allenquiry);
+		assertEquals("Check ViewEnquiry", testOutput, allenquiry);
 
 		// After adding 2 items list size should be 2 -Normal
 		C206_CaseStudy.viewEnquiry(enquiryList);

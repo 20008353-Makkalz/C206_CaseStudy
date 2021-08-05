@@ -122,9 +122,7 @@ public class C206_CaseStudy {
 						System.out.println("Returning to main menu....");
 
 					}
-
 				}
-
 			}
 
 			else if (option == TUITION_TIMETABLE) {

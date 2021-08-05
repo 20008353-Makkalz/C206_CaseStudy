@@ -31,7 +31,6 @@ public class registerTimetable { // Jean-Claude
 		return registrationNumber;
 	}
 
-	
 	public int getTimetableID() {
 		return timetableID;
 	}

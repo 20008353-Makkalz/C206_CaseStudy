@@ -252,7 +252,6 @@ public class C206_CaseStudy {
 		int timetableID = Helper.readInt("Enter Tuition ID > ");
 		String email = Helper.readString("Enter your email > ");
 		
-		
 		registerList.add(new registerTimetable(registrationNumber, timetableID, email));
 		
 		System.out.println("Registration successful!");

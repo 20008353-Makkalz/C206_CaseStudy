@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
+	private static final int ADD_TUITION = 1;
+	private static final int VIEW_TUITION = 2;
+	private static final int DELETE_TUITION = 3;
+	private static final int TUITION_CLOSE = 4;
 	/**
 	 * 
 	 */
@@ -141,27 +145,27 @@ public class C206_CaseStudy {
 				// VIJAY
 				int uOption5 = 0;
 
-				while (uOption5 != 4) {
+				while (uOption5 != TUITION_CLOSE) {
 					doOption5menu();
 					uOption5 = Helper.readInt("Enter an Option > ");
 
-					if (uOption5 == 1) {
+					if (uOption5 == ADD_TUITION) {
 						// Add
 						Tuition t1 = inputTuition();
 						addTuition(tuitionList, t1);
 					}
 
-					else if (uOption5 == 2) {
+					else if (uOption5 == VIEW_TUITION) {
 						// View
 						viewTuition(tuitionList);
 					}
 
-					else if (uOption5 == 3) {
+					else if (uOption5 == DELETE_TUITION) {
 						// Delete
 						C206_CaseStudy.deleteTuition(tuitionList);
 					}
 
-					else if (uOption5 == 4) {
+					else if (uOption5 == TUITION_CLOSE) {
 						System.out.println("Closing Tuition App...");
 					}
 

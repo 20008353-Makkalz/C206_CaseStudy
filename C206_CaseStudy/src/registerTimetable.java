@@ -25,7 +25,6 @@ public class registerTimetable {
 		this.timetableID = timetableID;
 		this.email = email;
 		this.status = "Pending";
-		//this.regDate = regDate;
 	}
 
 	

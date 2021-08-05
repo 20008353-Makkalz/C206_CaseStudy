@@ -40,6 +40,7 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		ArrayList<tuitionTimetable> timetableList = new ArrayList<tuitionTimetable>(); // YuanWei
 		ArrayList<Tuition> tuitionList = new ArrayList<Tuition>(); // Vijay
+		ArrayList<registerTimetable> registerList = new ArrayList<registerTimetable>(); // Jean-Claude
 
 		// Gilbert
 		ArrayList<Enquiry> enquiryList = new ArrayList<Enquiry>();
@@ -76,8 +77,29 @@ public class C206_CaseStudy {
 				// Register student
 			}
 
-			else if (option == REG_TIMETABLE) {
+			else if (option == REG_TIMETABLE) { //Jean-Claude
 				// Register timetable
+				int option2 = 0;
+				
+				while (option != 4) {
+					doOption2menu();
+					option2 = Helper.readInt("Enter an option > ");
+					
+					if (option2 == 1) {
+						addRegistration(registerList);
+					} else if (option2 == 2) {
+						viewTimetableList(registerList);
+					} else if (option2 == 3) {
+						deleteRegistration(registerList);
+					} else if (option2 == 4) {
+						mainMenu();
+					} else {
+						System.out.println("Invalid option");
+					}
+				}
+				
+				
+				
 			}
 
 			else if (option == ENQUIRY) /// Gilbert Ng -Option 3[Enquiry]
@@ -200,6 +222,18 @@ public class C206_CaseStudy {
 		System.out.println("6. Quit");
 
 	}
+	
+	public static void doOption2menu() // Jean-Claude
+	{
+		Helper.line(50, "=");
+		System.out.println("Register Timetable");
+		Helper.line(50, "=");
+
+		System.out.println("1. Register For Timetable");
+		System.out.println("2. View Registrations");
+		System.out.println("3. Delete Registration");
+		System.out.println("4. Quit");
+	}
 
 	public static void doOption3menu() // Gilbert Ng
 	{
@@ -211,6 +245,41 @@ public class C206_CaseStudy {
 		System.out.println("2. Delete Enquiry");
 		System.out.println("3. Add Enquiry");
 		System.out.println("4. Quit");
+	}
+	
+	public static void addRegistration(ArrayList<registerTimetable> registerList) { // Jean-Claude
+		int registrationNumber = Helper.readInt("Enter Registration number > ");
+		int timetableID = Helper.readInt("Enter Tuition ID > ");
+		String email = Helper.readString("Enter your email > ");
+		//String regDate = Helper.readString("Enter time in (TT.MM) > ");
+		
+		registerList.add(new registerTimetable(registrationNumber, timetableID, email));
+		
+		System.out.println("Registration successful!");
+	}
+	
+	public static String viewTimetableList(ArrayList<registerTimetable> registerList) { // Jean-Claude
+		String output = String.format("%-15s %-15s %-25s %-15s\n", "Registration_No", "Tuition_ID", "Email", "Status");
+		
+		for (registerTimetable i : registerList) {
+			output += String.format("%-15d %-15d %-25s %-15s\n", i.getRegistrationNumber(), i.getTimetableID(), i.getEmail(), i.getStatus());
+		}
+		System.out.println(output);
+		return output;
+	}
+	
+	public static void deleteRegistration(ArrayList<registerTimetable> registerList) { // Jean-Claude
+		int deleteReg = Helper.readInt("Enter Registration Number to delete > ");
+		
+		for (registerTimetable i : registerList) {
+			if (deleteReg == i.getRegistrationNumber()) {
+				registerList.remove(i.getRegistrationID());
+				System.out.println("Registration number " + deleteReg + " has been removed.");
+			}
+			else {
+				System.out.println("Invalid Registration number");
+			}
+		}
 	}
 
 	public static String viewEnquiry(ArrayList<Enquiry> enquiryList) // GilbertNg

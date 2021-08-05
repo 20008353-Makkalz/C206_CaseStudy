@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author 19028056
  *
  */
-public class TuitionManagementSystem {
+public class TuitionManagement {
 	
 	public static final int OPTION_QUIT= 4;
 	
@@ -24,46 +24,40 @@ public class TuitionManagementSystem {
 		 
 		 ArrayList <StudentAccount> StudentList = new ArrayList <StudentAccount>();
 		 
-		 StudentList.add(new StudentAccount("john", "M",16834859, "john@gmail.com", "09/09/2001","singapore", 6.5));
-		 StudentList.add(new StudentAccount("cheryl", "F",83485914, "cheryl@gmail.com", "23/09/2001","singapore", 6.5));
+		 StudentList.add(new StudentAccount("john", 'M',16834859, "john@gmail.com", "09/09/2001","singapore", 6.5));
+		 StudentList.add(new StudentAccount("cheryl", 'f',83485914, "cheryl@gmail.com", "23/09/2001","singapore", 6.5));
 		
 		 int option = 0;
 		 
 			while (option != OPTION_QUIT) {
 				
-				TuitionManagementSystem.mainMenu();
-				option = Helper.readInt("Enter an option> ");
-				//Helper.line(100, "-");
-				
-				
-				if(option == 1) {
 					// TUITION ADMINISTRATOR
 					
 			int opt = 0;
-			TuitionManagementSystem.setHeader("TUITION ADMINISTRATOR");
+			TuitionManagement.setHeader("TUITION ADMINISTRATOR");
 			
 			while(opt != OPTION_QUIT) {
 				
-				TuitionManagementSystem.menu();
+				TuitionManagement.menu();
 				opt = Helper.readInt("Enter an option>");
 				
 				
 			if(opt == 1) {
 					//Register a student account
-				TuitionManagementSystem.setHeader("REGISTER ACCOUNT");
+				TuitionManagement.setHeader("REGISTER ACCOUNT");
 					StudentAccount SA = RegisterAccount();
-					TuitionManagementSystem.RegisterStudentAccount(StudentList, SA);
+					TuitionManagement.RegisterStudentAccount(StudentList, SA);
 					}
 				else if (opt == 2) {
 					//View the student account
-					TuitionManagementSystem.setHeader("VIEW STUDENT ACCOUNT");
-					TuitionManagementSystem.ViewStudentAccount(StudentList);
+					TuitionManagement.setHeader("VIEW STUDENT ACCOUNT");
+					TuitionManagement.ViewStudentAccount(StudentList);
 						
 					}
 				else if (opt == 3) {
 					//Delete the student account
-					TuitionManagementSystem.setHeader("DELETE STUDENT ACCOUNT");
-					TuitionManagementSystem.DeleteStudentAccount(StudentList);
+					TuitionManagement.setHeader("DELETE STUDENT ACCOUNT");
+					TuitionManagement.DeleteStudentAccount(StudentList);
 						
 					}
 				else if (opt == 4) {
@@ -75,7 +69,7 @@ public class TuitionManagementSystem {
 			}
 	 }
 			}
-	 }
+	
 	
 	
 
@@ -97,10 +91,12 @@ public class TuitionManagementSystem {
 		
 	}
 	
+	// Register Student Account
+	
 	public static StudentAccount RegisterAccount() {
 		
 		String name = Helper.readString("Enter your name> ");
-		String gender = Helper.readString("Enter your gender (M/F)> ");
+		char gender = Helper.readChar("Enter your gender (M/F)> ");
 		int mobile = Helper.readInt("Enter your mobile number> ");
 		String email = Helper.readString("Enter your email> ");
 		while (isValid(email) == false)
@@ -115,6 +111,19 @@ public class TuitionManagementSystem {
 		StudentAccount SA = new StudentAccount(name, gender, mobile, email, dateofbirth, cor,interest);
 		return SA;
 	}
+	
+	
+       private static boolean isValid(String email) { // Conditions for valid email
+		
+		if (email.contains(".") && email.contains("@"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+   }
 	
 	
    public static void RegisterStudentAccount(ArrayList<StudentAccount> StudentList, StudentAccount SA) {
@@ -142,6 +151,8 @@ public class TuitionManagementSystem {
 			
     	}
    
+   
+   
    // delete student Account 
         
         public static boolean doDeleteStudentAccount(ArrayList<StudentAccount> StudentList, String name) {
@@ -160,7 +171,7 @@ public class TuitionManagementSystem {
     	}
         
         public static void DeleteStudentAccount(ArrayList<StudentAccount> StudentList) {
-    		TuitionManagementSystem.ViewStudentAccount(StudentList);
+    		TuitionManagement.ViewStudentAccount(StudentList);
     		String Name = Helper.readString("Enter name > ");
     		Boolean isDeleted = doDeleteStudentAccount(StudentList, Name);
     		if (isDeleted == false) {
@@ -174,20 +185,9 @@ public class TuitionManagementSystem {
     		}
     	}
         
-	private static boolean isValid(String email) {
-		
-		if (email.contains(".") && email.contains("@"))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		 
-	}
-	}
+	
 		public static void mainMenu() {
-			TuitionManagementSystem.setHeader("TUITION MANAGEMENT APP");
+			TuitionManagement.setHeader("TUITION MANAGEMENT APP");
 			System.out.println("Login via:");
 			System.out.println("1. Tuition Administrator");
 			System.out.println("2. Tuition Manager");

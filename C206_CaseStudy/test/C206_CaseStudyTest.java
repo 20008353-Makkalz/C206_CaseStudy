@@ -273,6 +273,32 @@ public class C206_CaseStudyTest {
 		
 		
 	}
+	
+	@Test
+	public void doSearchTimeTableP()
+	{
+		
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);
+						
+		// Test if Timetable ID can be removed -Normal
+		C206_CaseStudy.addTimetable(timetableList, ttb1);
+		Boolean found = C206_CaseStudy.doSearchTimetableP(timetableList, 50.00);
+		assertTrue("Test if an Timetable Title can be found", found);	
+				
+		C206_CaseStudy.addTimetable(timetableList, ttb2);
+		found = C206_CaseStudy.doSearchTimetableP(timetableList, 55.00);
+		assertTrue("Test if an Timetable Title can be found", found);
+				
+		// Test if Title Not Included In Timetable List Can Be Found - Error
+		found = C206_CaseStudy.doSearchTimetableP(timetableList, 1000);
+		assertFalse("Test if an Timetable Title can be found", found);
+				
+		C206_CaseStudy.addTimetable(timetableList, ttb3);
+		found = C206_CaseStudy.doSearchTimetableP(timetableList, 45.00);
+		assertTrue("Test if an Timetable Title can be found", found);
+		
+	}
 
 	@Test
 

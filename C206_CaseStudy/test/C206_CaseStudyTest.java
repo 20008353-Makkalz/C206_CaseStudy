@@ -14,27 +14,24 @@ public class C206_CaseStudyTest {
 	private tuitionTimetable ttb3;
 
 	
-<<<<<<< HEAD
 
-=======
 	private Enquiry e1; //Gilbert
 	private Enquiry e2; //Gilbert
 
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
 	private Tuition t1; // Vijay
 	private Tuition t2; // Vijay
 	private Tuition t3; // Vijay
-<<<<<<< HEAD
 
-	private Enquiry e1; // Gilbert
-	private Enquiry e2; // Gilbert
+
+	//private Enquiry e1; // Gilbert
+	//private Enquiry e2; // Gilbert
 	
 	private StudentAccount SA1; //Fazia
 	private StudentAccount SA2; //Fazia
 
 	
 	
-//github.com/20008353-Makkalz/C206_CaseStudy.git
+
 	private ArrayList<tuitionTimetable> timetableList; // YuanWei
 
 	private ArrayList<Enquiry> enquiryList; //Gilbert
@@ -43,14 +40,13 @@ public class C206_CaseStudyTest {
 	private ArrayList<Tuition> tuitionList; // Vijay
 	private ArrayList<StudentAccount> StudentList; //Fazia
 	
-//github.com/20008353-Makkalz/C206_CaseStudy.git
-=======
 
-	private ArrayList<tuitionTimetable> timetableList; // YuanWei
-	private ArrayList<Enquiry> enquiryList; // Gilbert
-	private ArrayList<Tuition> tuitionList; // Vijay
 
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+	//private ArrayList<tuitionTimetable> timetableList; // YuanWei
+	//private ArrayList<Enquiry> enquiryList; // Gilbert
+	//private ArrayList<Tuition> tuitionList; // Vijay
+
+
 
 	@Before
 	public void setUp() throws Exception {
@@ -68,14 +64,14 @@ public class C206_CaseStudyTest {
 		//Gilbert
 		e1 = (new Enquiry(1,"How to register", "2021-7-20", "09.15", "Email","Pending"));
 		e2 = (new Enquiry(2,"Tuition Fee", "2021-7-5", "13.15", "Email","Completed"));
-<<<<<<< HEAD
+
 	
 		enquiryList = new ArrayList<Enquiry>();
 
 		
 		
 		
-=======
+
 		
 
 		// Gilbert
@@ -83,7 +79,7 @@ public class C206_CaseStudyTest {
 		e2 = (new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed"));
 		enquiryList = new ArrayList<Enquiry>();
 
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+
 		// Vijay
 		t1 = (new Tuition("C206", "Software Development", "Group 1", "Learn about JUnit!", 160, "Laptop, Pen, Paper",
 				"Serene Yong"));
@@ -91,7 +87,7 @@ public class C206_CaseStudyTest {
 				"Laptop, Pen, Paper", "Pang Tee How"));
 		t3 = (new Tuition("C209", "Adv. Object Oriented Learning", "Group 3", "Learn about Java Programming!", 160.5,
 				"Laptop, Pen, Paper", "Peter Liew"));
-<<<<<<< HEAD
+
 
 		tuitionList = new ArrayList<Tuition>();
 //github.com/20008353-Makkalz/C206_CaseStudy.git
@@ -102,9 +98,9 @@ public class C206_CaseStudyTest {
       SA2 = new StudentAccount("cheryl","F",83485914,"cheryl@gmail.com","23/09/2001","singapore", 6.5);
 
       StudentList = new ArrayList<StudentAccount>();
-=======
+
 		tuitionList = new ArrayList<Tuition>();
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+
 	}
 
 	@After
@@ -115,14 +111,14 @@ public class C206_CaseStudyTest {
 		timetableList = null;
 		// gilbert
 		e1 = null;
-<<<<<<< HEAD
+
 		e2 = null;
 		enquiryList = null;
-=======
+
 		e2 = null;
 		enquiryList = null;
 		enquiryList = null;
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+
 
 		//Fazia
 		SA1 = null;
@@ -133,14 +129,12 @@ public class C206_CaseStudyTest {
 		// Vijay
 		t1 = null;
 		t2 = null;
-<<<<<<< HEAD
-		t3 = null;
-		
-//github.com/20008353-Makkalz/C206_CaseStudy.git
-=======
+
 		t3 = null;
 
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+		//t3 = null;
+
+
 	}
 
 	@Test
@@ -318,12 +312,12 @@ public class C206_CaseStudyTest {
 
 		// Test if enquiry list size has dropped to 0 after removing the 3 test items
 		assertEquals("Check that enquiry list is not bigger than 0", 0, enquiryList.size());
-<<<<<<< HEAD
+
 	}
 
-=======
-	}
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+
+	
+
 
 	@Test
 	public void addTuitionTest() {

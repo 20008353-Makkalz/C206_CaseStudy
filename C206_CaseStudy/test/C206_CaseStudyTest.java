@@ -301,7 +301,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void updateTimetableTest()
+	public void updateTimetableTest() //YuanWei
 	{
 		// Make sure list is not null -Boundary
 		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);

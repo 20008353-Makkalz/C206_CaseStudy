@@ -9,6 +9,14 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
+	/**
+	 * 
+	 */
+	private static final int TTBSEARCH = 4;
+	/**
+	 * 
+	 */
+	private static final int TTBUPDATE = 5;
 	private static final int ADD_TUITION = 1;
 	private static final int VIEW_TUITION = 2;
 	private static final int DELETE_TUITION = 3;
@@ -116,26 +124,26 @@ public class C206_CaseStudy {
 					doOption4menu();
 					uOption4 = Helper.readInt("Enter an Option >");
 
-					if (uOption4 == TTBADD) 
+					if (uOption4 == TTBADD)  //YuanWei
 					{
 						// Add
 						tuitionTimetable ttb1 = inputTimetable();
 						C206_CaseStudy.addTimetable(timetableList, ttb1);
 					}
 
-					else if (uOption4 == TTBVIEW) 
+					else if (uOption4 == TTBVIEW) //YuanWei
 					{
 						// View
 						C206_CaseStudy.viewTimetable(timetableList);
 					}
 
-					else if (uOption4 == TTBDEL) 
+					else if (uOption4 == TTBDEL) //YuanWei
 					{
 						// Delete
 						C206_CaseStudy.deleteTimetable(timetableList);
 					}
 					
-					else if(uOption4 == 4)
+					else if(uOption4 == TTBSEARCH) //YuanWei
 					{
 						int uOptionS = 0;
 						while(uOptionS != 3)
@@ -143,21 +151,21 @@ public class C206_CaseStudy {
 							searchMenu();
 							uOptionS = Helper.readInt("Enter an Option >");
 							
-							if(uOptionS == 1)
+							if(uOptionS == 1) //YuanWei
 							{
 								//Search By Title
 								String uTitle = Helper.readString("Enter Tuition Timetable Title >");
 								searchTimetableT(timetableList, uTitle);
 							}
 							
-							else if (uOptionS == 2)
+							else if (uOptionS == 2) //YuanWei
 							{
 								//Search By Price
 								double uPrice = Helper.readDouble("Enter Tuition Timetable Price >");
 								searchTimetableP(timetableList, uPrice);
 							}
 							
-							else if(uOptionS == 3)
+							else if(uOptionS == 3) //YuanWei
 							{
 								System.out.println("Closing Search...");
 							}
@@ -171,19 +179,19 @@ public class C206_CaseStudy {
 						
 					}
 					
-					else if (uOption4 == 5)
+					else if (uOption4 == TTBUPDATE) //YuanWei
 					{
 						int utID= Helper.readInt("Enter Tuition Timetable ID >");
 						String uStatus = Helper.readString("Enter New Tuition Timetable Status > ");
 						updateTimetable(timetableList, utID, uStatus);
 					}
 
-					else if (uOption4 == TTBCLOSE) 
+					else if (uOption4 == TTBCLOSE) //YuanWei
 					{
 						System.out.println("Closing Tuition Timetable App...");
 					}
 
-					else 
+					else //YuanWei
 					{
 						System.out.println("Invalid Input Try Again !");
 					}

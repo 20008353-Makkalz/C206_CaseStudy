@@ -59,11 +59,11 @@ public class C206_CaseStudyTest {
 	public void setUp() throws Exception {
 		// YuanWei
 		ttb1 = new tuitionTimetable(1, 50.00, LocalDateTime.parse("2020-01-10T09:00:00"),
-				LocalDateTime.parse("2020-02-10T09:00:00"), "F2F");
+				LocalDateTime.parse("2020-02-10T09:00:00"), "F2F", "How To Pass C206 101", "Open");
 		ttb2 = new tuitionTimetable(2, 55.00, LocalDateTime.parse("2020-02-02T02:00:00"),
-				LocalDateTime.parse("2020-03-20T03:00:00"), "F2F");
+				LocalDateTime.parse("2020-03-20T03:00:00"), "F2F", "Upper Secondary Math","Open");
 		ttb3 = new tuitionTimetable(3, 45.00, LocalDateTime.parse("2020-05-31T04:50:43"),
-				LocalDateTime.parse("2020-09-10T05:00:00"), "HBL");
+				LocalDateTime.parse("2020-09-10T05:00:00"), "HBL","Science Class With Bill Nye", "Open");
 
 		timetableList = new ArrayList<tuitionTimetable>();
 

@@ -597,7 +597,7 @@ public class C206_CaseStudy {
 		
 	}
 	
-	public static boolean doSearchTimetableT(ArrayList<tuitionTimetable> timetableList, String uTitle) //YuanWei
+	public static boolean doSearchTimetableT(ArrayList<tuitionTimetable> timetableList, String uTitle) //YuanWei1
 	{
 		boolean isFound = false;
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a");

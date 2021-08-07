@@ -199,12 +199,12 @@ public class C206_CaseStudyTest {
 
 		// Test if output string is same as timetable list
 		allTuitionTimetable = C206_CaseStudy.retrieveTimetable(timetableList);
-		testOutput = String.format("%-10s $%-10.2f %-25s %-25s %-10s\n", "1", 50.00, "10 Jan 2020 09:00 am",
-				"10 Feb 2020 09:00 am", "F2F");
-		testOutput += String.format("%-10s $%-10.2f %-25s %-25s %-10s\n", "2", 55.00, "02 Feb 2020 02:00 am",
-				"20 Mar 2020 03:00 am", "F2F");
-		testOutput += String.format("%-10s $%-10.2f %-25s %-25s %-10s\n", "3", 45.00, "31 May 2020 04:50 am",
-				"10 Sep 2020 05:00 am", "HBL");
+		testOutput = String.format("%-10s $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", "1", 50.00, "10 Jan 2020 09:00 am",
+				"10 Feb 2020 09:00 am", "F2F", "How To Pass C206 101", "Open");
+		testOutput += String.format("%-10s $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", "2", 55.00, "02 Feb 2020 02:00 am",
+				"20 Mar 2020 03:00 am", "F2F", "Upper Secondary Math", "Open");
+		testOutput += String.format("%-10s $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", "3", 45.00, "31 May 2020 04:50 am",
+				"10 Sep 2020 05:00 am", "HBL", "Science Class With Bill Nye", "Open");
 
 		assertEquals("Test viewAllTuitionTimetable", testOutput, allTuitionTimetable);
 

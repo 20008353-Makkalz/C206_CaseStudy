@@ -662,7 +662,7 @@ public class C206_CaseStudy {
 			if(price == uPrice)
 			{
 				String output = String.format("%-10s %-11s %-25s %-25s %-10s %-30s %-10s\n", "Tuition ID", "Price($)", "Start Date","End Date", "Mode", "Title", "Status");
-
+				
 				int tuitionID = timetableList.get(i).getTuitionID();
 				LocalDateTime startDate = timetableList.get(i).getStartDate();
 				LocalDateTime endTime = timetableList.get(i).getEndTime();
@@ -672,7 +672,6 @@ public class C206_CaseStudy {
 				
 				String startDateF = startDate.format(format);
 				String endTimeF = endTime.format(format);
-				
 				
 				output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF, endTimeF, mode, title, status);
 				

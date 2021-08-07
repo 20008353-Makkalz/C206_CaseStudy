@@ -247,7 +247,82 @@ public class C206_CaseStudyTest {
 		// -Normal
 		assertEquals("Check that tuition timetable list is not bigger than 0", 0, timetableList.size());
 	}
+	
+	@Test
+	public void updateTimeTableTest() //YuanWei
+	{
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);
+		
+		// Test if Timetable ID can be found -Normal
+		C206_CaseStudy.addTimetable(timetableList, ttb1);
+		Boolean found = C206_CaseStudy.doUpdateTimetable(timetableList, 1, "Open");
+		assertTrue("Test if an Timetable Title can be found", found);	
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb2);
+		found = C206_CaseStudy.doUpdateTimetable(timetableList, 2, "Open");
+		assertTrue("Test if an Timetable Title can be found", found);
+		
+		//Test if Timetable ID that is not inside list can be found -Error
+		found = C206_CaseStudy.doUpdateTimetable(timetableList, 3, "Open");
+		assertFalse("Test if an Timetable Title can be found", found);
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb3);
+		found = C206_CaseStudy.doUpdateTimetable(timetableList, 3, "Open");
+		assertTrue("Test if an Timetable Title can be found", found);
+	}
 
+	@Test
+	public void doSearchTimeTableT()
+	{
+		//YuanWei
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);
+		
+		// Test if Timetable Title can be found -Normal
+		C206_CaseStudy.addTimetable(timetableList, ttb1);
+		Boolean found = C206_CaseStudy.doSearchTimetableT(timetableList, "How To Pass C206 101");
+		assertTrue("Test if an Timetable Title can be found", found);	
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb2);
+		found = C206_CaseStudy.doSearchTimetableT(timetableList, "Upper Secondary Math");
+		assertTrue("Test if an Timetable Title can be found", found);
+		
+		// Test if Title Not Included In Timetable List Can Be Found - Error
+		found = C206_CaseStudy.doSearchTimetableT(timetableList, "Test Title");
+		assertFalse("Test if an Timetable Title can be found", found);
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb3);
+		found = C206_CaseStudy.doSearchTimetableT(timetableList, "Science Class With Bill Nye");
+		assertTrue("Test if an Timetable Title can be found", found);
+	}
+	
+	@Test
+	public void doSearchTimeTableP() // YuanWei
+	{
+
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);
+
+		// Test if Timetable Title can be found -Normal
+		C206_CaseStudy.addTimetable(timetableList, ttb1);
+		Boolean found = C206_CaseStudy.doSearchTimetableP(timetableList, 50.00);
+		assertTrue("Test if an Timetable Title can be found", found);
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb2);
+		found = C206_CaseStudy.doSearchTimetableP(timetableList, 55.00);
+		assertTrue("Test if an Timetable Title can be found", found);
+
+		// Test if Price Not Included In Timetable List Can Be Found - Error
+		found = C206_CaseStudy.doSearchTimetableP(timetableList, 1000);
+		assertFalse("Test if an Timetable Title can be found", found);
+
+		C206_CaseStudy.addTimetable(timetableList, ttb3);
+		found = C206_CaseStudy.doSearchTimetableP(timetableList, 45.00);
+		assertTrue("Test if an Timetable Title can be found", found);
+		
+	}
+	
 	@Test
 
 	public void viewEnquiryTest()// Gilbert

@@ -1,7 +1,7 @@
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 
-import java.time.LocalTime;
+
 
 import java.time.format.DateTimeFormatter;
 
@@ -9,6 +9,14 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
+	/**
+	 * 
+	 */
+	private static final int TTBSEARCH = 4;
+	/**
+	 * 
+	 */
+	private static final int TTBUPDATE = 5;
 	private static final int ADD_TUITION = 1;
 	private static final int VIEW_TUITION = 2;
 	private static final int DELETE_TUITION = 3;
@@ -16,7 +24,7 @@ public class C206_CaseStudy {
 	/**
 	 * 
 	 */
-	private static final int TTBCLOSE = 4;
+	private static final int TTBCLOSE = 6;
 	/**
 	 * 
 	 */
@@ -40,6 +48,7 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		ArrayList<tuitionTimetable> timetableList = new ArrayList<tuitionTimetable>(); // YuanWei
 		ArrayList<Tuition> tuitionList = new ArrayList<Tuition>(); // Vijay
+		ArrayList<registerTimetable> registerList = new ArrayList<registerTimetable>(); // Jean-Claude
 
 		// Gilbert
 		ArrayList<Enquiry> enquiryList = new ArrayList<Enquiry>();
@@ -57,11 +66,11 @@ public class C206_CaseStudy {
 
 		// YuanWei
 		timetableList.add(new tuitionTimetable(1, 50.00, LocalDateTime.parse("2020-01-10T09:00:00"),
-				LocalDateTime.parse("2020-02-10T09:00:00"), "F2F"));
+				LocalDateTime.parse("2020-02-10T09:00:00"), "F2F", "How To Pass C206 101", "Open"));
 		timetableList.add(new tuitionTimetable(2, 55.00, LocalDateTime.parse("2020-02-02T02:00:00"),
-				LocalDateTime.parse("2020-03-20T03:00:00"), "F2F"));
+				LocalDateTime.parse("2020-03-20T03:00:00"), "F2F", "Upper Secondary Math", "Open"));
 		timetableList.add(new tuitionTimetable(3, 45.00, LocalDateTime.parse("2020-05-31T04:50:43"),
-				LocalDateTime.parse("2020-09-10T05:00:00"), "HBL"));
+				LocalDateTime.parse("2020-09-10T05:00:00"), "HBL", "Science Class With Bill Nye", "Open"));
 
 		//
 
@@ -76,8 +85,27 @@ public class C206_CaseStudy {
 				// Register student
 			}
 
-			else if (option == REG_TIMETABLE) {
+			else if (option == REG_TIMETABLE) { //Jean-Claude
 				// Register timetable
+				int option2 = 0;
+				
+				while (option != 4) {
+					doOption2menu();
+					option2 = Helper.readInt("Enter an option > ");
+					
+					if (option2 == 1) {
+						addRegistration(registerList);
+					} else if (option2 == 2) {
+						viewTimetableList(registerList);
+					} else if (option2 == 3) {
+						deleteRegistration(registerList);
+					} else if (option2 == 4) {
+						mainMenu();
+					} else {
+						System.out.println("Invalid option");
+					}
+				}
+				
 			}
 
 			else if (option == ENQUIRY) /// Gilbert Ng -Option 3[Enquiry]
@@ -102,40 +130,87 @@ public class C206_CaseStudy {
 						System.out.println("Returning to main menu....");
 
 					}
-
 				}
-
 			}
 
 			else if (option == TUITION_TIMETABLE) {
 				// Add tuition time table YuanWei
 				int uOption4 = 0;
 
-				while (uOption4 != 4) {
+				while (uOption4 != 6) 
+				{
 					doOption4menu();
 					uOption4 = Helper.readInt("Enter an Option >");
 
-					if (uOption4 == TTBADD) {
+					if (uOption4 == TTBADD)  //YuanWei
+					{
 						// Add
 						tuitionTimetable ttb1 = inputTimetable();
 						C206_CaseStudy.addTimetable(timetableList, ttb1);
 					}
 
-					else if (uOption4 == TTBVIEW) {
+					else if (uOption4 == TTBVIEW) //YuanWei
+					{
 						// View
 						C206_CaseStudy.viewTimetable(timetableList);
 					}
 
-					else if (uOption4 == TTBDEL) {
+					else if (uOption4 == TTBDEL) //YuanWei
+					{
 						// Delete
 						C206_CaseStudy.deleteTimetable(timetableList);
 					}
+					
+					else if(uOption4 == TTBSEARCH) //YuanWei
+					{
+						int uOptionS = 0;
+						while(uOptionS != 3)
+						{
+							searchMenu();
+							uOptionS = Helper.readInt("Enter an Option >");
+							
+							if(uOptionS == 1) //YuanWei
+							{
+								//Search By Title
+								String uTitle = Helper.readString("Enter Tuition Timetable Title >");
+								searchTimetableT(timetableList, uTitle);
+							}
+							
+							else if (uOptionS == 2) //YuanWei
+							{
+								//Search By Price
+								double uPrice = Helper.readDouble("Enter Tuition Timetable Price >");
+								searchTimetableP(timetableList, uPrice);
+							}
+							
+							else if(uOptionS == 3) //YuanWei
+							{
+								System.out.println("Closing Search...");
+							}
+							
+							else
+							{
+								System.out.println("Invalid Input Try Again !");
+							}
+						}
+						
+						
+					}
+					
+					else if (uOption4 == TTBUPDATE) //YuanWei
+					{
+						int utID= Helper.readInt("Enter Tuition Timetable ID >");
+						String uStatus = Helper.readString("Enter New Tuition Timetable Status > ");
+						updateTimetable(timetableList, utID, uStatus);
+					}
 
-					else if (uOption4 == TTBCLOSE) {
+					else if (uOption4 == TTBCLOSE) //YuanWei
+					{
 						System.out.println("Closing Tuition Timetable App...");
 					}
 
-					else {
+					else //YuanWei
+					{
 						System.out.println("Invalid Input Try Again !");
 					}
 				}
@@ -200,6 +275,30 @@ public class C206_CaseStudy {
 		System.out.println("6. Quit");
 
 	}
+	
+	public static void doOption2menu() // Jean-Claude
+	{
+		Helper.line(50, "=");
+		System.out.println("Register Timetable");
+		Helper.line(50, "=");
+
+		System.out.println("1. Register For Timetable");
+		System.out.println("2. View Registrations");
+		System.out.println("3. Delete Registration");
+		System.out.println("4. Quit");
+	}
+	public static void searchMenu() //YuanWei
+	{
+		
+		Helper.line(50, "=");
+		System.out.println("TUITION TIMETABLE SEARCH APP");
+		Helper.line(50, "=");
+		
+		
+		System.out.println("1. Search By Title");
+		System.out.println("2. Search By Price");
+		System.out.println("3. Quit");
+	}
 
 	public static void doOption3menu() // Gilbert Ng
 	{
@@ -211,6 +310,40 @@ public class C206_CaseStudy {
 		System.out.println("2. Delete Enquiry");
 		System.out.println("3. Add Enquiry");
 		System.out.println("4. Quit");
+	}
+	
+	public static void addRegistration(ArrayList<registerTimetable> registerList) { // Jean-Claude
+		int registrationNumber = Helper.readInt("Enter Registration number > ");
+		int timetableID = Helper.readInt("Enter Tuition ID > ");
+		String email = Helper.readString("Enter your email > ");
+		
+		registerList.add(new registerTimetable(registrationNumber, timetableID, email));
+		
+		System.out.println("Registration successful!");
+	}
+	
+	public static String viewTimetableList(ArrayList<registerTimetable> registerList) { // Jean-Claude
+		String output = String.format("%-15s %-15s %-25s %-15s\n", "Registration_No", "Tuition_ID", "Email", "Status");
+		
+		for (registerTimetable i : registerList) {
+			output += String.format("%-15d %-15d %-25s %-15s\n", i.getRegistrationNumber(), i.getTimetableID(), i.getEmail(), i.getStatus());
+		}
+		System.out.println(output);
+		return output;
+	}
+	
+	public static void deleteRegistration(ArrayList<registerTimetable> registerList) { // Jean-Claude
+		int deleteReg = Helper.readInt("Enter Registration Number to delete > ");
+		
+		for (registerTimetable i : registerList) {
+			if (deleteReg == i.getRegistrationNumber()) {
+				registerList.remove(i.getRegistrationID());
+				System.out.println("Registration number " + deleteReg + " has been removed.");
+			}
+			else {
+				System.out.println("Invalid Registration number");
+			}
+		}
 	}
 
 	public static String viewEnquiry(ArrayList<Enquiry> enquiryList) // GilbertNg
@@ -264,7 +397,9 @@ public class C206_CaseStudy {
 		System.out.println("1. Add Tuition Timetable");
 		System.out.println("2. View Tuition Timetable");
 		System.out.println("3. Delete Tuition Timetable");
-		System.out.println("4. Quit");
+		System.out.println("4. Search Tuition Timetable");
+		System.out.println("5. Update Tuition Timetable Status");
+		System.out.println("6. Quit");
 
 	}
 
@@ -288,10 +423,12 @@ public class C206_CaseStudy {
 		String uStartDate = Helper.readString("Enter Tuition Start Date/Time (YYYY-MM-DDTHH:MM:SS) >");
 		String uEndTime = Helper.readString("Enter Tuition End Date/Time (YYYY-MM-DDTHH:MM:SS) >");
 		String uMode = Helper.readString("Enter Tuition Mode (F2F/HBL)>");
+		String uTitle = Helper.readString("Enter Tuition Timetable Title >");
+		String uStatus = Helper.readString("Enter Tuition Timetable Status > ");
 		LocalDateTime uStartDateF = LocalDateTime.parse(uStartDate);
 		LocalDateTime uEndTimeF = LocalDateTime.parse(uEndTime);
 
-		tuitionTimetable ttb1 = new tuitionTimetable(uTuitionID, uPrice, uStartDateF, uEndTimeF, uMode);
+		tuitionTimetable ttb1 = new tuitionTimetable(uTuitionID, uPrice, uStartDateF, uEndTimeF, uMode, uTitle, uStatus);
 		return ttb1;
 
 	}
@@ -327,7 +464,7 @@ public class C206_CaseStudy {
 		System.out.println("New Tuition added !");
 
 	}
-
+	
 	public static String retrieveTimetable(ArrayList<tuitionTimetable> timetableList) // YuanWei
 	{
 		String output = "";
@@ -342,8 +479,10 @@ public class C206_CaseStudy {
 			String startDateF = startDate.format(format);
 			String endTimeF = endTime.format(format);
 			String mode = timetableList.get(i).getMode();
+			String title = timetableList.get(i).getTitle();
+			String status = timetableList.get(i).getStatus();
 
-			output += String.format("%-10d $%-10.2f %-25s %-25s %-10s\n", tuitionID, price, startDateF, endTimeF, mode);
+			output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF, endTimeF, mode, title, status);
 		}
 		return output;
 	}
@@ -369,8 +508,8 @@ public class C206_CaseStudy {
 
 	public static void viewTimetable(ArrayList<tuitionTimetable> timetableList) // YuanWei
 	{
-		String output = String.format("%-10s %-11s %-25s %-25s %-10s\n", "Tuition ID", "Price($)", "Start Date",
-				"End Date", "Mode");
+		String output = String.format("%-10s %-11s %-25s %-25s %-10s %-30s %-10s\n", "Tuition ID", "Price($)", "Start Date",
+				"End Date", "Mode", "Title", "Status");
 		output += retrieveTimetable(timetableList);
 		System.out.println(output);
 	}
@@ -445,6 +584,142 @@ public class C206_CaseStudy {
 			System.out.println("Tuition Code: " + delOption + " Has Been Deleted !");
 		}
 
+	}
+	
+	public static void searchTimetableT(ArrayList<tuitionTimetable> timetableList, String uTitle) //YuanWei 
+	{
+		boolean isFound = doSearchTimetableT(timetableList, uTitle);
+		
+		if(isFound == false)
+		{
+			System.out.println("Tuition Timetable Title Could Not Be Found !");
+		}
+		
+	}
+	
+	public static boolean doSearchTimetableT(ArrayList<tuitionTimetable> timetableList, String uTitle) //YuanWei1
+	{
+		boolean isFound = false;
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a");
+		
+		for(int i = 0; i < timetableList.size(); i++)
+		{
+			
+			String title = timetableList.get(i).getTitle();
+			if(title.contains(uTitle))
+			{
+				String output = String.format("%-10s %-11s %-25s %-25s %-10s %-30s %-10s\n", "Tuition ID", "Price($)", "Start Date","End Date", "Mode", "Title", "Status");
+
+				int tuitionID = timetableList.get(i).getTuitionID();
+				double price = timetableList.get(i).getPrice();
+				LocalDateTime startDate = timetableList.get(i).getStartDate();
+				LocalDateTime endTime = timetableList.get(i).getEndTime();
+				String mode = timetableList.get(i).getMode();
+				String status = timetableList.get(i).getStatus();
+				
+				String startDateF = startDate.format(format);
+				String endTimeF = endTime.format(format);
+				
+				output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF, endTimeF, mode, title, status);
+				
+				System.out.println(output);
+				
+				isFound = true;
+			}
+			
+			else
+			{
+				isFound = false;
+			}
+			
+			
+		}
+		return isFound;
+	}
+	
+	public static void searchTimetableP(ArrayList<tuitionTimetable> timetableList, double uPrice) //YuanWei 
+	{
+		boolean isFound = doSearchTimetableP(timetableList, uPrice);
+		
+		if(isFound != true)
+		{
+			System.out.println("Tuition Timetable Title Could Not Be Found !");
+		}
+		
+		
+	}
+	
+	public static boolean doSearchTimetableP(ArrayList<tuitionTimetable> timetableList, double uPrice) //YuanWei
+	{
+		boolean isFound = false;
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a");
+		
+		for(int i = 0; i < timetableList.size(); i++)
+		{
+			
+			double price = timetableList.get(i).getPrice();
+			if(price == uPrice)
+			{
+				String output = String.format("%-10s %-11s %-25s %-25s %-10s %-30s %-10s\n", "Tuition ID", "Price($)", "Start Date","End Date", "Mode", "Title", "Status");
+				
+				int tuitionID = timetableList.get(i).getTuitionID();
+				LocalDateTime startDate = timetableList.get(i).getStartDate();
+				LocalDateTime endTime = timetableList.get(i).getEndTime();
+				String mode = timetableList.get(i).getMode();
+				String title = timetableList.get(i).getTitle();
+				String status = timetableList.get(i).getStatus();
+				
+				String startDateF = startDate.format(format);
+				String endTimeF = endTime.format(format);
+				
+				output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF, endTimeF, mode, title, status);
+				
+				System.out.println(output);
+				
+				isFound = true;
+			}
+			
+			else
+			{
+				isFound = false;
+			}
+				
+		}
+		return isFound;
+	}
+	
+	public static boolean doUpdateTimetable(ArrayList<tuitionTimetable> timetableList, int utID, String uStatus) //YuanWei
+	{
+		boolean isFound = false;
+		
+		for(int i = 0; i < timetableList.size(); i++)
+		{
+			
+			int tuitionID = timetableList.get(i).getTuitionID();
+			if(tuitionID == utID)
+			{
+				timetableList.get(i).setStatus(uStatus);
+				String title = timetableList.get(i).getTitle();
+				System.out.println(title + "'s Status Has Been Set To " + uStatus);
+				isFound = true;
+			}
+			
+		}
+		
+		return isFound;
+		
+	}
+	
+	public static void updateTimetable(ArrayList<tuitionTimetable> timetableList, int utID, String uStatus) //YuanWei
+	{
+		
+		boolean isFound = doUpdateTimetable(timetableList, utID, uStatus);
+		
+		if(isFound != true)
+		{
+			System.out.println("Tuition Timetable Title Could Not Be Found !");
+		}
+		
 	}
 
 	/**

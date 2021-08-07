@@ -18,14 +18,18 @@ public class tuitionTimetable {
 	private LocalDateTime startDate;
 	private LocalDateTime endTime;
 	private String mode;
+	private String title;
+	private String status;
 
 	
-	public tuitionTimetable(int tuitionID, double price, LocalDateTime startDate, LocalDateTime endTime, String mode) {
+	public tuitionTimetable(int tuitionID, double price, LocalDateTime startDate, LocalDateTime endTime, String mode, String title, String status) {
 		this.tuitionID = tuitionID;
 		this.price = price;
 		this.startDate = startDate;
 		this.endTime = endTime;
 		this.mode = mode;
+		this.title = title;
+		this.status = status;
 	}
 
 
@@ -67,6 +71,25 @@ public class tuitionTimetable {
 	public String getMode() {
 		return mode;
 	}
+	
+	public String getStatus()
+	{
+		return status;
+	}
+	
+	public String getTitle()
+	{
+		return title;
+	}
+
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 	
 	
 	

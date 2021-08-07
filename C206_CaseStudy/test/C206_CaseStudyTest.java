@@ -304,7 +304,7 @@ public class C206_CaseStudyTest {
 		// Make sure list is not null -Boundary
 		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);
 
-		// Test if Timetable Title can be found -Normal
+		// Test if Timetable Price can be found -Normal
 		C206_CaseStudy.addTimetable(timetableList, ttb1);
 		Boolean found = C206_CaseStudy.doSearchTimetableP(timetableList, 50.00);
 		assertTrue("Test if an Timetable Title can be found", found);

@@ -620,7 +620,6 @@ public class C206_CaseStudy {
 				String startDateF = startDate.format(format);
 				String endTimeF = endTime.format(format);
 				
-				
 				output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF, endTimeF, mode, title, status);
 				
 				System.out.println(output);

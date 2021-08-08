@@ -635,7 +635,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void addRegistration() {
+	public void addRegistration() { //Jean-Claude
 		
 		//Test that the list is not null -Boundary
 		assertNotNull("Test that the list is not null", registerList);

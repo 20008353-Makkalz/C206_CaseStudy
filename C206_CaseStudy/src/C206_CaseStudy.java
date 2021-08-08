@@ -52,9 +52,9 @@ public class C206_CaseStudy {
 
 		// Gilbert
 		ArrayList<Enquiry> enquiryList = new ArrayList<Enquiry>();
-		enquiryList.add(new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending"));
+		enquiryList.add(new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending", "Urgent"));
 		// Gilbert
-		enquiryList.add(new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed"));
+		enquiryList.add(new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed", "Non-Urgent"));
 
 		// Vijay
 		tuitionList.add(new Tuition("C206", "Software Development", "Group 1", "Learn about JUnit!", 160,
@@ -113,7 +113,7 @@ public class C206_CaseStudy {
 				// Add enquiry
 				int option3 = 0;
 
-				while (option != 4) {
+				while (option != 6) {
 					doOption3menu();
 					option3 = Helper.readInt("Enter an option > ");
 
@@ -126,7 +126,29 @@ public class C206_CaseStudy {
 					} else if (option3 == 3)// Add Enquiry //Gilbert
 					{
 						addEnquiry(enquiryList, null);
-					} else if (option3 == 4) {
+					}else if(option3 == 4) { //See enquiry type //Gilbert
+							
+						int option4 = 0;
+						while(option4 != 3)
+						{
+							viewEnquiriesTypeMenu();
+							option4 = Helper.readInt("Enter option > ");
+							
+							if(option4 == 1)
+							{
+								//Search Enquiry Type
+								viewUrgentEnquiry(enquiryList);
+							}
+						}
+					
+					}
+					else if (option3 ==5)
+					{
+						int utID= Helper.readInt("Enter Enquiry ID >");
+						String EnStatus = Helper.readString("Enter New Enquiry Status > ");
+						UpdateEnquiryStatus(enquiryList, utID, EnStatus);
+					}
+					else if (option3 == 6) {
 						System.out.println("Returning to main menu....");
 
 					}
@@ -309,7 +331,9 @@ public class C206_CaseStudy {
 		System.out.println("1. View Enquiry");
 		System.out.println("2. Delete Enquiry");
 		System.out.println("3. Add Enquiry");
-		System.out.println("4. Quit");
+		System.out.println("4  View Enquiry Type");
+		System.out.println("5. Update Enquiry Type");
+		System.out.println("6. Quit");
 	}
 	
 	public static void addRegistration(ArrayList<registerTimetable> registerList) { // Jean-Claude
@@ -349,12 +373,12 @@ public class C206_CaseStudy {
 	public static String viewEnquiry(ArrayList<Enquiry> enquiryList) // GilbertNg
 	{
 		int count = 1;
-		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", "Enquiry_ID", "Title", "Date", "Time",
-				"Enquiry_Method", "Status");
+		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", "Enquiry_ID", "Title", "Date", "Time",
+				"Enquiry_Method", "Status", "Enquiry_Type");
 
 		for (Enquiry e : enquiryList) {
-			output += String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", count++, e.getTitle(), e.getDate(),
-					e.getTime(), e.getEnquiryMethod(), e.getStatus());
+			output += String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", count++, e.getTitle(), e.getDate(),
+					e.getTime(), e.getEnquiryMethod(), e.getStatus(), e.getStatusType(), e.getStatusType());
 		}
 
 		System.out.println(output);
@@ -369,7 +393,8 @@ public class C206_CaseStudy {
 			String time = Helper.readString("Enter time in (TT.MM) > ");
 			String enquiryMethod = Helper.readString("Enter enquiry method > ");
 			String status = Helper.readString("Enter enquiry status > ");
-			enquiryList.add(new Enquiry(id, title, date, time, enquiryMethod, status));
+			String statusType = Helper.readString("Enter Status Type > " );
+			enquiryList.add(new Enquiry(id, title, date, time, enquiryMethod, status, statusType));
 		}
 	}
 
@@ -721,6 +746,81 @@ public class C206_CaseStudy {
 		}
 		
 	}
+	
+	public static void viewEnquiriesTypeMenu() { //Gilbert
+		
+		Helper.line(50, "=");
+		System.out.println("Tuition Enquiry Search Type");
+		Helper.line(50, "=");
+		
+		
+		System.out.println("1. View Urgent Enquiries");
+		System.out.println("2. View Non-Urgent Enquiries");
+		System.out.println("3. Quit");
+		
+	}
+	
+	public static void viewUrgentEnquiry(ArrayList<Enquiry>enquiryList) //Gilbert
+	{
+		for(int i=0; i <enquiryList.size(); i++)
+		{
+			String enqStatus = enquiryList.get(i).getStatusType();
+			if(enqStatus == "Urgent")
+			{
+				
+					int count =1;
+					String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", "Enquiry_ID", "Title", "Date", "Time",
+							"Enquiry_Method", "Status", "Enquiry_Type");
+
+					for (Enquiry e : enquiryList) {
+						
+						output += String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", count ++, e.getTitle(), e.getDate(),
+								e.getTime(), e.getEnquiryMethod(), e.getStatus(), e.getStatusType());
+					}
+
+					System.out.println(output);
+				}
+			}
+		}
+	
+	public static boolean UpdateEnquiryStatus(ArrayList<Enquiry> enquiryList, int EnID, String EnStatus) //Gilbert
+	{
+		boolean found = false;
+		
+		for(int i = 0; i < enquiryList.size(); i++)
+		{
+			
+			int EnquiryID = enquiryList.get(i).getEnquiryID();
+			if(EnquiryID == EnID)
+			{
+				enquiryList.get(i).setStatusType(EnStatus);
+				String title = enquiryList.get(i).getTitle();
+				System.out.println(title + "'s Status Has Been Set To " + EnStatus);
+				found = true;
+			}
+			
+		}
+		
+		return found;
+		
+	}
+	
+	public static void UpdateEnquiryStatus2(ArrayList<Enquiry> enquiryList, int EnID, String EnStatus) //Gilbert
+	{
+		
+		boolean found= UpdateEnquiryStatus(enquiryList, EnID, EnStatus);
+		
+		if(found != true)
+		{
+			System.out.println("Enquiry Could Not Be Found !");
+		}
+		
+	}
+
+
+		
+		
+//	}
 
 	/**
 	 * @param enquiryList

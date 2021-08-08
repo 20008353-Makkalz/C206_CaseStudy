@@ -69,8 +69,8 @@ public class C206_CaseStudyTest {
 
 		
 		//Gilbert
-		e1 = (new Enquiry(1,"How to register", "2021-7-20", "09.15", "Email","Pending"));
-		e2 = (new Enquiry(2,"Tuition Fee", "2021-7-5", "13.15", "Email","Completed"));
+		e1 = (new Enquiry(1,"How to register", "2021-7-20", "09.15", "Email","Pending", "Urgent"));
+		e2 = (new Enquiry(2,"Tuition Fee", "2021-7-5", "13.15", "Email","Completed", "Non-Urgent"));
 
 	
 		enquiryList = new ArrayList<Enquiry>();
@@ -82,8 +82,8 @@ public class C206_CaseStudyTest {
 		
 
 		// Gilbert
-		e1 = (new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending"));
-		e2 = (new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed"));
+		e1 = (new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending", "Urgent"));
+		e2 = (new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed", "Non-Urgent"));
 		enquiryList = new ArrayList<Enquiry>();
 
 
@@ -383,11 +383,10 @@ public class C206_CaseStudyTest {
 
 		// Test if same enquiry ID can be removed again -Error
 		check = C206_CaseStudy.deleteEnquiry(enquiryList, 1);
-<<<<<<< HEAD
+
 		assertFalse("Test that the same enquiry is able to be deleted again", check);
-=======
+
 		assertFalse("Test that the same enquiry is NOT ok to be deleted again?", check);
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy
 
 		// Test if enquiry ID can be removed -Normal
 		C206_CaseStudy.addEnquiry(enquiryList, e2);

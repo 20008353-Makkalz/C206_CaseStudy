@@ -136,17 +136,24 @@ public class C206_CaseStudy {
 							
 							if(option4 == 1)
 							{
-								//Search Enquiry Type
-								viewUrgentEnquiry(enquiryList);
+								//Search Urgent Enquiry Type
+								
+								seeUrgentEnquiry(enquiryList);
+							}
+							else if(option4 == 2)
+							{
+								
+								//see Non-Ugent Enquiries
+								seeNon_UrgentEnquiry(enquiryList);
 							}
 						}
 					
 					}
 					else if (option3 ==5)
 					{
-						int utID= Helper.readInt("Enter Enquiry ID >");
+						int EnID= Helper.readInt("Enter Enquiry ID >");
 						String EnStatus = Helper.readString("Enter New Enquiry Status > ");
-						UpdateEnquiryStatus(enquiryList, utID, EnStatus);
+						UpdateEnquiryStatus(enquiryList, EnID, EnStatus);
 					}
 					else if (option3 == 6) {
 						System.out.println("Returning to main menu....");
@@ -328,10 +335,10 @@ public class C206_CaseStudy {
 		System.out.println("Tuition Enquiry");
 		Helper.line(50, "=");
 
-		System.out.println("1. View Enquiry");
+		System.out.println("1. View All Enquiries");
 		System.out.println("2. Delete Enquiry");
 		System.out.println("3. Add Enquiry");
-		System.out.println("4  View Enquiry Type");
+		System.out.println("4  View Enquiry Type(Urgent/Non-Urgent)");
 		System.out.println("5. Update Enquiry Type");
 		System.out.println("6. Quit");
 	}
@@ -702,6 +709,7 @@ public class C206_CaseStudy {
 				System.out.println(output);
 				
 				isFound = true;
+				break;
 			}
 			
 			else
@@ -759,13 +767,12 @@ public class C206_CaseStudy {
 		System.out.println("3. Quit");
 		
 	}
-	
+	/*
 	public static void viewUrgentEnquiry(ArrayList<Enquiry>enquiryList) //Gilbert
 	{
 		for(int i=0; i <enquiryList.size(); i++)
 		{
-			String enqStatus = enquiryList.get(i).getStatusType();
-			if(enqStatus == "Urgent")
+			if(enquiryList.get(i).getStatusType() == "Urgent")
 			{
 				
 					int count =1;
@@ -782,7 +789,46 @@ public class C206_CaseStudy {
 				}
 			}
 		}
-	
+	*/
+	public static void seeUrgentEnquiry(ArrayList<Enquiry> enquiryList) //Gilbert
+	{
+		///boolean a = false;
+		int count =1;
+		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", "Enquiry_ID", "Title", "Date", "Time",
+				"Enquiry_Method", "Status", "Enquiry_Type");
+		
+		for(Enquiry e : enquiryList)
+		{
+			if(e.getStatusType() == "Urgent")
+			{
+					output += String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", count ++, e.getTitle(), e.getDate(),
+							e.getTime(), e.getEnquiryMethod(), e.getStatus(), e.getStatusType());
+				
+				System.out.println(output);
+			
+			}
+		}
+	}
+	public static void seeNon_UrgentEnquiry(ArrayList<Enquiry> enquiryList) //Gilbert
+	{
+		///boolean a = false;
+		int count =1;
+		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", "Enquiry_ID", "Title", "Date", "Time",
+				"Enquiry_Method", "Status", "Enquiry_Type");
+		
+		for(Enquiry e : enquiryList)
+		{
+			if(e.getStatusType() == "Non-Urgent")
+			{
+					output += String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", count ++, e.getTitle(), e.getDate(),
+							e.getTime(), e.getEnquiryMethod(), e.getStatus(), e.getStatusType());
+				
+				System.out.println(output);
+			
+			}
+		}
+	}
+				
 	public static boolean UpdateEnquiryStatus(ArrayList<Enquiry> enquiryList, int EnID, String EnStatus) //Gilbert
 	{
 		boolean found = false;
@@ -791,11 +837,12 @@ public class C206_CaseStudy {
 		{
 			
 			int EnquiryID = enquiryList.get(i).getEnquiryID();
+			
 			if(EnquiryID == EnID)
 			{
-				enquiryList.get(i).setStatusType(EnStatus);
-				String title = enquiryList.get(i).getTitle();
-				System.out.println(title + "'s Status Has Been Set To " + EnStatus);
+				enquiryList.get(i).setStatus(EnStatus);
+				int id = enquiryList.get(i).getEnquiryID();
+				System.out.println("Enquiry ID "+id + "'s has been changed to " + EnStatus);
 				found = true;
 			}
 			
@@ -810,10 +857,12 @@ public class C206_CaseStudy {
 		
 		boolean found= UpdateEnquiryStatus(enquiryList, EnID, EnStatus);
 		
-		if(found != true)
+		
+		if(found == false)
 		{
 			System.out.println("Enquiry Could Not Be Found !");
 		}
+		
 		
 	}
 

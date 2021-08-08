@@ -56,16 +56,16 @@ public class Enquiry {
 	public String getStatus() {
 		return status;
 	}
-	
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public String getStatusType()
 	{
 		return statusType;
 		
 	}
 
-	public void setStatusType(String statusType) {
-		this.statusType = statusType;
-	}
 	
 	
 	

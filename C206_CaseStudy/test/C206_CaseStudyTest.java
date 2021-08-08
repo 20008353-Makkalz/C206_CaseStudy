@@ -388,6 +388,7 @@ public class C206_CaseStudyTest {
 
 		assertFalse("Test that the same enquiry is NOT ok to be deleted again?", check);
 
+
 		// Test if enquiry ID can be removed -Normal
 		C206_CaseStudy.addEnquiry(enquiryList, e2);
 		check = C206_CaseStudy.deleteEnquiry(enquiryList, 2);

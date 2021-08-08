@@ -106,10 +106,9 @@ public class C206_CaseStudyTest {
 		e2 = (new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed"));
 		enquiryList = new ArrayList<Enquiry>();
 //github.com/20008353-Makkalz/C206_CaseStudy.git
-		//Jean-Claude
-		r1 = (new registerTimetable(2, 3, "Email"));
-		r2 = (new registerTimetable(4, 1, "Email"));
-		registerList = new ArrayList<registerTimetable>();
+		r1 = (new registerTimetable(2, 3, "Email")); //Jean-Claude
+		r2 = (new registerTimetable(4, 1, "Email")); //Jean-Claude
+		registerList = new ArrayList<registerTimetable>(); //Jean-Claude
 
 //github.com/20008353-Makkalz/C206_CaseStudy.git
 

@@ -45,7 +45,6 @@ public class C206_CaseStudy {
 	private static final int OPTION_QUIT = 6;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		ArrayList<tuitionTimetable> timetableList = new ArrayList<tuitionTimetable>(); // YuanWei
 		ArrayList<Tuition> tuitionList = new ArrayList<Tuition>(); // Vijay
 		ArrayList<registerTimetable> registerList = new ArrayList<registerTimetable>(); // Jean-Claude
@@ -724,10 +723,6 @@ public class C206_CaseStudy {
 		
 	}
 
-	/**
-	 * @param enquiryList
-	 * @return
-	 */
 	public static String viewEnquiryTest(ArrayList<Enquiry> enquiryList) {
 		// TODO Auto-generated method stub
 		return null;

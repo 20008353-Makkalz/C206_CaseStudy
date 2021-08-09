@@ -627,12 +627,9 @@ public class C206_CaseStudyTest {
 		
 		//error condition
 		isdeleted = TuitionManagement.doDeleteStudentAccount(StudentList, name);
-		assertFalse("Test that the student is fail to delete", isdeleted);
+		assertFalse("Test that the student name  is fail to delete", isdeleted);
 		
 		
-	
-
-	
 	}
 	
 	

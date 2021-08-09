@@ -92,7 +92,6 @@ public class TuitionManagement {
 	}
 	
 	// Register Student Account
-	
 	public static StudentAccount RegisterAccount() {
 		
 		String name = Helper.readString("Enter your name> ");
@@ -111,9 +110,7 @@ public class TuitionManagement {
 		StudentAccount SA = new StudentAccount(name, gender, mobile, email, dateofbirth, cor,interest);
 		return SA;
 	}
-	
-	
-       private static boolean isValid(String email) { // Conditions for valid email
+	private static boolean isValid(String email) { // Conditions for valid email
 		
 		if (email.contains(".") && email.contains("@"))
 		{
@@ -124,16 +121,13 @@ public class TuitionManagement {
 			return false;
 		}
    }
-	
-	
-   public static void RegisterStudentAccount(ArrayList<StudentAccount> StudentList, StudentAccount SA) {
+	public static void RegisterStudentAccount(ArrayList<StudentAccount> StudentList, StudentAccount SA) {
 		
 		StudentList.add(SA);
 		Helper.line(80,"-");
 		System.out.println("Account Registered Sucessfully");
 		Helper.line(80,"-");
-
-	}
+}
    // view student Account 
    public static String RetrieveAllStudentAccount(ArrayList<StudentAccount> StudentList) {
     		String output = "";
@@ -145,7 +139,8 @@ public class TuitionManagement {
     	}
         
    public static void ViewStudentAccount(ArrayList<StudentAccount> StudentList) {
-    		String output = String.format("%-10s %-10s %-10s %-20s %-20s %-20s %-20s \n", "Name", "Gender", "Mobile No", "Email", "Date of Birth", "Country of Residence","Interest");
+    		String output = String.format("%-10s %-10s %-10s %-20s %-20s %-20s %-20s \n", "Name", "Gender", "Mobile No", "Email", "Date of Birth", 
+    				"Country of Residence","Interest");
     		output += RetrieveAllStudentAccount(StudentList);
     		System.out.println(output);
 			

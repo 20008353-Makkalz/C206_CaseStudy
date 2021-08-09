@@ -620,7 +620,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void UpdateEnquiryStatusTest() //Sprint 2 Gilbert
+	public void UpdateEnquiryStatusTest() ///Sprint 2 Gilbert
 	{
 		// Make sure list is not null -Boundary
 		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);

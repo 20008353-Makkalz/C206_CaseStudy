@@ -817,7 +817,7 @@ public class C206_CaseStudy {
 		return found;
 	}
 
-	public static void UpdateEnquiryStatus2(ArrayList<Enquiry> enquiryList, int EnID, String EnStatus) //Sprint 2  Gilbert
+	public static void UpdateEnquiryStatus2(ArrayList<Enquiry> enquiryList, int EnID, String EnStatus) ///Sprint 2  Gilbert
 	{
 
 		boolean found = UpdateEnquiryStatus(enquiryList, EnID, EnStatus);

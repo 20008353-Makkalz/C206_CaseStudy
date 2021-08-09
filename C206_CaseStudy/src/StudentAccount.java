@@ -16,14 +16,14 @@
 public class StudentAccount {
 	
 	private String name;
-	private char gender;
+	private String gender;
 	private int mobile;
 	private String email;
 	private String dateofbirth;
 	private String cor;
 	private double interest;
 	
-	public StudentAccount(String name, char gender, int mobile, String email, String dateofbirth, String cor,
+	public StudentAccount(String name, String gender, int mobile, String email, String dateofbirth, String cor,
 			double interest) {
 		
 		this.name = name;
@@ -47,7 +47,7 @@ public class StudentAccount {
 		return name;
 	}
 	
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
 	

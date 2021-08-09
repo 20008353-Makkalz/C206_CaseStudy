@@ -13,20 +13,20 @@ import java.time.LocalDateTime;
  *
  */
 public class registerTimetable { // Jean-Claude
+	private static int count = 0;
 	private int registrationNumber;
 	private int timetableID;
 	private String email;
 	private String status;
 	private LocalDateTime regDate;
-	private int registrationID;
 	
-	public registerTimetable(int registrationNumber, int timetableID, String email) {
-		this.registrationNumber = registrationNumber;
+	public registerTimetable(int timetableID, String email) {
+		count ++;
+		registrationNumber = count;
 		this.timetableID = timetableID;
 		this.email = email;
 		this.status = "Pending";
 	}
-
 	public int getRegistrationNumber() {
 		return registrationNumber;
 	}
@@ -50,12 +50,6 @@ public class registerTimetable { // Jean-Claude
 		return regDate;
 	}
 
-	
-	public int getRegistrationID() {
-		return registrationID;
-	}
-
-	
 	public void setRegistrationNumber(int registrationNumber) {
 		this.registrationNumber = registrationNumber;
 	}
@@ -78,10 +72,5 @@ public class registerTimetable { // Jean-Claude
 	
 	public void setRegDate(LocalDateTime regDate) {
 		this.regDate = regDate;
-	}
-
-	
-	public void setRegistrationID(int registrationID) {
-		this.registrationID = registrationID;
 	}
 }

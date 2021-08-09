@@ -51,9 +51,9 @@ public class C206_CaseStudy {
 
 		// Gilbert
 		ArrayList<Enquiry> enquiryList = new ArrayList<Enquiry>();
-		enquiryList.add(new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending"));
+		enquiryList.add(new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending", null));
 		// Gilbert
-		enquiryList.add(new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed"));
+		enquiryList.add(new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed", null));
 
 		// Vijay
 		tuitionList.add(new Tuition("C206", "Software Development", "Group 1", "Learn about JUnit!", 160,
@@ -312,20 +312,27 @@ public class C206_CaseStudy {
 	}
 	
 	public static void addRegistration(ArrayList<registerTimetable> registerList) { // Jean-Claude
-		int registrationNumber = Helper.readInt("Enter Registration number > ");
 		int timetableID = Helper.readInt("Enter Tuition ID > ");
 		String email = Helper.readString("Enter your email > ");
-		
-		registerList.add(new registerTimetable(registrationNumber, timetableID, email));
-		
-		System.out.println("Registration successful!");
+
+		int at = email.lastIndexOf("@");
+		int dot = email.lastIndexOf(".");
+
+		if (at > 0 && dot > at + 1 && dot < email.length() - 1
+				&& (timetableID == 1 || timetableID == 2 || timetableID == 3)) {
+			registerList.add(new registerTimetable(timetableID, email));
+			System.out.println("Registration successful!");
+		} else {
+			System.out.println("Invalid ID or Email Address");
+		}
 	}
 	
 	public static String viewTimetableList(ArrayList<registerTimetable> registerList) { // Jean-Claude
-		String output = String.format("%-15s %-15s %-25s %-15s\n", "Registration_No", "Tuition_ID", "Email", "Status");
-		
+		String output = String.format("%-10s %-15s %-25s %-15s\n", "Reg_No", "Tuition_ID", "Email", "Status");
+
 		for (registerTimetable i : registerList) {
-			output += String.format("%-15d %-15d %-25s %-15s\n", i.getRegistrationNumber(), i.getTimetableID(), i.getEmail(), i.getStatus());
+			output += String.format("%-10d %-15d %-25s %-15s\n", i.getRegistrationNumber(), i.getTimetableID(),
+					i.getEmail(), i.getStatus());
 		}
 		System.out.println(output);
 		return output;
@@ -334,10 +341,10 @@ public class C206_CaseStudy {
 	public static void deleteRegistration(ArrayList<registerTimetable> registerList) { // Jean-Claude
 		int deleteReg = Helper.readInt("Enter Registration Number to delete > ");
 		
-		for (registerTimetable i : registerList) {
-			if (deleteReg == i.getRegistrationNumber()) {
-				registerList.remove(i.getRegistrationID());
-				System.out.println("Registration number " + deleteReg + " has been removed.");
+		for (int i = 0; i < registerList.size(); i++) {
+			int registrationNumber = registerList.get(i).getRegistrationNumber();
+			if (deleteReg == registrationNumber) {
+				registerList.remove(i);
 			}
 			else {
 				System.out.println("Invalid Registration number");
@@ -368,7 +375,7 @@ public class C206_CaseStudy {
 			String time = Helper.readString("Enter time in (TT.MM) > ");
 			String enquiryMethod = Helper.readString("Enter enquiry method > ");
 			String status = Helper.readString("Enter enquiry status > ");
-			enquiryList.add(new Enquiry(id, title, date, time, enquiryMethod, status));
+			enquiryList.add(new Enquiry(id, title, date, time, enquiryMethod, status, status));
 		}
 	}
 
@@ -724,6 +731,38 @@ public class C206_CaseStudy {
 	}
 
 	public static String viewEnquiryTest(ArrayList<Enquiry> enquiryList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @param enquiryList
+	 * @param i
+	 * @param string
+	 * @return
+	 */
+	public static Boolean UpdateEnquiryStatus(ArrayList<Enquiry> enquiryList, int i, String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @param tuitionList
+	 * @param string
+	 * @return
+	 */
+	public static Boolean doSearchTeacher(ArrayList<Tuition> tuitionList, String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * @param tuitionList
+	 * @param string
+	 * @param string2
+	 * @return
+	 */
+	public static Boolean doUpdateTuition(ArrayList<Tuition> tuitionList, String string, String string2) {
 		// TODO Auto-generated method stub
 		return null;
 	}

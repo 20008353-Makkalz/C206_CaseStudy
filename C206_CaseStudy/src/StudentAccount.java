@@ -11,7 +11,6 @@
 
 /**
  * @author 19028056
- *
  */
 public class StudentAccount {
 	
@@ -67,13 +66,7 @@ public class StudentAccount {
 		return interest;
 	}
 
-	/**
-	 * @param nAME2
-	 * @return
-	 */
-	//public boolean equalsIgnoreCase(String nAME2) {
-		// TODO Auto-generated method stub
-		//return false;
+	
 	}
 //}
 

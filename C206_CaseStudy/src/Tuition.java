@@ -1,4 +1,4 @@
-import java.time.LocalDateTime;
+
 
 /**
  * I declare that this code was written by me. I will not copy or allow others
@@ -15,6 +15,7 @@ public class Tuition {
 	private double tuitionDuration;
 	private String prerequisite;
 	private String teacher;
+
 
 	public Tuition(String tuitionCode, String tuitonTitle, String subjGrpName, String tuitionDescription,
 			double tuitionDuration, String prerequisite, String teacher) {
@@ -53,6 +54,9 @@ public class Tuition {
 	
 	public String getTeacher() {
 		return teacher;
+	}
+	public void setSubjGrpName(String subjGrpName) {
+		this.subjGrpName = subjGrpName;
 	}
 
 }

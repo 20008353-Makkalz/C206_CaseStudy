@@ -18,8 +18,9 @@ public class Enquiry {
 	private String time;
 	private String enquiryMethod;
 	private String status;
+	private String statusType;
 
-	public Enquiry(int enquiryID, String title, String date, String time, String enquiryMethod, String status) {
+	public Enquiry(int enquiryID, String title, String date, String time, String enquiryMethod, String status, String statusType) {
 		
 		this.enquiryID = enquiryID;
 		this.title = title;
@@ -27,6 +28,7 @@ public class Enquiry {
 		this.time = time;
 		this.enquiryMethod = enquiryMethod;
 		this.status = status;
+		this.statusType = statusType;
 	}
 
 	public int getEnquiryID() {
@@ -54,6 +56,17 @@ public class Enquiry {
 	public String getStatus() {
 		return status;
 	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getStatusType()
+	{
+		return statusType;
+		
+	}
+
+	
 	
 	
 	

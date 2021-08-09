@@ -146,6 +146,57 @@ public class TuitionManagement {
         
    public static void ViewStudentAccount(ArrayList<StudentAccount> StudentList) {
     		String output = String.format("%-10s %-10s %-10s %-20s %-20s %-20s %-20s \n", "Name", "Gender", "Mobile No", "Email", "Date of Birth", "Country of Residence","Interest");
+
+	public static StudentAccount RegisterAccount() {
+		
+		String name = Helper.readString("Enter your name> ");
+		char gender = Helper.readChar("Enter your gender (M/F)> ");
+		int mobile = Helper.readInt("Enter your mobile number> ");
+		String email = Helper.readString("Enter your email> ");
+		while (isValid(email) == false)
+		{
+			System.out.println("Invalid email entered.");
+			email = Helper.readString("Enter email > ");
+		}
+		String dateofbirth = Helper.readString("Enter your date of birth (Format(ddMMMyy))> ");
+		String cor = Helper.readString("Enter your country of Residence> ");
+		double interest = Helper.readDouble("Enter the Interest> ");
+
+		StudentAccount SA = new StudentAccount(name, gender, mobile, email, dateofbirth, cor,interest);
+		return SA;
+	}
+	private static boolean isValid(String email) { // Conditions for valid email
+		
+		if (email.contains(".") && email.contains("@"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+   }
+	public static void RegisterStudentAccount(ArrayList<StudentAccount> StudentList, StudentAccount SA) {
+		
+		StudentList.add(SA);
+		Helper.line(80,"-");
+		System.out.println("Account Registered Sucessfully");
+		Helper.line(80,"-");
+}
+   // view student Account 
+   public static String RetrieveAllStudentAccount(ArrayList<StudentAccount> StudentList) {
+    		String output = "";
+    		
+    		for (int i = 0; i < StudentList.size(); i ++) {
+    			 output += String.format("%-84s\n", StudentList.get(i).toString());
+    		}
+    		return output;
+    	}
+        
+   public static void ViewStudentAccount(ArrayList<StudentAccount> StudentList) {
+    		String output = String.format("%-10s %-10s %-10s %-20s %-20s %-20s %-20s \n", "Name", "Gender", "Mobile No", "Email", "Date of Birth", 
+    				"Country of Residence","Interest");
+
     		output += RetrieveAllStudentAccount(StudentList);
     		System.out.println(output);
 			

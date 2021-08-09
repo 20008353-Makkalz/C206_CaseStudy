@@ -91,6 +91,23 @@ public class tuitionTimetable {
 		this.status = status;
 	}
 	
+	public String getStatus()
+	{
+		return status;
+	}
+	
+	public String getTitle()
+	{
+		return title;
+	}
+
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	
 	
 	

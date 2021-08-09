@@ -39,7 +39,6 @@ public class registerTimetable { // Jean-Claude
 	public String getEmail() {
 		return email;
 	}
-
 	
 	public String getStatus() {
 		return status;

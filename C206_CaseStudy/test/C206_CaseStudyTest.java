@@ -744,7 +744,11 @@ public class C206_CaseStudyTest {
 	}
 
 	@Test
+<<<<<<< HEAD
 	public void UpdateEnquiryStatusTest() // Sprint 2 Gilbert
+=======
+	public void UpdateEnquiryStatusTest() ///Sprint 2 Gilbert
+>>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
 	{
 		// Make sure list is not null -Boundary
 		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
@@ -775,7 +779,13 @@ public class C206_CaseStudyTest {
 		Boolean exists = C206_CaseStudy.doSearchTeacher(tuitionList, "Pang Tee How");
 		assertTrue("Test if Teacher can be found", exists);
 
+<<<<<<< HEAD
 		// Test if Title Not Included In Timetable List Can Be Found - Error
+=======
+		
+		
+		// Test if Title Not Included In Timetable List Can Be Found -- Error
+>>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
 		exist = C206_CaseStudy.doSearchTeacher(tuitionList, "Tan Cheng Kok");
 		assertFalse("Test if Teacher can be found", exist);
 

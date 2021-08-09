@@ -621,6 +621,250 @@ public class C206_CaseStudy {
 				LocalDateTime endTime = timetableList.get(i).getEndTime();
 				String mode = timetableList.get(i).getMode();
 				String status = timetableList.get(i).getStatus();
+
+				String startDateF = startDate.format(format);
+				String endTimeF = endTime.format(format);
+
+				output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF,
+						endTimeF, mode, title, status);
+
+				System.out.println(output);
+
+				isFound = true;
+			}
+
+			else {
+				isFound = false;
+			}
+
+		}
+		return isFound;
+	}
+
+	public static void searchTimetableP(ArrayList<tuitionTimetable> timetableList, double uPrice) // YuanWei
+	{
+		boolean isFound = doSearchTimetableP(timetableList, uPrice);
+
+		if (isFound != true) {
+			System.out.println("Tuition Timetable Title Could Not Be Found !");
+		}
+
+	}
+
+	public static boolean doSearchTimetableP(ArrayList<tuitionTimetable> timetableList, double uPrice) // YuanWei
+	{
+		boolean isFound = false;
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a");
+
+		for (int i = 0; i < timetableList.size(); i++) {
+
+			double price = timetableList.get(i).getPrice();
+			if (price == uPrice) {
+				String output = String.format("%-10s %-11s %-25s %-25s %-10s %-30s %-10s\n", "Tuition ID", "Price($)",
+						"Start Date", "End Date", "Mode", "Title", "Status");
+
+				int tuitionID = timetableList.get(i).getTuitionID();
+				LocalDateTime startDate = timetableList.get(i).getStartDate();
+				LocalDateTime endTime = timetableList.get(i).getEndTime();
+				String mode = timetableList.get(i).getMode();
+				String title = timetableList.get(i).getTitle();
+				String status = timetableList.get(i).getStatus();
+
+				String startDateF = startDate.format(format);
+				String endTimeF = endTime.format(format);
+
+				output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF,
+						endTimeF, mode, title, status);
+
+				System.out.println(output);
+
+				isFound = true;
+				break;
+			}
+
+			else {
+				isFound = false;
+			}
+
+		}
+		return isFound;
+	}
+
+	public static boolean doUpdateTimetable(ArrayList<tuitionTimetable> timetableList, int utID, String uStatus) // YuanWei
+	{
+		boolean isFound = false;
+
+		for (int i = 0; i < timetableList.size(); i++) {
+
+			int tuitionID = timetableList.get(i).getTuitionID();
+			if (tuitionID == utID) {
+				timetableList.get(i).setStatus(uStatus);
+				String title = timetableList.get(i).getTitle();
+				System.out.println(title + "'s Status Has Been Set To " + uStatus);
+				isFound = true;
+			}
+
+		}
+
+		return isFound;
+
+	}
+
+	public static void updateTimetable(ArrayList<tuitionTimetable> timetableList, int utID, String uStatus) // YuanWei
+	{
+
+		boolean isFound = doUpdateTimetable(timetableList, utID, uStatus);
+
+		if (isFound != true) {
+			System.out.println("Tuition Timetable Title Could Not Be Found !");
+		}
+
+	}
+
+	public static void viewEnquiriesTypeMenu() { // Sprint 2 Gilbert
+
+		Helper.line(50, "=");
+		System.out.println("Tuition Enquiry Search Type");
+		Helper.line(50, "=");
+
+		System.out.println("1. View Urgent Enquiries");
+		System.out.println("2. View Non-Urgent Enquiries");
+		System.out.println("3. Quit");
+
+	}
+
+	public static String seeUrgentEnquiry(ArrayList<Enquiry> enquiryList) //Sprint 2 Gilbert
+	{
+		/// boolean a = false;
+		int count = 1;
+		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", "Enquiry_ID", "Title", "Date",
+				"Time", "Enquiry_Method", "Status", "Enquiry_Type");
+
+		for (Enquiry e : enquiryList) {
+			if (e.getStatusType() == "Urgent") {
+				output += String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", count++, e.getTitle(),
+						e.getDate(), e.getTime(), e.getEnquiryMethod(), e.getStatus(), e.getStatusType());
+
+				System.out.println(output);
+
+			}
+		}
+		return output;
+	}
+
+	public static String seeNon_UrgentEnquiry(ArrayList<Enquiry> enquiryList) //Sprint 2 Gilbert
+	{
+		/// boolean a = false;
+		int count = 1;
+		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", "Enquiry_ID", "Title", "Date",
+				"Time", "Enquiry_Method", "Status", "Enquiry_Type");
+
+		for (Enquiry e : enquiryList) {
+			if (e.getStatusType() == "Non-Urgent") {
+				output += String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", count++, e.getTitle(),
+						e.getDate(), e.getTime(), e.getEnquiryMethod(), e.getStatus(), e.getStatusType());
+
+				System.out.println(output);
+
+			}
+		}
+		return output;
+	}
+
+	public static boolean UpdateEnquiryStatus(ArrayList<Enquiry> enquiryList, int EnID, String EnStatus) // Sprint 2 Gilbert
+	{
+		boolean found = false;
+
+		for (int i = 0; i < enquiryList.size(); i++) {
+
+			int EnquiryID = enquiryList.get(i).getEnquiryID();
+
+			if (EnquiryID == EnID) {
+				enquiryList.get(i).setStatus(EnStatus);
+				int id = enquiryList.get(i).getEnquiryID();
+				System.out.println("Enquiry ID " + id + " has been changed to " + EnStatus);
+				found = true;
+			}
+		}
+		return found;
+	}
+
+	public static void UpdateEnquiryStatus2(ArrayList<Enquiry> enquiryList, int EnID, String EnStatus) ///Sprint 2  Gilbert
+	{
+
+		boolean found = UpdateEnquiryStatus(enquiryList, EnID, EnStatus);
+
+		if (found == false) {
+			System.out.println("Enquiry Not Found!");
+		}
+	}
+	
+	public static boolean doUpdateTuition(ArrayList<Tuition> tuitionList, String tCode, String uGrpName) //Vijay
+	{
+		boolean isFound = false;
+		
+		for(int i = 0; i < tuitionList.size(); i++)
+		{
+			String validation = tuitionList.get(i).getSubjGrpName();
+			String tuitionCode = tuitionList.get(i).getTuitionCode();
+			if(tuitionCode.equals(tCode) && !validation.equals(uGrpName))
+			{
+				tuitionList.get(i).setSubjGrpName(uGrpName);
+				System.out.println(tuitionCode + "'s Subject Group Has Been Set To " + uGrpName);
+				isFound = true;
+			}
+			
+		}
+		
+		return isFound;
+		
+	}
+	
+	
+	public static void updateTuition(ArrayList<Tuition>tuitionList, String tCode, String uGrpName) //Vijay
+	{
+
+		boolean isFound = doUpdateTuition(tuitionList, tCode, uGrpName);
+		
+		if(isFound != true)
+		{
+			System.out.println("Tuition Subject Code Cannot be Updated!\nEnsure that Tuition Code exists or\nensure you have not entered the same Subject Group Name again!");
+		}
+		
+	}
+	
+	public static void searchTuition(ArrayList<Tuition> tuitionList, String sTeacher) //Vijay
+	{
+		boolean isFound = doSearchTeacher(tuitionList, sTeacher);
+		
+		if(isFound == false)
+		{
+			System.out.println("The specified teacher cannot be found!");
+		}
+		
+	}
+	
+	public static boolean doSearchTeacher(ArrayList<Tuition> tuitionList, String sTeacher) //Vijay
+	{
+		boolean isFound = false;
+		
+		for(int i = 0; i < tuitionList.size(); i++)
+		{
+			
+			String teacher = tuitionList.get(i).getTeacher();
+			if(teacher.contains(sTeacher) && teacher.equalsIgnoreCase(sTeacher))
+			{
+				String output = String.format("%-20s %-50s %-35s %-50s %-25s %-25s %-10s\n", "Tuition Code", "Title",
+						"Subject Group Name", "Description", "Duration (mins)", "Pre-Requisites", "Teacher");
+
+				String tuitionCode = tuitionList.get(i).getTuitionCode();
+				String tuitionTitle = tuitionList.get(i).getTuitonTitle();
+				String subjGrpName = tuitionList.get(i).getSubjGrpName();
+				String tuitionDescription = tuitionList.get(i).getTuitionDescription();
+				double tuitionDuration = tuitionList.get(i).getTuitionDuration();
+				String prerequisite = tuitionList.get(i).getPrerequisite();
+				String Teacher = tuitionList.get(i).getTeacher();
+>>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
 				
 				String startDateF = startDate.format(format);
 				String endTimeF = endTime.format(format);

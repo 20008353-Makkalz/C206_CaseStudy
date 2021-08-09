@@ -344,6 +344,7 @@ public class C206_CaseStudy {
 			int registrationNumber = registerList.get(i).getRegistrationNumber();
 			if (deleteReg == registrationNumber) {
 				registerList.remove(i);
+				System.out.println("Registration number " + deleteReg + " has beed removed.");
 			}
 			else {
 				System.out.println("Invalid Registration number");
@@ -864,7 +865,7 @@ public class C206_CaseStudy {
 				double tuitionDuration = tuitionList.get(i).getTuitionDuration();
 				String prerequisite = tuitionList.get(i).getPrerequisite();
 				String Teacher = tuitionList.get(i).getTeacher();
->>>>>>> branch 'master' of https://github.com/20008353-Makkalz/C206_CaseStudy.git
+				//github.com/20008353-Makkalz/C206_CaseStudy.git
 				
 				String startDateF = startDate.format(format);
 				String endTimeF = endTime.format(format);

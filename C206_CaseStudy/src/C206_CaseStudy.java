@@ -293,7 +293,6 @@ public class C206_CaseStudy {
 		System.out.println("TUITION TIMETABLE SEARCH APP");
 		Helper.line(50, "=");
 		
-		
 		System.out.println("1. Search By Title");
 		System.out.println("2. Search By Price");
 		System.out.println("3. Quit");

@@ -45,7 +45,6 @@ public class registerTimetable { // Jean-Claude
 		return status;
 	}
 
-	
 	public LocalDateTime getRegDate() {
 		return regDate;
 	}

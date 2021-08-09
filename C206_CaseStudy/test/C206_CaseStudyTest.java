@@ -852,5 +852,6 @@ public class C206_CaseStudyTest {
 		// Test that list is not null -Boundary
 		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", registerList);
 	}
-
+ 
+	
 }

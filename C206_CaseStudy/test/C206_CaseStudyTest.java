@@ -614,6 +614,7 @@ public class C206_CaseStudyTest {
 		assertTrue("Test if the enquiry id can be found", found);
 		
 	
+	
 	}
 	
 	@Test

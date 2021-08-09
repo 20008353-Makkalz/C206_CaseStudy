@@ -655,7 +655,7 @@ public class C206_CaseStudyTest {
 
 		
 		
-		// Test if Title Not Included In Timetable List Can Be Found - Error
+		// Test if Title Not Included In Timetable List Can Be Found -- Error
 		exist = C206_CaseStudy.doSearchTeacher(tuitionList, "Tan Cheng Kok");
 		assertFalse("Test if Teacher can be found", exist);
 		

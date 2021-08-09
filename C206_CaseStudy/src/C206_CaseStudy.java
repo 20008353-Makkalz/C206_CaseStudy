@@ -20,7 +20,6 @@ public class C206_CaseStudy {
 	private static final int ADD_TUITION = 1;
 	private static final int VIEW_TUITION = 2;
 	private static final int DELETE_TUITION = 3;
-	private static final int TUITION_CLOSE = 4;
 	/**
 	 * 
 	 */
@@ -249,7 +248,7 @@ public class C206_CaseStudy {
 				// VIJAY
 				int uOption5 = 0;
 
-				while (uOption5 != TUITION_CLOSE) {
+				while (uOption5 != 6) {
 					doOption5menu();
 					uOption5 = Helper.readInt("Enter an Option > ");
 
@@ -268,8 +267,21 @@ public class C206_CaseStudy {
 						// Delete
 						C206_CaseStudy.deleteTuition(tuitionList);
 					}
+					
+					else if (uOption5 == 4) {
+						//Search
+						String sTeacher = Helper.readString("Enter Name of Teacher >");
+						doSearchTeacher(tuitionList, sTeacher);
+					}
+					
+					else if (uOption5 == 5) {
+						//Update
+						String tCode= Helper.readString("Enter Tuition Code >");
+						String uGrpName = Helper.readString("Enter New Tuition Group Name > ");
+						updateTuition(tuitionList, tCode, uGrpName);
+					}
 
-					else if (uOption5 == TUITION_CLOSE) {
+					else if (uOption5 == 6) {
 						System.out.println("Closing Tuition App...");
 					}
 
@@ -444,7 +456,9 @@ public class C206_CaseStudy {
 		System.out.println("1. Add Tuition");
 		System.out.println("2. View Tuition");
 		System.out.println("3. Delete Tuition");
-		System.out.println("4. Quit");
+		System.out.println("4. Search Teacher");
+		System.out.println("5. Update Subject Group Name");
+		System.out.println("6. Quit");
 
 	}
 
@@ -866,6 +880,90 @@ public class C206_CaseStudy {
 		}
 		
 		
+	}
+	
+	public static boolean doUpdateTuition(ArrayList<Tuition> tuitionList, String tCode, String uGrpName) //Vijay
+	{
+		boolean isFound = false;
+		
+		for(int i = 0; i < tuitionList.size(); i++)
+		{
+			String validation = tuitionList.get(i).getSubjGrpName();
+			String tuitionCode = tuitionList.get(i).getTuitionCode();
+			if(tuitionCode.equals(tCode) && !validation.equals(uGrpName))
+			{
+				tuitionList.get(i).setSubjGrpName(uGrpName);
+				System.out.println(tuitionCode + "'s Subject Group Has Been Set To " + uGrpName);
+				isFound = true;
+			}
+			
+		}
+		
+		return isFound;
+		
+	}
+	
+	
+	public static void updateTuition(ArrayList<Tuition>tuitionList, String tCode, String uGrpName) //Vijay
+	{
+
+		boolean isFound = doUpdateTuition(tuitionList, tCode, uGrpName);
+		
+		if(isFound != true)
+		{
+			System.out.println("Tuition Subject Code Cannot be Updated!\nEnsure that Tuition Code exists or\nensure you have not entered the same Subject Group Name again!");
+		}
+		
+	}
+	
+	public static void searchTuition(ArrayList<Tuition> tuitionList, String sTeacher) //Vijay
+	{
+		boolean isFound = doSearchTeacher(tuitionList, sTeacher);
+		
+		if(isFound == false)
+		{
+			System.out.println("The specified teacher cannot be found!");
+		}
+		
+	}
+	
+	public static boolean doSearchTeacher(ArrayList<Tuition> tuitionList, String sTeacher) //Vijay
+	{
+		boolean isFound = false;
+		
+		for(int i = 0; i < tuitionList.size(); i++)
+		{
+			
+			String teacher = tuitionList.get(i).getTeacher();
+			if(teacher.contains(sTeacher) && teacher.equalsIgnoreCase(sTeacher))
+			{
+				String output = String.format("%-20s %-50s %-35s %-50s %-25s %-25s %-10s\n", "Tuition Code", "Title",
+						"Subject Group Name", "Description", "Duration (mins)", "Pre-Requisites", "Teacher");
+
+				String tuitionCode = tuitionList.get(i).getTuitionCode();
+				String tuitionTitle = tuitionList.get(i).getTuitonTitle();
+				String subjGrpName = tuitionList.get(i).getSubjGrpName();
+				String tuitionDescription = tuitionList.get(i).getTuitionDescription();
+				double tuitionDuration = tuitionList.get(i).getTuitionDuration();
+				String prerequisite = tuitionList.get(i).getPrerequisite();
+				String Teacher = tuitionList.get(i).getTeacher();
+				
+				output += String.format("%-20s %-50s %-35s %-50s %-25.2f %-25s %-10s\n", tuitionCode, tuitionTitle,
+						subjGrpName, tuitionDescription, tuitionDuration, prerequisite, Teacher);
+				
+				System.out.println(output);
+				
+				isFound = true;
+			}
+			
+			else
+			{
+				isFound = false;
+			}
+			
+			
+		}
+		return isFound;
 	}
 
 

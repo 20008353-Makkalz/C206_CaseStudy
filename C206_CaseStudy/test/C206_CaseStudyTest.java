@@ -328,12 +328,12 @@ public class C206_CaseStudyTest {
 	public void viewEnquiryTest()// Gilbert
 	{
 		// Test if list is not null - Boundary
-		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", enquiryList);
+		assertNotNull("Test if there is valid Enquiry arraylist to retrieve item", enquiryList);
 
 		// Test if Timetable List is not empty -Boundary
 		String allenquiry = C206_CaseStudy.viewEnquiry(enquiryList);
 		String testOutput = "";
-		assertEquals("Check ViewTimetable", testOutput, allenquiry);
+		assertEquals("Check ViewEnquiry", testOutput, allenquiry);
 
 		// After adding 3 items list size should increase to 2 -Normal
 		C206_CaseStudy.viewEnquiry(enquiryList);
@@ -343,11 +343,11 @@ public class C206_CaseStudyTest {
 
 		// Test if output string is same as enquiry list
 		allenquiry = C206_CaseStudy.viewEnquiry(enquiryList);
-		testOutput = String.format("");
-		testOutput = String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", 1, "How to register", "2021-7-20", "09.15",
-				"Email", "Pending");
-		testOutput += String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", 2, "Tuition Fee", "2021-7-5", "13.15",
-				"Email", "Completed");
+		
+		testOutput = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", 1, "How to register", "2021-7-20", "09.15",
+				"Email", "Pending", "Urgent");
+		testOutput += String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", 2, "Tuition Fee", "2021-7-5", "13.15",
+				"Email", "Completed","Non-Urgent");
 
 		assertEquals("Test viewEnquiry", testOutput, allenquiry);
 
@@ -364,7 +364,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that enquiry arraylist size is 1", 1, enquiryList.size());
 		assertSame("Check that enquiry is added", e1, enquiryList.get(0));
 
-		// Add another item. test The size of the list is 2? -normal
+		// Add another item. test The size of the list is 2 -normal
 		// The item just added is as same as the second item of the list
 		C206_CaseStudy.addEnquiry(enquiryList, e2);
 		assertEquals("Check that enquiry arraylist size is 2", 2, enquiryList.size());
@@ -554,6 +554,65 @@ public class C206_CaseStudyTest {
 	{
 		//Test if the StudentList list is not null - boundary
 		assertNotNull("Test if there is valid StudentList arraylist to delete for", StudentList);
+		
+	
+	}
+	
+	@Test
+	public void seeUrgentEnquiryTest() /// Sprint 2 Gilbert
+	{
+		// Test enquiry list is not null - (Boundary)
+		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
+
+		// After adding 2 enquiry list size should increase to 2 -(Normal)
+		C206_CaseStudy.addEnquiry(enquiryList, e1);
+		C206_CaseStudy.addEnquiry(enquiryList, e2);
+		
+		assertEquals("Test that enquiry arraylist size is 2", 2, enquiryList.size());
+
+		// Test if output string displays Urgent enquires
+		String UrgentEnquiry =  String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", 1, "How to register", "2021-7-20", "09.15", "Email", "Pending", "Urgent");
+		String testOutput = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", 1, "How to register", "2021-7-20", "09.15", "Email", "Pending", "Urgent");
+	
+		
+		assertEquals("Test view urgent enquiries", testOutput, UrgentEnquiry);
+
+	}
+	
+	public void seeNon_UrgentEnquiryTest() /// Sprint 2 Gilbert
+	{
+		// Test enquiry list is not null - (Boundary)
+		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
+
+		// After adding 2 enquiry list size should increase to 2 -(Normal)
+		C206_CaseStudy.addEnquiry(enquiryList, e1);
+		C206_CaseStudy.addEnquiry(enquiryList, e2);
+		
+		assertEquals("Test that enquiry arraylist size is 2", 2, enquiryList.size());
+
+		// Test if output string displays Non-Urgent enquires
+		String Non_UrgentEnquiry =  String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", 2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed", "Non-Urgent");
+		String testOutput = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", 2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed", "Non-Urgent");
+	
+	
+		assertEquals("Test view Non-Urgent enquiries", testOutput, Non_UrgentEnquiry);
+
+	}
+	
+	@Test
+	public void UpdateEnquiryStatusTest() //Sprint 2 Gilbert
+	{
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
+		
+		// Test if enquiry ID can be found -Normal
+		C206_CaseStudy.addEnquiry(enquiryList, e1);
+		Boolean found = C206_CaseStudy.UpdateEnquiryStatus(enquiryList, 1, "Processing");
+		assertTrue("Test if the enquiry id can be found", found);	
+		
+		C206_CaseStudy.addEnquiry(enquiryList, e2);
+		found = C206_CaseStudy.UpdateEnquiryStatus(enquiryList, 2, "Completed");
+		assertTrue("Test if the enquiry id can be found", found);
 		
 	
 	}

@@ -15,22 +15,13 @@ public class C206_CaseStudyTest {
 
 	
 
-
-
-
-//github.com/20008353-Makkalz/C206_CaseStudy.git
 	private Enquiry e1; //Gilbert
 	private Enquiry e2; //Gilbert
 
 
-//github.com/20008353-Makkalz/C206_CaseStudy.git
 
 
 
-
-
-
-//github.com/20008353-Makkalz/C206_CaseStudy.git
 	private Tuition t1; // Vijay
 	private Tuition t2; // Vijay
 	private Tuition t3; // Vijay
@@ -39,7 +30,6 @@ public class C206_CaseStudyTest {
 	//private Enquiry e1; // Gilbert
 	//private Enquiry e2; // Gilbert
 
-//github.com/20008353-Makkalz/C206_CaseStudy.git
 	
 	private StudentAccount SA1; //Fazia
 	private StudentAccount SA2; //Fazia
@@ -56,21 +46,13 @@ public class C206_CaseStudyTest {
 	private ArrayList<StudentAccount> StudentList; //Fazia
 	
 
-//github.com/20008353-Makkalz/C206_CaseStudy.git
 
-//github.com/20008353-Makkalz/C206_CaseStudy.git
-
-
-
-
-
-//github.com/20008353-Makkalz/C206_CaseStudy.git
-
+	//private ArrayList<tuitionTimetable> timetableList; // YuanWei
 	//private ArrayList<Enquiry> enquiryList; // Gilbert
 	//private ArrayList<Tuition> tuitionList; // Vijay
 
 
-//github.com/20008353-Makkalz/C206_CaseStudy.git
+
 
 	@Before
 	public void setUp() throws Exception {
@@ -78,39 +60,32 @@ public class C206_CaseStudyTest {
 		ttb1 = new tuitionTimetable(1, 50.00, LocalDateTime.parse("2020-01-10T09:00:00"),
 				LocalDateTime.parse("2020-02-10T09:00:00"), "F2F", "How To Pass C206 101", "Open");
 		ttb2 = new tuitionTimetable(2, 55.00, LocalDateTime.parse("2020-02-02T02:00:00"),
-				LocalDateTime.parse("2020-03-20T03:00:00"), "F2F", "Upper Secondary Math", "Open");
+				LocalDateTime.parse("2020-03-20T03:00:00"), "F2F", "Upper Secondary Math","Open");
 		ttb3 = new tuitionTimetable(3, 45.00, LocalDateTime.parse("2020-05-31T04:50:43"),
-				LocalDateTime.parse("2020-09-10T05:00:00"), "HBL", "Science Class With Bill Nye", "Open");
+				LocalDateTime.parse("2020-09-10T05:00:00"), "HBL","Science Class With Bill Nye", "Open");
 
 		timetableList = new ArrayList<tuitionTimetable>();
 
 		
 		//Gilbert
-		e1 = (new Enquiry(1,"How to register", "2021-7-20", "09.15", "Email","Pending"));
-
-		e2 = (new Enquiry(2,"Tuition Fee", "2021-7-5", "13.15", "Email","Completed"));
-        e2 = (new Enquiry(2,"Tuition Fee", "2021-7-5", "13.15", "Email","Completed"));
+		e1 = (new Enquiry(1,"How to register", "2021-7-20", "09.15", "Email","Pending", "Urgent"));
+		e2 = (new Enquiry(2,"Tuition Fee", "2021-7-5", "13.15", "Email","Completed", "Non-Urgent"));
 
 	
-//github.com/20008353-Makkalz/C206_CaseStudy.git
 		enquiryList = new ArrayList<Enquiry>();
 
-
-	
-
+		
+		
+		
 
 		
 
 		// Gilbert
-		e1 = (new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending"));
-		e2 = (new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed"));
+		e1 = (new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending", "Urgent"));
+		e2 = (new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed", "Non-Urgent"));
 		enquiryList = new ArrayList<Enquiry>();
-//github.com/20008353-Makkalz/C206_CaseStudy.git
 
 
-//github.com/20008353-Makkalz/C206_CaseStudy.git
-
-//github.com/20008353-Makkalz/C206_CaseStudy.git
 		// Vijay
 		t1 = (new Tuition("C206", "Software Development", "Group 1", "Learn about JUnit!", 160, "Laptop, Pen, Paper",
 				"Serene Yong"));
@@ -133,10 +108,6 @@ public class C206_CaseStudyTest {
 		tuitionList = new ArrayList<Tuition>();
 
 	}
-// of https://github.com/20008353-Makkalz/C206_CaseStudy.git
-
-//github.com/20008353-Makkalz/C206_CaseStudy.git
-	
 
 	@After
 	public void tearDown() throws Exception {
@@ -148,20 +119,12 @@ public class C206_CaseStudyTest {
 		e1 = null;
 
 		e2 = null;
-
 		enquiryList = null;
 
-		enquiryList = null;
-
-//github.com/20008353-Makkalz/C206_CaseStudy.git
 		e2 = null;
 		enquiryList = null;
 		enquiryList = null;
 
-//github.com/20008353-Makkalz/C206_CaseStudy.git
-
-
-//github.com/20008353-Makkalz/C206_CaseStudy.git
 
 		//Fazia
 		SA1 = null;
@@ -171,23 +134,16 @@ public class C206_CaseStudyTest {
 
 		// Vijay
 		t1 = null;
-
 		t2 = null;
-
-
 		t3 = null;
-//github.com/20008353-Makkalz/C206_CaseStudy.git
-	}
-
-//github.com/20008353-Makkalz/C206_CaseStudy.git
-//github.com/20008353-Makkalz/C206_CaseStudy.git
+		
 
 		
 		//t3 = null;
 
 
-//github.com/20008353-Makkalz/C206_CaseStudy.git
-	
+
+	}
 
 	@Test
 	public void c206_test() {
@@ -292,11 +248,36 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void doSearchTimeTableTTest() //YuanWei
+	public void updateTimeTableTest() //YuanWei
 	{
 		// Make sure list is not null -Boundary
 		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);
-				
+		
+		// Test if Timetable ID can be found -Normal
+		C206_CaseStudy.addTimetable(timetableList, ttb1);
+		Boolean found = C206_CaseStudy.doUpdateTimetable(timetableList, 1, "Open");
+		assertTrue("Test if an Timetable Title can be found", found);	
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb2);
+		found = C206_CaseStudy.doUpdateTimetable(timetableList, 2, "Open");
+		assertTrue("Test if an Timetable Title can be found", found);
+		
+		//Test if Timetable ID that is not inside list can be found -Error
+		found = C206_CaseStudy.doUpdateTimetable(timetableList, 3, "Open");
+		assertFalse("Test if an Timetable Title can be found", found);
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb3);
+		found = C206_CaseStudy.doUpdateTimetable(timetableList, 3, "Open");
+		assertTrue("Test if an Timetable Title can be found", found);
+	}
+
+	@Test
+	public void doSearchTimeTableT()
+	{
+		//YuanWei
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);
+		
 		// Test if Timetable Title can be found -Normal
 		C206_CaseStudy.addTimetable(timetableList, ttb1);
 		Boolean found = C206_CaseStudy.doSearchTimetableT(timetableList, "How To Pass C206 101");
@@ -313,31 +294,28 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.addTimetable(timetableList, ttb3);
 		found = C206_CaseStudy.doSearchTimetableT(timetableList, "Science Class With Bill Nye");
 		assertTrue("Test if an Timetable Title can be found", found);
-		
-		
-		
 	}
 	
 	@Test
-	public void doSearchTimeTablePTest() // YuanWei
+	public void doSearchTimeTableP() // YuanWei
 	{
-		
+
 		// Make sure list is not null -Boundary
 		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);
-						
-		// Test if Timetable Title can be found -Normal
+
+		// Test if Timetable Price can be found -Normal
 		C206_CaseStudy.addTimetable(timetableList, ttb1);
 		Boolean found = C206_CaseStudy.doSearchTimetableP(timetableList, 50.00);
-		assertTrue("Test if an Timetable Title can be found", found);	
-				
+		assertTrue("Test if an Timetable Title can be found", found);
+		
 		C206_CaseStudy.addTimetable(timetableList, ttb2);
 		found = C206_CaseStudy.doSearchTimetableP(timetableList, 55.00);
 		assertTrue("Test if an Timetable Title can be found", found);
-				
+
 		// Test if Price Not Included In Timetable List Can Be Found - Error
 		found = C206_CaseStudy.doSearchTimetableP(timetableList, 1000);
 		assertFalse("Test if an Timetable Title can be found", found);
-				
+
 		C206_CaseStudy.addTimetable(timetableList, ttb3);
 		found = C206_CaseStudy.doSearchTimetableP(timetableList, 45.00);
 		assertTrue("Test if an Timetable Title can be found", found);
@@ -345,57 +323,30 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void updateTimetableTest() //YuanWei
-	{
-		// Make sure list is not null -Boundary
-		assertNotNull("Test if there is valid Tuition Timetable arraylist to retrieve item", timetableList);
-		
-		// Test if Timetable Title can be found -Normal
-		C206_CaseStudy.addTimetable(timetableList, ttb1);
-		Boolean found = C206_CaseStudy.doUpdateTimetable(timetableList, 1, "Open");
-		assertTrue("Test if an Timetable Title can be found", found);	
-		
-		C206_CaseStudy.addTimetable(timetableList, ttb2);
-		found = C206_CaseStudy.doUpdateTimetable(timetableList, 2, "Open");
-		assertTrue("Test if an Timetable Title can be found", found);
-		
-		//Test if Timetable ID that is not inside list can be found -Error
-		found = C206_CaseStudy.doUpdateTimetable(timetableList, 3, "Open");
-		assertFalse("Test if an Timetable Title can be found", found);
-		
-		C206_CaseStudy.addTimetable(timetableList, ttb3);
-		found = C206_CaseStudy.doUpdateTimetable(timetableList, 3, "Open");
-		assertTrue("Test if an Timetable Title can be found", found);
-		
-		
-	}
-	
-
-	@Test
 
 	public void viewEnquiryTest()// Gilbert
 	{
-		// Test list is not null - Boundary
-		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
+		// Test if list is not null - Boundary
+		assertNotNull("Test if there is valid Enquiry arraylist to retrieve item", enquiryList);
 
 		// Test if Timetable List is not empty -Boundary
 		String allenquiry = C206_CaseStudy.viewEnquiry(enquiryList);
 		String testOutput = "";
 		assertEquals("Check ViewEnquiry", testOutput, allenquiry);
 
-		// After adding 2 items list size should be 2 -Normal
+		// After adding 3 items list size should increase to 2 -Normal
 		C206_CaseStudy.viewEnquiry(enquiryList);
 		C206_CaseStudy.viewEnquiry(enquiryList);
 
 		assertEquals("Test that enquiry arraylist size is 2", 2, enquiryList.size());
 
-		// Test if output is same as enquiry list
+		// Test if output string is same as enquiry list
 		allenquiry = C206_CaseStudy.viewEnquiry(enquiryList);
-		testOutput = String.format("");
-		testOutput = String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", 1, "How to register", "2021-7-20", "09.15",
-				"Email", "Pending");
-		testOutput += String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", 2, "Tuition Fee", "2021-7-5", "13.15",
-				"Email", "Completed");
+		
+		testOutput = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", 1, "How to register", "2021-7-20", "09.15",
+				"Email", "Pending", "Urgent");
+		testOutput += String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", 2, "Tuition Fee", "2021-7-5", "13.15",
+				"Email", "Completed","Non-Urgent");
 
 		assertEquals("Test viewEnquiry", testOutput, allenquiry);
 
@@ -404,16 +355,16 @@ public class C206_CaseStudyTest {
 
 	public void addEnquiryTest()// Gilbert
 	{
-		// Item list is not null, so that can add a new item - (boundary)
-		assertNotNull("Check if there is valid enquiry arraylist to add to it", enquiryList);
-		// Given an empty list, after adding 1 item, size of list = 1 - (normal)
+		// Item list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid enquiry arraylist to add to", enquiryList);
+		// Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		// The item just added is as same as the first item of the list
 		C206_CaseStudy.addEnquiry(enquiryList, e1);
 		assertEquals("Check that enquiry arraylist size is 1", 1, enquiryList.size());
 		assertSame("Check that enquiry is added", e1, enquiryList.get(0));
 
-		// Add another item. test The size of the list is 2 -(normal)
-		// The item just added is same as the second item of the list
+		// Add another item. test The size of the list is 2 -normal
+		// The item just added is as same as the second item of the list
 		C206_CaseStudy.addEnquiry(enquiryList, e2);
 		assertEquals("Check that enquiry arraylist size is 2", 2, enquiryList.size());
 		assertSame("Check that enquiry is added", e2, enquiryList.get(1));
@@ -421,42 +372,35 @@ public class C206_CaseStudyTest {
 
 	public void deleteEnquiry()// Gilbertng
 	{
-		// test list is not null -Boundary
-		assertNotNull("Test if there is valid enquiry arraylist to retrieve from", enquiryList);
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
 
-		// Test if enquiry ID can be removed from list -(Normal)
+		// Test if enquiry ID can be removed -Normal
 		C206_CaseStudy.addEnquiry(enquiryList, e1);
 		Boolean check = C206_CaseStudy.deleteEnquiry(enquiryList, 1);
-		assertTrue("Test if enquiry is able to be deleted?", check);
+		assertTrue("Test if an enquiry is ok to be deleted?", check);
 
 		// Test if same enquiry ID can be removed again -Error
 		check = C206_CaseStudy.deleteEnquiry(enquiryList, 1);
-		assertFalse("Test that the same enquiry is able to be deleted again?", check);
+
+		assertFalse("Test that the same enquiry is able to be deleted again", check);
+
+		assertFalse("Test that the same enquiry is NOT ok to be deleted again?", check);
+
 
 		// Test if enquiry ID can be removed -Normal
 		C206_CaseStudy.addEnquiry(enquiryList, e2);
 		check = C206_CaseStudy.deleteEnquiry(enquiryList, 2);
-		assertTrue("Test if an enquiry is able to be deleted?", check);
+		assertTrue("Test if an enquiry is ok to be deleted?", check);
 
 		// Test if same enquiry ID can be removed again -Error
 		check = C206_CaseStudy.deleteEnquiry(enquiryList, 2);
-		assertFalse("Test that the same enquiry is NOT able to be deleted again?", check);
-
+		assertFalse("Test that the same enquiry is NOT ok to be deleted again?", check);
 
 		// Test if enquiry list size has dropped to 0 after removing the 3 test items
 		assertEquals("Check that enquiry list is not bigger than 0", 0, enquiryList.size());
 
-	
-
-		// Test if enquiry list size is 0 after removing the 2 test items
-		assertEquals("Check that enquiry list is not more than 0", 0, enquiryList.size());
 	}
-
-
-
-//github.com/20008353-Makkalz/C206_CaseStudy.git
-
-//github.com/20008353-Makkalz/C206_CaseStudy.git
 
 	@Test
 	public void addTuitionTest() {
@@ -563,7 +507,7 @@ public class C206_CaseStudyTest {
 	public void RegisterStudentAccountTest() // fazia
 	{
 		//Student list is not null, so that can add a new item - boundary
-		assertNotNull("Test if there is valid Student arraylist to add to", StudentList);
+		assertNotNull("Check if there is valid Student arraylist to add to", StudentList);
 		
 		//Given an empty list, after adding 1 StudentAccount, the size of the list become 1 - normal
 		//The StudentAccount just added is as same as the first StudentAccount 
@@ -597,8 +541,8 @@ public class C206_CaseStudyTest {
 		
 		//Test if the expected output same as the list of StudentList retrieved from the TuitionManagementSystem
 		allStudentAccount = TuitionManagement.RetrieveAllStudentAccount(StudentList);
-		testOutput = String.format("%-10s %-10s %-10s %-20s %-20s %-20s %-20s\n", "john","M",16834859, "john@gmail.com", "09/09/2001","singapore", 6.5);
-		testOutput = String.format("%-10s %-10s %-10s %-20s %-20s %-20s %-20s\n","cheryl","F",83485914,"cheryl@gmail.com", "23/09/2001","singapore", 6.5 );
+		testOutput = String.format("%-10s %-10s %-10s %-20s %-20s %-20s %-20s\n", "john",'M',16834859, "john@gmail.com", "09/09/2001","singapore", 6.5);
+		testOutput = String.format("%-10s %-10s %-10s %-20s %-20s %-20s %-20s\n","cheryl",'F',83485914,"cheryl@gmail.com", "23/09/2001","singapore", 6.5 );
 		
 	//	assertEquals("Test that ViewAllStudentAccount", testOutput, allStudentAccount);
 		
@@ -610,6 +554,7 @@ public class C206_CaseStudyTest {
 		//Test if the StudentList list is not null - boundary
 		assertNotNull("Test if there is valid StudentList arraylist to delete for", StudentList);
 		
+
 		
 		TuitionManagement.RegisterStudentAccount(StudentList, SA1);
 		TuitionManagement.RegisterStudentAccount(StudentList, SA2);
@@ -629,6 +574,115 @@ public class C206_CaseStudyTest {
 		isdeleted = TuitionManagement.doDeleteStudentAccount(StudentList, name);
 		assertFalse("Test that the student name  is fail to delete", isdeleted);
 		
+
+	
+	}
+	
+	@Test
+	public void seeUrgentEnquiryTest() /// Sprint 2 Gilbert
+	{
+		// Test enquiry list is not null - (Boundary)
+		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
+
+		// After adding 2 enquiry list size should increase to 2 -(Normal)
+		C206_CaseStudy.addEnquiry(enquiryList, e1);
+		C206_CaseStudy.addEnquiry(enquiryList, e2);
+		
+		assertEquals("Test that enquiry arraylist size is 2", 2, enquiryList.size());
+
+		// Test if output string displays Urgent enquires
+		String UrgentEnquiry =  String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", 1, "How to register", "2021-7-20", "09.15", "Email", "Pending", "Urgent");
+		String testOutput = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", 1, "How to register", "2021-7-20", "09.15", "Email", "Pending", "Urgent");
+	
+		
+		assertEquals("Test view urgent enquiries", testOutput, UrgentEnquiry);
+
+	}
+	
+	public void seeNon_UrgentEnquiryTest() /// Sprint 2 Gilbert
+	{
+		// Test enquiry list is not null - (Boundary)
+		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
+
+		// After adding 2 enquiry list size should increase to 2 -(Normal)
+		C206_CaseStudy.addEnquiry(enquiryList, e1);
+		C206_CaseStudy.addEnquiry(enquiryList, e2);
+		
+		assertEquals("Test that enquiry arraylist size is 2", 2, enquiryList.size());
+
+		// Test if output string displays Non-Urgent enquires
+		String Non_UrgentEnquiry =  String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", 2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed", "Non-Urgent");
+		String testOutput = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", 2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed", "Non-Urgent");
+	
+	
+		assertEquals("Test view Non-Urgent enquiries", testOutput, Non_UrgentEnquiry);
+
+	}
+	
+	@Test
+	public void UpdateEnquiryStatusTest() //Sprint 2 Gilbert
+	{
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
+		
+		// Test if enquiry ID can be found -Normal
+		C206_CaseStudy.addEnquiry(enquiryList, e1);
+		Boolean found = C206_CaseStudy.UpdateEnquiryStatus(enquiryList, 1, "Processing");
+		assertTrue("Test if the enquiry id can be found", found);	
+		
+		C206_CaseStudy.addEnquiry(enquiryList, e2);
+		found = C206_CaseStudy.UpdateEnquiryStatus(enquiryList, 2, "Completed");
+		assertTrue("Test if the enquiry id can be found", found);
+		
+	
+	
+	}
+	
+	@Test
+	public void doSearchTeacher() //Vijay Sprint 2
+	{
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
+		
+		// Test if Teacher can be found -Normal
+		C206_CaseStudy.addTuition(tuitionList, t1);
+		Boolean exist = C206_CaseStudy.doSearchTeacher(tuitionList, "Serene Yong");
+		assertTrue("Test if Teacher can be found", exist);	
+		
+		C206_CaseStudy.addTuition(tuitionList, t2);
+		Boolean exists = C206_CaseStudy.doSearchTeacher(tuitionList, "Pang Tee How");
+		assertTrue("Test if Teacher can be found", exists);
+
+		
+		
+		// Test if Title Not Included In Timetable List Can Be Found - Error
+		exist = C206_CaseStudy.doSearchTeacher(tuitionList, "Tan Cheng Kok");
+		assertFalse("Test if Teacher can be found", exist);
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb3);
+		exist = C206_CaseStudy.doSearchTeacher(tuitionList, "Pang Tee How");
+		assertTrue("Test if Teacher can be found", exist);
+	}
+	
+	@Test
+	public void updateTuitionTest() //Vijay Sprint 2
+	{
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
+		
+		// Test if Tuition Code can be found -Normal
+		C206_CaseStudy.addTuition(tuitionList, t1);
+		Boolean exist = C206_CaseStudy.doUpdateTuition(tuitionList, "C206", "Group 1");
+		assertTrue("Test if an Tuition can be found", exist);	
+		
+		C206_CaseStudy.addTuition(tuitionList, t2);
+		exist = C206_CaseStudy.doUpdateTuition(tuitionList, "C209", "Peter Liew");
+		assertTrue("Test if an Tuition can be found", exist);
+		
+		//Test if Tuition Code that is not inside list can be found -Error
+		exist = C206_CaseStudy.doUpdateTuition(tuitionList, "A113", "Peter Liew");
+		assertFalse("Test if an Timetable Title can be found", exist);
+//github.com/20008353-Makkalz/C206_CaseStudy.git
 		
 	}
 	

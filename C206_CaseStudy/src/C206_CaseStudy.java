@@ -1,7 +1,5 @@
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import java.time.format.DateTimeFormatter;
 
@@ -20,7 +18,6 @@ public class C206_CaseStudy {
 	private static final int ADD_TUITION = 1;
 	private static final int VIEW_TUITION = 2;
 	private static final int DELETE_TUITION = 3;
-	private static final int TUITION_CLOSE = 4;
 	/**
 	 * 
 	 */
@@ -48,12 +45,13 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 		ArrayList<tuitionTimetable> timetableList = new ArrayList<tuitionTimetable>(); // YuanWei
 		ArrayList<Tuition> tuitionList = new ArrayList<Tuition>(); // Vijay
-
+		ArrayList<registerTimetable> registerList = new ArrayList<registerTimetable>(); // Jean-Claude
+		ArrayList<Enquiry> enquiryList = new ArrayList<Enquiry>(); // Gilbert
+		
+		
+		enquiryList.add(new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending", "Urgent"));
 		// Gilbert
-		ArrayList<Enquiry> enquiryList = new ArrayList<Enquiry>();
-		enquiryList.add(new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending"));
-		// Gilbert
-		enquiryList.add(new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed"));
+		enquiryList.add(new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed", "Non-Urgent"));
 
 		// Vijay
 		tuitionList.add(new Tuition("C206", "Software Development", "Group 1", "Learn about JUnit!", 160,
@@ -84,8 +82,27 @@ public class C206_CaseStudy {
 				// Register student
 			}
 
-			else if (option == REG_TIMETABLE) {
+			else if (option == REG_TIMETABLE) { // Jean-Claude
 				// Register timetable
+				int option2 = 0;
+
+				while (option != 4) {
+					doOption2menu();
+					option2 = Helper.readInt("Enter an option > ");
+
+					if (option2 == 1) {
+						addRegistration(registerList);
+					} else if (option2 == 2) {
+						viewTimetableList(registerList);
+					} else if (option2 == 3) {
+						deleteRegistration(registerList);
+					} else if (option2 == 4) {
+						mainMenu();
+					} else {
+						System.out.println("Invalid option");
+					}
+				}
+
 			}
 
 			else if (option == ENQUIRY) /// Gilbert Ng -Option 3[Enquiry]
@@ -93,7 +110,7 @@ public class C206_CaseStudy {
 				// Add enquiry
 				int option3 = 0;
 
-				while (option != 4) {
+				while (option != 6) {
 					doOption3menu();
 					option3 = Helper.readInt("Enter an option > ");
 
@@ -106,92 +123,108 @@ public class C206_CaseStudy {
 					} else if (option3 == 3)// Add Enquiry //Gilbert
 					{
 						addEnquiry(enquiryList, null);
-					} else if (option3 == 4) {
+					} else if (option3 == 4) { // See enquiry type //Gilbert
+
+						int option4 = 0;
+						while (option4 != 3) {
+							viewEnquiriesTypeMenu();
+							option4 = Helper.readInt("Enter option > ");
+
+							if (option4 == 1) {
+								// Search Urgent Enquiry Type
+
+								seeUrgentEnquiry(enquiryList);
+							} else if (option4 == 2) {
+
+								// see Non-Ugent Enquiries
+								seeNon_UrgentEnquiry(enquiryList);
+							}
+						}
+
+					} else if (option3 == 5) {
+						int EnID = Helper.readInt("Enter Enquiry ID >");
+						String EnStatus = Helper.readString("Enter New Enquiry Status > ");
+						UpdateEnquiryStatus(enquiryList, EnID, EnStatus);
+					} else if (option3 == 6) {
 						System.out.println("Returning to main menu....");
 
 					}
-
 				}
-
 			}
 
 			else if (option == TUITION_TIMETABLE) {
 				// Add tuition time table YuanWei
 				int uOption4 = 0;
 
-				while (uOption4 != 6) 
-				{
+				while (uOption4 != 6) {
 					doOption4menu();
 					uOption4 = Helper.readInt("Enter an Option >");
 
-					if (uOption4 == TTBADD)  //YuanWei
+					if (uOption4 == TTBADD) // YuanWei
 					{
 						// Add
 						tuitionTimetable ttb1 = inputTimetable();
 						C206_CaseStudy.addTimetable(timetableList, ttb1);
 					}
 
-					else if (uOption4 == TTBVIEW) //YuanWei
+					else if (uOption4 == TTBVIEW) // YuanWei
 					{
 						// View
 						C206_CaseStudy.viewTimetable(timetableList);
 					}
 
-					else if (uOption4 == TTBDEL) //YuanWei
+					else if (uOption4 == TTBDEL) // YuanWei
 					{
 						// Delete
 						C206_CaseStudy.deleteTimetable(timetableList);
 					}
-					
-					else if(uOption4 == TTBSEARCH) //YuanWei
+
+					else if (uOption4 == TTBSEARCH) // YuanWei
 					{
 						int uOptionS = 0;
-						while(uOptionS != 3)
-						{
+						while (uOptionS != 3) {
 							searchMenu();
 							uOptionS = Helper.readInt("Enter an Option >");
-							
-							if(uOptionS == 1) //YuanWei
+
+							if (uOptionS == 1) // YuanWei
 							{
-								//Search By Title
+								// Search By Title
 								String uTitle = Helper.readString("Enter Tuition Timetable Title >");
 								searchTimetableT(timetableList, uTitle);
 							}
-							
-							else if (uOptionS == 2) //YuanWei
+
+							else if (uOptionS == 2) // YuanWei
 							{
-								//Search By Price
+								// Search By Price
 								double uPrice = Helper.readDouble("Enter Tuition Timetable Price >");
 								searchTimetableP(timetableList, uPrice);
 							}
-							
-							else if(uOptionS == 3) //YuanWei
+
+							else if (uOptionS == 3) // YuanWei
 							{
 								System.out.println("Closing Search...");
 							}
-							
-							else
-							{
+
+							else {
 								System.out.println("Invalid Input Try Again !");
 							}
 						}
-						
-						
+
 					}
-					
-					else if (uOption4 == TTBUPDATE) //YuanWei
+
+					else if (uOption4 == TTBUPDATE) // YuanWei
 					{
-						int utID= Helper.readInt("Enter Tuition Timetable ID >");
+						int utID = Helper.readInt("Enter Tuition Timetable ID >");
 						String uStatus = Helper.readString("Enter New Tuition Timetable Status > ");
 						updateTimetable(timetableList, utID, uStatus);
 					}
 
-					else if (uOption4 == TTBCLOSE) //YuanWei
+					else if (uOption4 == TTBCLOSE) // YuanWei
 					{
 						System.out.println("Closing Tuition Timetable App...");
 					}
 
-					else //YuanWei
+					else // YuanWei
 					{
 						System.out.println("Invalid Input Try Again !");
 					}
@@ -202,7 +235,7 @@ public class C206_CaseStudy {
 				// VIJAY
 				int uOption5 = 0;
 
-				while (uOption5 != TUITION_CLOSE) {
+				while (uOption5 != 6) {
 					doOption5menu();
 					uOption5 = Helper.readInt("Enter an Option > ");
 
@@ -221,8 +254,21 @@ public class C206_CaseStudy {
 						// Delete
 						C206_CaseStudy.deleteTuition(tuitionList);
 					}
+					
+					else if (uOption5 == 4) {
+						//Search
+						String sTeacher = Helper.readString("Enter Name of Teacher >");
+						doSearchTeacher(tuitionList, sTeacher);
+					}
+					
+					else if (uOption5 == 5) {
+						//Update
+						String tCode= Helper.readString("Enter Tuition Code >");
+						String uGrpName = Helper.readString("Enter New Tuition Group Name > ");
+						updateTuition(tuitionList, tCode, uGrpName);
+					}
 
-					else if (uOption5 == TUITION_CLOSE) {
+					else if (uOption5 == 6) {
 						System.out.println("Closing Tuition App...");
 					}
 
@@ -257,15 +303,26 @@ public class C206_CaseStudy {
 		System.out.println("6. Quit");
 
 	}
-	
-	public static void searchMenu() //YuanWei
+
+	public static void doOption2menu() // Jean-Claude
 	{
-		
+		Helper.line(50, "=");
+		System.out.println("Register Timetable");
+		Helper.line(50, "=");
+
+		System.out.println("1. Register For Timetable");
+		System.out.println("2. View Registrations");
+		System.out.println("3. Delete Registration");
+		System.out.println("4. Quit");
+	}
+
+	public static void searchMenu() // YuanWei
+	{
+
 		Helper.line(50, "=");
 		System.out.println("TUITION TIMETABLE SEARCH APP");
 		Helper.line(50, "=");
-		
-		
+
 		System.out.println("1. Search By Title");
 		System.out.println("2. Search By Price");
 		System.out.println("3. Quit");
@@ -277,21 +334,57 @@ public class C206_CaseStudy {
 		System.out.println("Tuition Enquiry");
 		Helper.line(50, "=");
 
-		System.out.println("1. View Enquiry");
+		System.out.println("1. View All Enquiries");
 		System.out.println("2. Delete Enquiry");
 		System.out.println("3. Add Enquiry");
-		System.out.println("4. Quit");
+		System.out.println("4  View Enquiry Type(Urgent/Non-Urgent)");
+		System.out.println("5. Update Enquiry Type");
+		System.out.println("6. Quit");
+	}
+
+	public static void addRegistration(ArrayList<registerTimetable> registerList) { // Jean-Claude
+		int registrationNumber = Helper.readInt("Enter Registration number > ");
+		int timetableID = Helper.readInt("Enter Tuition ID > ");
+		String email = Helper.readString("Enter your email > ");
+
+		registerList.add(new registerTimetable(registrationNumber, timetableID, email));
+
+		System.out.println("Registration successful!");
+	}
+
+	public static String viewTimetableList(ArrayList<registerTimetable> registerList) { // Jean-Claude
+		String output = String.format("%-15s %-15s %-25s %-15s\n", "Registration_No", "Tuition_ID", "Email", "Status");
+
+		for (registerTimetable i : registerList) {
+			output += String.format("%-15d %-15d %-25s %-15s\n", i.getRegistrationNumber(), i.getTimetableID(),
+					i.getEmail(), i.getStatus());
+		}
+		System.out.println(output);
+		return output;
+	}
+
+	public static void deleteRegistration(ArrayList<registerTimetable> registerList) { // Jean-Claude
+		int deleteReg = Helper.readInt("Enter Registration Number to delete > ");
+
+		for (registerTimetable i : registerList) {
+			if (deleteReg == i.getRegistrationNumber()) {
+				registerList.remove(i.getRegistrationID());
+				System.out.println("Registration number " + deleteReg + " has been removed.");
+			} else {
+				System.out.println("Invalid Registration number");
+			}
+		}
 	}
 
 	public static String viewEnquiry(ArrayList<Enquiry> enquiryList) // GilbertNg
 	{
 		int count = 1;
-		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", "Enquiry_ID", "Title", "Date", "Time",
-				"Enquiry_Method", "Status");
+		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", "Enquiry_ID", "Title", "Date",
+				"Time", "Enquiry_Method", "Status", "Enquiry_Type");
 
 		for (Enquiry e : enquiryList) {
-			output += String.format("%-15s %-20s %-15s %-15s %-20s %-10s\n", count++, e.getTitle(), e.getDate(),
-					e.getTime(), e.getEnquiryMethod(), e.getStatus());
+			output += String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", count++, e.getTitle(), e.getDate(),
+					e.getTime(), e.getEnquiryMethod(), e.getStatus(), e.getStatusType(), e.getStatusType());
 		}
 
 		System.out.println(output);
@@ -306,7 +399,8 @@ public class C206_CaseStudy {
 			String time = Helper.readString("Enter time in (TT.MM) > ");
 			String enquiryMethod = Helper.readString("Enter enquiry method > ");
 			String status = Helper.readString("Enter enquiry status > ");
-			enquiryList.add(new Enquiry(id, title, date, time, enquiryMethod, status));
+			String statusType = Helper.readString("Enter Status Type > ");
+			enquiryList.add(new Enquiry(id, title, date, time, enquiryMethod, status, statusType));
 		}
 	}
 
@@ -349,7 +443,9 @@ public class C206_CaseStudy {
 		System.out.println("1. Add Tuition");
 		System.out.println("2. View Tuition");
 		System.out.println("3. Delete Tuition");
-		System.out.println("4. Quit");
+		System.out.println("4. Search Teacher");
+		System.out.println("5. Update Subject Group Name");
+		System.out.println("6. Quit");
 
 	}
 
@@ -365,7 +461,8 @@ public class C206_CaseStudy {
 		LocalDateTime uStartDateF = LocalDateTime.parse(uStartDate);
 		LocalDateTime uEndTimeF = LocalDateTime.parse(uEndTime);
 
-		tuitionTimetable ttb1 = new tuitionTimetable(uTuitionID, uPrice, uStartDateF, uEndTimeF, uMode, uTitle, uStatus);
+		tuitionTimetable ttb1 = new tuitionTimetable(uTuitionID, uPrice, uStartDateF, uEndTimeF, uMode, uTitle,
+				uStatus);
 		return ttb1;
 
 	}
@@ -407,8 +504,7 @@ public class C206_CaseStudy {
 		String output = "";
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a");
 
-		for (int i = 0; i < timetableList.size(); i++) 
-		{
+		for (int i = 0; i < timetableList.size(); i++) {
 			int tuitionID = timetableList.get(i).getTuitionID();
 			double price = timetableList.get(i).getPrice();
 			LocalDateTime startDate = timetableList.get(i).getStartDate();
@@ -419,7 +515,8 @@ public class C206_CaseStudy {
 			String title = timetableList.get(i).getTitle();
 			String status = timetableList.get(i).getStatus();
 
-			output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF, endTimeF, mode, title, status);
+			output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF,
+					endTimeF, mode, title, status);
 		}
 		return output;
 	}
@@ -445,8 +542,8 @@ public class C206_CaseStudy {
 
 	public static void viewTimetable(ArrayList<tuitionTimetable> timetableList) // YuanWei
 	{
-		String output = String.format("%-10s %-11s %-25s %-25s %-10s %-30s %-10s\n", "Tuition ID", "Price($)", "Start Date",
-				"End Date", "Mode", "Title", "Status");
+		String output = String.format("%-10s %-11s %-25s %-25s %-10s %-30s %-10s\n", "Tuition ID", "Price($)",
+				"Start Date", "End Date", "Mode", "Title", "Status");
 		output += retrieveTimetable(timetableList);
 		System.out.println(output);
 	}
@@ -488,6 +585,7 @@ public class C206_CaseStudy {
 			}
 		}
 
+
 		return isFound;
 	}
 
@@ -522,30 +620,28 @@ public class C206_CaseStudy {
 		}
 
 	}
-	
-	public static void searchTimetableT(ArrayList<tuitionTimetable> timetableList, String uTitle) //YuanWei 
+
+	public static void searchTimetableT(ArrayList<tuitionTimetable> timetableList, String uTitle) // YuanWei
 	{
 		boolean isFound = doSearchTimetableT(timetableList, uTitle);
-		
-		if(isFound == false)
-		{
+
+		if (isFound == false) {
 			System.out.println("Tuition Timetable Title Could Not Be Found !");
 		}
-		
+
 	}
-	
-	public static boolean doSearchTimetableT(ArrayList<tuitionTimetable> timetableList, String uTitle) //YuanWei
+
+	public static boolean doSearchTimetableT(ArrayList<tuitionTimetable> timetableList, String uTitle) // YuanWei1
 	{
 		boolean isFound = false;
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a");
-		
-		for(int i = 0; i < timetableList.size(); i++)
-		{
-			
+
+		for (int i = 0; i < timetableList.size(); i++) {
+
 			String title = timetableList.get(i).getTitle();
-			if(title.contains(uTitle))
-			{
-				String output = String.format("%-10s %-11s %-25s %-25s %-10s %-30s %-10s\n", "Tuition ID", "Price($)", "Start Date","End Date", "Mode", "Title", "Status");
+			if (title.contains(uTitle)) {
+				String output = String.format("%-10s %-11s %-25s %-25s %-10s %-30s %-10s\n", "Tuition ID", "Price($)",
+						"Start Date", "End Date", "Mode", "Title", "Status");
 
 				int tuitionID = timetableList.get(i).getTuitionID();
 				double price = timetableList.get(i).getPrice();
@@ -553,52 +649,47 @@ public class C206_CaseStudy {
 				LocalDateTime endTime = timetableList.get(i).getEndTime();
 				String mode = timetableList.get(i).getMode();
 				String status = timetableList.get(i).getStatus();
-				
+
 				String startDateF = startDate.format(format);
 				String endTimeF = endTime.format(format);
-				
-				
-				output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF, endTimeF, mode, title, status);
-				
+
+				output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF,
+						endTimeF, mode, title, status);
+
 				System.out.println(output);
-				
+
 				isFound = true;
 			}
-			
-			else
-			{
+
+			else {
 				isFound = false;
 			}
-			
-			
+
 		}
 		return isFound;
 	}
-	
-	public static void searchTimetableP(ArrayList<tuitionTimetable> timetableList, double uPrice) //YuanWei 
+
+	public static void searchTimetableP(ArrayList<tuitionTimetable> timetableList, double uPrice) // YuanWei
 	{
 		boolean isFound = doSearchTimetableP(timetableList, uPrice);
-		
-		if(isFound != true)
-		{
+
+		if (isFound != true) {
 			System.out.println("Tuition Timetable Title Could Not Be Found !");
 		}
-		
-		
+
 	}
-	
-	public static boolean doSearchTimetableP(ArrayList<tuitionTimetable> timetableList, double uPrice) //YuanWei
+
+	public static boolean doSearchTimetableP(ArrayList<tuitionTimetable> timetableList, double uPrice) // YuanWei
 	{
 		boolean isFound = false;
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a");
-		
-		for(int i = 0; i < timetableList.size(); i++)
-		{
-			
+
+		for (int i = 0; i < timetableList.size(); i++) {
+
 			double price = timetableList.get(i).getPrice();
-			if(price == uPrice)
-			{
-				String output = String.format("%-10s %-11s %-25s %-25s %-10s %-30s %-10s\n", "Tuition ID", "Price($)", "Start Date","End Date", "Mode", "Title", "Status");
+			if (price == uPrice) {
+				String output = String.format("%-10s %-11s %-25s %-25s %-10s %-30s %-10s\n", "Tuition ID", "Price($)",
+						"Start Date", "End Date", "Mode", "Title", "Status");
 
 				int tuitionID = timetableList.get(i).getTuitionID();
 				LocalDateTime startDate = timetableList.get(i).getStartDate();
@@ -606,12 +697,204 @@ public class C206_CaseStudy {
 				String mode = timetableList.get(i).getMode();
 				String title = timetableList.get(i).getTitle();
 				String status = timetableList.get(i).getStatus();
-				
+
 				String startDateF = startDate.format(format);
 				String endTimeF = endTime.format(format);
+
+				output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF,
+						endTimeF, mode, title, status);
+
+				System.out.println(output);
+
+				isFound = true;
+				break;
+			}
+
+			else {
+				isFound = false;
+			}
+
+		}
+		return isFound;
+	}
+
+	public static boolean doUpdateTimetable(ArrayList<tuitionTimetable> timetableList, int utID, String uStatus) // YuanWei
+	{
+		boolean isFound = false;
+
+		for (int i = 0; i < timetableList.size(); i++) {
+
+			int tuitionID = timetableList.get(i).getTuitionID();
+			if (tuitionID == utID) {
+				timetableList.get(i).setStatus(uStatus);
+				String title = timetableList.get(i).getTitle();
+				System.out.println(title + "'s Status Has Been Set To " + uStatus);
+				isFound = true;
+			}
+
+		}
+
+		return isFound;
+
+	}
+
+	public static void updateTimetable(ArrayList<tuitionTimetable> timetableList, int utID, String uStatus) // YuanWei
+	{
+
+		boolean isFound = doUpdateTimetable(timetableList, utID, uStatus);
+
+		if (isFound != true) {
+			System.out.println("Tuition Timetable Title Could Not Be Found !");
+		}
+
+	}
+
+	public static void viewEnquiriesTypeMenu() { // Sprint 2 Gilbert
+
+		Helper.line(50, "=");
+		System.out.println("Tuition Enquiry Search Type");
+		Helper.line(50, "=");
+
+		System.out.println("1. View Urgent Enquiries");
+		System.out.println("2. View Non-Urgent Enquiries");
+		System.out.println("3. Quit");
+
+	}
+
+	public static String seeUrgentEnquiry(ArrayList<Enquiry> enquiryList) //Sprint 2 Gilbert
+	{
+		/// boolean a = false;
+		int count = 1;
+		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", "Enquiry_ID", "Title", "Date",
+				"Time", "Enquiry_Method", "Status", "Enquiry_Type");
+
+		for (Enquiry e : enquiryList) {
+			if (e.getStatusType() == "Urgent") {
+				output += String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", count++, e.getTitle(),
+						e.getDate(), e.getTime(), e.getEnquiryMethod(), e.getStatus(), e.getStatusType());
+
+				System.out.println(output);
+
+			}
+		}
+		return output;
+	}
+
+	public static String seeNon_UrgentEnquiry(ArrayList<Enquiry> enquiryList) //Sprint 2 Gilbert
+	{
+		/// boolean a = false;
+		int count = 1;
+		String output = String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", "Enquiry_ID", "Title", "Date",
+				"Time", "Enquiry_Method", "Status", "Enquiry_Type");
+
+		for (Enquiry e : enquiryList) {
+			if (e.getStatusType() == "Non-Urgent") {
+				output += String.format("%-15s %-20s %-15s %-15s %-20s %-10s %-10s\n", count++, e.getTitle(),
+						e.getDate(), e.getTime(), e.getEnquiryMethod(), e.getStatus(), e.getStatusType());
+
+				System.out.println(output);
+
+			}
+		}
+		return output;
+	}
+
+	public static boolean UpdateEnquiryStatus(ArrayList<Enquiry> enquiryList, int EnID, String EnStatus) // Sprint 2 Gilbert
+	{
+		boolean found = false;
+
+		for (int i = 0; i < enquiryList.size(); i++) {
+
+			int EnquiryID = enquiryList.get(i).getEnquiryID();
+
+			if (EnquiryID == EnID) {
+				enquiryList.get(i).setStatus(EnStatus);
+				int id = enquiryList.get(i).getEnquiryID();
+				System.out.println("Enquiry ID " + id + " has been changed to " + EnStatus);
+				found = true;
+			}
+		}
+		return found;
+	}
+
+	public static void UpdateEnquiryStatus2(ArrayList<Enquiry> enquiryList, int EnID, String EnStatus) //Sprint 2  Gilbert
+	{
+
+		boolean found = UpdateEnquiryStatus(enquiryList, EnID, EnStatus);
+
+		if (found == false) {
+			System.out.println("Enquiry Not Found!");
+		}
+	}
+	
+	public static boolean doUpdateTuition(ArrayList<Tuition> tuitionList, String tCode, String uGrpName) //Vijay
+	{
+		boolean isFound = false;
+		
+		for(int i = 0; i < tuitionList.size(); i++)
+		{
+			String validation = tuitionList.get(i).getSubjGrpName();
+			String tuitionCode = tuitionList.get(i).getTuitionCode();
+			if(tuitionCode.equals(tCode) && !validation.equals(uGrpName))
+			{
+				tuitionList.get(i).setSubjGrpName(uGrpName);
+				System.out.println(tuitionCode + "'s Subject Group Has Been Set To " + uGrpName);
+				isFound = true;
+			}
+			
+		}
+		
+		return isFound;
+		
+	}
+	
+	
+	public static void updateTuition(ArrayList<Tuition>tuitionList, String tCode, String uGrpName) //Vijay
+	{
+
+		boolean isFound = doUpdateTuition(tuitionList, tCode, uGrpName);
+		
+		if(isFound != true)
+		{
+			System.out.println("Tuition Subject Code Cannot be Updated!\nEnsure that Tuition Code exists or\nensure you have not entered the same Subject Group Name again!");
+		}
+		
+	}
+	
+	public static void searchTuition(ArrayList<Tuition> tuitionList, String sTeacher) //Vijay
+	{
+		boolean isFound = doSearchTeacher(tuitionList, sTeacher);
+		
+		if(isFound == false)
+		{
+			System.out.println("The specified teacher cannot be found!");
+		}
+		
+	}
+	
+	public static boolean doSearchTeacher(ArrayList<Tuition> tuitionList, String sTeacher) //Vijay
+	{
+		boolean isFound = false;
+		
+		for(int i = 0; i < tuitionList.size(); i++)
+		{
+			
+			String teacher = tuitionList.get(i).getTeacher();
+			if(teacher.contains(sTeacher) && teacher.equalsIgnoreCase(sTeacher))
+			{
+				String output = String.format("%-20s %-50s %-35s %-50s %-25s %-25s %-10s\n", "Tuition Code", "Title",
+						"Subject Group Name", "Description", "Duration (mins)", "Pre-Requisites", "Teacher");
+
+				String tuitionCode = tuitionList.get(i).getTuitionCode();
+				String tuitionTitle = tuitionList.get(i).getTuitonTitle();
+				String subjGrpName = tuitionList.get(i).getSubjGrpName();
+				String tuitionDescription = tuitionList.get(i).getTuitionDescription();
+				double tuitionDuration = tuitionList.get(i).getTuitionDuration();
+				String prerequisite = tuitionList.get(i).getPrerequisite();
+				String Teacher = tuitionList.get(i).getTeacher();
 				
-				
-				output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF, endTimeF, mode, title, status);
+				output += String.format("%-20s %-50s %-35s %-50s %-25.2f %-25s %-10s\n", tuitionCode, tuitionTitle,
+						subjGrpName, tuitionDescription, tuitionDuration, prerequisite, Teacher);
 				
 				System.out.println(output);
 				
@@ -622,44 +905,13 @@ public class C206_CaseStudy {
 			{
 				isFound = false;
 			}
-				
+			
+			
 		}
 		return isFound;
 	}
-	
-	public static boolean doUpdateTimetable(ArrayList<tuitionTimetable> timetableList, int utID, String uStatus) //YuanWei
-	{
-		boolean isFound = false;
-		
-		for(int i = 0; i < timetableList.size(); i++)
-		{
-			
-			int tuitionID = timetableList.get(i).getTuitionID();
-			if(tuitionID == utID)
-			{
-				timetableList.get(i).setStatus(uStatus);
-				String title = timetableList.get(i).getTitle();
-				System.out.println(title + "'s Status Has Been Set To " + uStatus);
-				isFound = true;
-			}
-			
-		}
-		
-		return isFound;
-		
-	}
-	
-	public static void updateTimetable(ArrayList<tuitionTimetable> timetableList, int utID, String uStatus) //YuanWei
-	{
-		
-		boolean isFound = doUpdateTimetable(timetableList, utID, uStatus);
-		
-		if(isFound != true)
-		{
-			System.out.println("Tuition Timetable Title Could Not Be Found !");
-		}
-		
-	}
+
+//	}
 
 	/**
 	 * @param enquiryList

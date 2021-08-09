@@ -22,7 +22,6 @@ public class C206_CaseStudyTest {
 
 
 
-
 	private Tuition t1; // Vijay
 	private Tuition t2; // Vijay
 	private Tuition t3; // Vijay
@@ -615,6 +614,53 @@ public class C206_CaseStudyTest {
 		assertTrue("Test if the enquiry id can be found", found);
 		
 	
+	}
+	
+	@Test
+	public void doSearchTeacher() //Vijay Sprint 2
+	{
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
+		
+		// Test if Teacher can be found -Normal
+		C206_CaseStudy.addTuition(tuitionList, t1);
+		Boolean exist = C206_CaseStudy.doSearchTeacher(tuitionList, "Serene Yong");
+		assertTrue("Test if Teacher can be found", exist);	
+		
+		C206_CaseStudy.addTuition(tuitionList, t2);
+		Boolean exists = C206_CaseStudy.doSearchTeacher(tuitionList, "Pang Tee How");
+		assertTrue("Test if Teacher can be found", exists);
+
+		
+		
+		// Test if Title Not Included In Timetable List Can Be Found - Error
+		exist = C206_CaseStudy.doSearchTeacher(tuitionList, "Tan Cheng Kok");
+		assertFalse("Test if Teacher can be found", exist);
+		
+		C206_CaseStudy.addTimetable(timetableList, ttb3);
+		exist = C206_CaseStudy.doSearchTeacher(tuitionList, "Pang Tee How");
+		assertTrue("Test if Teacher can be found", exist);
+	}
+	
+	@Test
+	public void updateTuitionTest() //Vijay Sprint 2
+	{
+		// Make sure list is not null -Boundary
+		assertNotNull("Test if there is valid Tuition arraylist to retrieve item", tuitionList);
+		
+		// Test if Tuition Code can be found -Normal
+		C206_CaseStudy.addTuition(tuitionList, t1);
+		Boolean exist = C206_CaseStudy.doUpdateTuition(tuitionList, "C206", "Group 1");
+		assertTrue("Test if an Tuition can be found", exist);	
+		
+		C206_CaseStudy.addTuition(tuitionList, t2);
+		exist = C206_CaseStudy.doUpdateTuition(tuitionList, "C209", "Peter Liew");
+		assertTrue("Test if an Tuition can be found", exist);
+		
+		//Test if Tuition Code that is not inside list can be found -Error
+		exist = C206_CaseStudy.doUpdateTuition(tuitionList, "A113", "Peter Liew");
+		assertFalse("Test if an Timetable Title can be found", exist);
+		
 	}
 	
 	

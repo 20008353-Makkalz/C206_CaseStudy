@@ -53,9 +53,9 @@ public class C206_CaseStudy {
 
 		// Gilbert
 		ArrayList<Enquiry> enquiryList = new ArrayList<Enquiry>();
-		enquiryList.add(new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending", null));
+		enquiryList.add(new Enquiry(1, "How to register", "2021-7-20", "09.15", "Email", "Pending", "Urgent"));
 		// Gilbert
-		enquiryList.add(new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed", null));
+		enquiryList.add(new Enquiry(2, "Tuition Fee", "2021-7-5", "13.15", "Email", "Completed", "Non-Urgent"));
 
 		// Vijay
 		tuitionList.add(new Tuition("C206", "Software Development", "Group 1", "Learn about JUnit!", 160,

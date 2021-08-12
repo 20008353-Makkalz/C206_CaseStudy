@@ -44,7 +44,7 @@ public class tuitionTimetable {
 	/**
 	 * @return the price
 	 */
-	public double getPrice() {
+	public double getPrice() {//
 		return price;
 	}
 
@@ -72,24 +72,10 @@ public class tuitionTimetable {
 		return mode;
 	}
 	
-	public String getTitle()
-	{
-		return title;
-	}
-	
-	public String getStatus()
-	{
-		return status;
-	}
-
 
 	/**
 	 * @param status the status to set
 	 */
-	public void setStatus(String status) 
-	{
-		this.status = status;
-	}
 	
 	public String getStatus()
 	{

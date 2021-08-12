@@ -744,6 +744,9 @@ public class C206_CaseStudyTest {
 	}
 
 	@Test
+
+	//public void UpdateEnquiryStatusTest() ///Sprint 2 Gilbert
+
 	public void UpdateEnquiryStatusTest() ///Sprint 2 Gilbert
 
 	{
@@ -779,7 +782,13 @@ public class C206_CaseStudyTest {
 
 		// Test if Title Not Included In Timetable List Can Be Found - Error
 
+
+
 		
+
+		// Test if Title Not Included In Timetable List Can Be Found -- Error
+
+
 		// Test if Title Not Included In Timetable List Can Be Found -- Error
 
 		exist = C206_CaseStudy.doSearchTeacher(tuitionList, "Tan Cheng Kok");

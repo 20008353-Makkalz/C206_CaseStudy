@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class C206_CaseStudy {
 
+	private static final int UPDATE_TUITION = 5;
+	private static final int SEARCH = 4;
 	/**
 	 * 
 	 */
@@ -238,6 +240,18 @@ public class C206_CaseStudy {
 						// Delete
 						C206_CaseStudy.deleteTuition(tuitionList);
 					}
+					else if (uOption5 == SEARCH) {
+						String sTeacher = Helper.readString("Enter name of Teacher > ");
+						doSearchTeacher(tuitionList, sTeacher);
+						
+					}
+					else if (uOption5 == UPDATE_TUITION) {
+						String tCode = Helper.readString("Enter Tuition Code > ");
+						String uGrpName = Helper.readString("Enter New Tuition Group Name > ");
+						updateTuition(tuitionList, tCode, uGrpName);
+						
+						
+					}
 
 					else if (uOption5 == TUITION_CLOSE) {
 						System.out.println("Closing Tuition App...");
@@ -418,7 +432,9 @@ public class C206_CaseStudy {
 		System.out.println("1. Add Tuition");
 		System.out.println("2. View Tuition");
 		System.out.println("3. Delete Tuition");
-		System.out.println("4. Quit");
+		System.out.println("4. Search Teacher");
+		System.out.println("5. Update Tuition");
+		System.out.println("6. Quit");
 
 	}
 
@@ -642,85 +658,7 @@ public class C206_CaseStudy {
 		return isFound;
 	}
 
-	public static void searchTimetableP(ArrayList<tuitionTimetable> timetableList, double uPrice) // YuanWei
-	{
-		boolean isFound = doSearchTimetableP(timetableList, uPrice);
 
-		if (isFound != true) {
-			System.out.println("Tuition Timetable Title Could Not Be Found !");
-		}
-
-	}
-
-	public static boolean doSearchTimetableP(ArrayList<tuitionTimetable> timetableList, double uPrice) // YuanWei
-	{
-		boolean isFound = false;
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a");
-
-		for (int i = 0; i < timetableList.size(); i++) {
-
-			double price = timetableList.get(i).getPrice();
-			if (price == uPrice) {
-				String output = String.format("%-10s %-11s %-25s %-25s %-10s %-30s %-10s\n", "Tuition ID", "Price($)",
-						"Start Date", "End Date", "Mode", "Title", "Status");
-
-				int tuitionID = timetableList.get(i).getTuitionID();
-				LocalDateTime startDate = timetableList.get(i).getStartDate();
-				LocalDateTime endTime = timetableList.get(i).getEndTime();
-				String mode = timetableList.get(i).getMode();
-				String title = timetableList.get(i).getTitle();
-				String status = timetableList.get(i).getStatus();
-
-				String startDateF = startDate.format(format);
-				String endTimeF = endTime.format(format);
-
-				output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF,
-						endTimeF, mode, title, status);
-
-				System.out.println(output);
-
-				isFound = true;
-				break;
-			}
-
-			else {
-				isFound = false;
-			}
-
-		}
-		return isFound;
-	}
-
-	public static boolean doUpdateTimetable(ArrayList<tuitionTimetable> timetableList, int utID, String uStatus) // YuanWei
-	{
-		boolean isFound = false;
-
-		for (int i = 0; i < timetableList.size(); i++) {
-
-			int tuitionID = timetableList.get(i).getTuitionID();
-			if (tuitionID == utID) {
-				timetableList.get(i).setStatus(uStatus);
-				String title = timetableList.get(i).getTitle();
-				System.out.println(title + "'s Status Has Been Set To " + uStatus);
-				isFound = true;
-			}
-
-		}
-
-		return isFound;
-
-	}
-
-	public static void updateTimetable(ArrayList<tuitionTimetable> timetableList, int utID, String uStatus) // YuanWei
-	{
-
-		boolean isFound = doUpdateTimetable(timetableList, utID, uStatus);
-
-		if (isFound != true) {
-			System.out.println("Tuition Timetable Title Could Not Be Found !");
-		}
-
-	}
 
 	public static void viewEnquiriesTypeMenu() { // Sprint 2 Gilbert
 
@@ -865,13 +803,9 @@ public class C206_CaseStudy {
 				double tuitionDuration = tuitionList.get(i).getTuitionDuration();
 				String prerequisite = tuitionList.get(i).getPrerequisite();
 				String Teacher = tuitionList.get(i).getTeacher();
-				//github.com/20008353-Makkalz/C206_CaseStudy.git
-				
-				String startDateF = startDate.format(format);
-				String endTimeF = endTime.format(format);
 				
 				
-				output += String.format("%-10d $%-10.2f %-25s %-25s %-10s %-30s %-10s\n", tuitionID, price, startDateF, endTimeF, mode, title, status);
+				output += String.format("%-20s %-50s %-35s %-50s %-25.2f %-25s %-10s\n", tuitionCode, tuitionTitle, subjGrpName, tuitionDescription, tuitionDuration, prerequisite, Teacher);
 				
 				System.out.println(output);
 				
@@ -974,41 +908,41 @@ public class C206_CaseStudy {
 		
 	}
 
-	public static String viewEnquiryTest(ArrayList<Enquiry> enquiryList) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * @param enquiryList
-	 * @param i
-	 * @param string
-	 * @return
-	 */
-	public static Boolean UpdateEnquiryStatus(ArrayList<Enquiry> enquiryList, int i, String string) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * @param tuitionList
-	 * @param string
-	 * @return
-	 */
-	public static Boolean doSearchTeacher(ArrayList<Tuition> tuitionList, String string) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * @param tuitionList
-	 * @param string
-	 * @param string2
-	 * @return
-	 */
-	public static Boolean doUpdateTuition(ArrayList<Tuition> tuitionList, String string, String string2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public static String viewEnquiryTest(ArrayList<Enquiry> enquiryList) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	/**
+//	 * @param enquiryList
+//	 * @param i
+//	 * @param string
+//	 * @return
+//	 */
+//	public static Boolean UpdateEnquiryStatus1(ArrayList<Enquiry> enquiryList, int i, String string) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	/**
+//	 * @param tuitionList
+//	 * @param string
+//	 * @return
+//	 */
+//	public static Boolean doSearchTeacher1(ArrayList<Tuition> tuitionList, String string) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	/**
+//	 * @param tuitionList
+//	 * @param string
+//	 * @param string2
+//	 * @return
+//	 */
+//	public static Boolean doUpdateTuition(ArrayList<Tuition> tuitionList, String string, String string2) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

@@ -127,7 +127,7 @@ public class C206_CaseStudy {
 					} else if (option3 == 3)// Add Enquiry //Gilbert
 					{
 						addEnquiry(enquiryList, null);
-					} else if (option3 == 4) { // See enquiry type //Gilbert
+					} else if (option3 == 4) { // See enquiry type ///Gilbert
 
 						int option4 = 0;
 						while (option4 != 3) {

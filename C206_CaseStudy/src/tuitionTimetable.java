@@ -44,7 +44,7 @@ public class tuitionTimetable {
 	/**
 	 * @return the price
 	 */
-	public double getPrice() {
+	public double getPrice() {//
 		return price;
 	}
 

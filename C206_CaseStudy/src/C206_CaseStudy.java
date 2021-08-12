@@ -114,7 +114,7 @@ public class C206_CaseStudy {
 				// Add enquiry
 				int option3 = 0;
 
-				while (option != 4) {
+				while (option != 6) {
 					doOption3menu();
 					option3 = Helper.readInt("Enter an option > ");
 
@@ -127,12 +127,35 @@ public class C206_CaseStudy {
 					} else if (option3 == 3)// Add Enquiry //Gilbert
 					{
 						addEnquiry(enquiryList, null);
-					} else if (option3 == 4) {
+					} else if (option3 == 4) { // See enquiry type //Gilbert
+
+						int option4 = 0;
+						while (option4 != 3) {
+							viewEnquiriesTypeMenu();
+							option4 = Helper.readInt("Enter option > ");
+
+							if (option4 == 1) {
+								// Search Urgent Enquiry Type
+
+								seeUrgentEnquiry(enquiryList);
+							} else if (option4 == 2) {
+
+								// see Non-Ugent Enquiries
+								seeNon_UrgentEnquiry(enquiryList);
+							}
+						}
+
+					} else if (option3 == 5) {
+						int EnID = Helper.readInt("Enter Enquiry ID >");
+						String EnStatus = Helper.readString("Enter New Enquiry Status > ");
+						UpdateEnquiryStatus(enquiryList, EnID, EnStatus);
+					} else if (option3 == 6) {
 						System.out.println("Returning to main menu....");
 
 					}
 				}
 			}
+
 
 			else if (option == TUITION_TIMETABLE) {
 				// Add tuition time table YuanWei
@@ -321,7 +344,9 @@ public class C206_CaseStudy {
 		System.out.println("1. View Enquiry");
 		System.out.println("2. Delete Enquiry");
 		System.out.println("3. Add Enquiry");
-		System.out.println("4. Quit");
+		System.out.println("4. View Enquiry Type");
+		System.out.println("5. Update Enquiry");
+		System.out.println("6. Quit");
 	}
 	
 	public static void addRegistration(ArrayList<registerTimetable> registerList) { // Jean-Claude

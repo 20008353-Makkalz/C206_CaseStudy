@@ -744,7 +744,11 @@ public class C206_CaseStudyTest {
 	}
 
 	@Test
+
+	//public void UpdateEnquiryStatusTest() ///Sprint 2 Gilbert
+
 	public void UpdateEnquiryStatusTest() ///Sprint 2 Gilbert
+
 	{
 		// Make sure list is not null -Boundary
 		assertNotNull("Test if there is valid enquiry arraylist to retrieve item", enquiryList);
@@ -778,9 +782,15 @@ public class C206_CaseStudyTest {
 
 		// Test if Title Not Included In Timetable List Can Be Found - Error
 
+
+
 		
-		
+
 		// Test if Title Not Included In Timetable List Can Be Found -- Error
+
+
+		// Test if Title Not Included In Timetable List Can Be Found -- Error
+
 		exist = C206_CaseStudy.doSearchTeacher(tuitionList, "Tan Cheng Kok");
 		assertFalse("Test if Teacher can be found", exist);
 
